@@ -22,16 +22,25 @@ mongoose.connect(`mongodb+srv://${usernameDB}:${password}@cluster0.fevcghn.mongo
 const UserModel = require('./models/user')
 // Register
 app.post("/register", async (req, res)=>{
-     const {username,email,password}=req.body
+     const {username,email,password,firstName,lastName,role,birth,address,phone}=req.body
      const user=await UserModel.findOne({email})
      if(user){
         return res.json({message:"user already exists"})
      }
      const hashedPassword=bcrypt.hashSync(password,10)
      const newUser=new UserModel({
-        username:username,
-        email:email,
-        password:hashedPassword
+        firstname:firstName,
+        lastname:lastName,
+        phone,
+        address,
+        email,
+        password:hashedPassword,
+        username,
+        birth,
+        role,
+        
+        
+        
      })
      await newUser.save();
      return res.json({message:"user created succefully"})
@@ -44,13 +53,14 @@ app.post("/register", async (req, res)=>{
 app.post("/login",async(req,res)=>{
     const {username,email,password}=req.body
     const user=await UserModel.findOne({email})
+    
     if(!user){
        return res.json({message:"user dosn't exists"})
     }
     const isPasswordValid =await bcrypt.compare(password,user.password)
-    if(!isPasswordValid){return res.json({
-        message:"Username or password is not correct"
-    }) } 
+    
+    if(!isPasswordValid){
+        return res.json({message:"Username or password is not correct"}) } 
     const token = jwt.sign({id:user._id},usernameDB)
     return res.json({token,userid:user._id})
 })

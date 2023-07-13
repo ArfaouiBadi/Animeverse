@@ -61,9 +61,9 @@ const Register = () => {
     const [birth, setBirth] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-    const handleRegister = async(e) => {
-      e.preventDefault();
-      await Axios.post("http://localhost:3002/register",{username ,email,password,firstName,lastName,role,birth,address,phone})
+    const handleRegister = async() => {
+      
+      await Axios.post("http://localhost:3002/register",{firstName,lastName,phone,address,email,password,username,birth,role})
       
     };
   
@@ -102,6 +102,9 @@ const Register = () => {
     );
   };
   
+
+
+  //Login
   const Login = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
