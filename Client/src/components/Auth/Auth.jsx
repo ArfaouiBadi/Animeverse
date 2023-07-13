@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import fb from "../../assets/fb.png";
 import tw from "../../assets/tw.png";
 import gp from "../../assets/gp.png";
+import Axios from 'axios'
+import {useCookies} from 'react-cookie'
 import './Auth.css';
 
 const Auth = () => {
@@ -59,17 +61,10 @@ const Register = () => {
     const [birth, setBirth] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-  
-    const handleRegister = () => {
-      console.log("Username:", username);
-      console.log("Email:", email);
-      console.log("Password:", password);
-      console.log("First Name:", firstName);
-      console.log("Last Name:", lastName);
-      console.log("Role:", role);
-      console.log("Birth:", birth);
-      console.log("Address:", address);
-      console.log("Phone:", phone);
+    const handleRegister = async(e) => {
+      e.preventDefault();
+      await Axios.post("http://localhost:3002/register",{username ,email,password,firstName,lastName,role,birth,address,phone})
+      
     };
   
     return (
@@ -111,10 +106,13 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
-    const handleLogin = () => {
-      console.log("Username:", username);
-      console.log("Email:", email);
+    const [_,setCookies]=useCookies(['acces-token'])
+    const handleLogin = async() => {
+      
+      const response =await Axios.post("http://localhost:3002/login",{username,email,password})
+      setCookies("acces-token",response.data.token)
+      window.localStorage.setItem("userID",response.data.userid)
+      console.log(response.data)
     };
   
     return (
@@ -164,7 +162,7 @@ const Form = ({
     setAddress,
     phone,
     setPhone,
-    onSubmit, // Added onSubmit prop
+    onSubmit, 
   }) => {
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -232,7 +230,7 @@ const Form = ({
         )}
         {showBirth && (
           <input
-            type="text"
+            type="date"
             className="input-field"
             placeholder="Birth"
             value={birth}
@@ -250,7 +248,7 @@ const Form = ({
         )}
         {showPhone && (
           <input
-            type="text"
+            type="phone"
             className="input-field"
             placeholder="Phone"
             value={phone}

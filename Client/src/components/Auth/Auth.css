@@ -5,6 +5,7 @@
     font-family: 'Quicksand', sans-serif;
     background-color: #141419;
     color: white;
+    
   }
   
   .container {
@@ -15,7 +16,7 @@
     justify-content: center;
     align-items: center;
     padding: 50px 100px;
-    background-color: #141419;
+    background-color: #0f0f13;
   }
   
   .contact-box {
