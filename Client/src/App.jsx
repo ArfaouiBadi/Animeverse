@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import Navbar from './components/navbar/navbar'
-import Card from './components/card/card'
+
+import Auth from './components/Auth/Auth'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar/>
-      <Card/> 
+      <Auth/>
       <h1></h1>
     </>
   )
