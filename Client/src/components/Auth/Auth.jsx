@@ -5,6 +5,11 @@ import gp from "../../assets/gp.png";
 import './Auth.css';
 
 const Auth = () => {
+    
+
+
+
+
   const [isRegisterVisible, setRegisterVisible] = useState(false);
   const [isLoginVisible, setLoginVisible] = useState(true);
 
@@ -114,6 +119,7 @@ const Register = () => {
         label="Login"
         showUsername
         showEmail
+        showPassword
         username={username}
         setUsername={setUsername}
         password={password}
