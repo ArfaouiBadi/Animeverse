@@ -12,13 +12,16 @@ const Auth = () => {
 
   const [isRegisterVisible, setRegisterVisible] = useState(false);
   const [isLoginVisible, setLoginVisible] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   const handleClickRegister = () => {
+    setIsActive(true)
     setRegisterVisible(true);
     setLoginVisible(false);
   };
 
   const handleClickLogin = () => {
+    setIsActive(false)
     setRegisterVisible(false);
     setLoginVisible(true);
   };
@@ -29,7 +32,7 @@ const Auth = () => {
         <div className="left"></div>
         <div className="right">
           <div className="button-box">
-            <div id="btn"></div>
+            <div className={isActive ? 'btn-register slide-in' : 'btn slideOut'}></div>
             <button type="button" className="toggle-btn" onClick={handleClickLogin}>Log In</button>
             <button type="button" className="toggle-btn" onClick={handleClickRegister}>Register</button>
           </div>
