@@ -3,7 +3,10 @@ import fb from "../../assets/fb.png";
 import tw from "../../assets/tw.png";
 import gp from "../../assets/gp.png";
 import Axios from 'axios'
-import {useCookies} from 'react-cookie'
+import {useCookies} from "react-cookie"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faEyeSlash,faEye } from '@fortawesome/free-solid-svg-icons'
+
 import './Auth.css';
 
 const Auth = () => {
@@ -34,11 +37,11 @@ const Auth = () => {
         <div className="left"></div>
         <div className="right">
           <div className="button-box">
-            <div className={isActive ? 'btn-register slide-in' : 'btn slideOut'}></div>
-            <button type="button" className="toggle-btn" onClick={handleClickLogin}>Log In</button>
+            <div className={isActive ? 'btn-register' : 'btn'}></div>
+            <button type="button" className="toggle-btn" id="btn-login" onClick={handleClickLogin}>Log In</button>
             <button type="button" className="toggle-btn" onClick={handleClickRegister}>Register</button>
           </div>
-          <div className="social-icons">
+          <div className="social-icons ">
             <img alt="fb icon" src={fb} />
             <img alt="tw icon" src={tw} />
             <img alt="google icon" src={gp} />
@@ -136,7 +139,7 @@ const Register = () => {
   };
   
 
-const Form = ({
+  const Form = ({
     label,
     showUsername,
     showEmail,
@@ -165,11 +168,18 @@ const Form = ({
     setAddress,
     phone,
     setPhone,
-    onSubmit, 
+    onSubmit, // Added onSubmit prop
   }) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       onSubmit(); // Call the onSubmit function passed as a prop
+    };
+    const [isVisible, setVisible] = useState(false);
+    const handleClick= () => {
+      if(isVisible)
+      setVisible(false);
+      else
+      setVisible(true);
     };
   
     return (
@@ -194,8 +204,10 @@ const Form = ({
             required
           />
         )}
-        {showPassword && (
-          <input
+        {showPassword && !isVisible && (
+          <>
+           <div className="input">
+           <input
             type="password"
             className="input-field"
             placeholder="Password"
@@ -203,6 +215,26 @@ const Form = ({
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <FontAwesomeIcon icon={faEyeSlash}  className="showHidePw" onClick={handleClick}/>
+           </div>
+         
+          </>          
+        )}
+        {showPassword && isVisible && (
+          <>
+           <div className="input">
+           <input
+            type="text"
+            className="input-field"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <FontAwesomeIcon icon={faEye} className="showHidePw" onClick={handleClick}/>
+           </div>
+         
+          </>          
         )}
         {showFirstName && (
           <input
@@ -233,7 +265,7 @@ const Form = ({
         )}
         {showBirth && (
           <input
-            type="date"
+            type="text"
             className="input-field"
             placeholder="Birth"
             value={birth}
@@ -251,7 +283,7 @@ const Form = ({
         )}
         {showPhone && (
           <input
-            type="phone"
+            type="text"
             className="input-field"
             placeholder="Phone"
             value={phone}
@@ -266,6 +298,5 @@ const Form = ({
       </form>
     );
   };
-  
 
 export default Auth;
