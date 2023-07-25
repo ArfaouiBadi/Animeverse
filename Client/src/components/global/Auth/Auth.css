@@ -3,33 +3,34 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
-  background-color: #141419;
+  
   color: white;
 }
 
 .container {
-  position: relative;
+  
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 100px;
   background-color: #141419;
+  margin-top: 50px;
 }
 
 .contact-box {
   max-width: 750px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #25262a;
-  box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+  width: 1000px;
+  box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.39);
 }
 .left {
-  background: url("..\..\assets\bg.png") no-repeat center;
+  background: url("..\..\..\assets\bg.png") no-repeat center;
   background-size: cover;
   height: 100%;
 }
@@ -165,15 +166,6 @@ span {
     height: 200px;
   }
 }
-@media screen and (max-width: 1000px) {
-  .contact-box {
-    grid-template-columns: 1fr;
-  }
-  .left {
-    height: 200px;
-  }
-}
-
 
 @keyframes slideIn {
   0% {

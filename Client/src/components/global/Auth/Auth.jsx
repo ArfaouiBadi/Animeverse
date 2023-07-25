@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import fb from "../../assets/fb.png";
-import tw from "../../assets/tw.png";
-import gp from "../../assets/gp.png";
+import fb from "../../../assets/fb.png";
+import tw from "../../../assets/tw.png";
+import gp from "../../../assets/gp.png";
 import Axios from 'axios'
 import {useCookies} from "react-cookie"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

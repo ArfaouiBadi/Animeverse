@@ -37,10 +37,7 @@ app.post("/register", async (req, res)=>{
         password:hashedPassword,
         username,
         birth,
-        role,
-        
-        
-        
+        role, 
      })
      await newUser.save();
      return res.json({message:"user created succefully"})
@@ -64,17 +61,6 @@ app.post("/login",async(req,res)=>{
     const token = jwt.sign({id:user._id},usernameDB)
     return res.json({token,userid:user._id})
 })
-
-
-// create user
-/*app.post("/createUser", async (req, res) => {
-    const newUser = new UserModel(req.body);
-    await newUser.save();
-    res.json(req.body)
-})*/
-
-
-
 
 app.listen(_PORT, ()=>{
     console.log("Server Works")

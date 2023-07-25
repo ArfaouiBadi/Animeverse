@@ -1,0 +1,13 @@
+.navbar-container{
+    background-color: aliceblue;
+    width: 1000px;
+    margin: auto;
+    border-bottom: 1px white solid;
+    
+}
+
+.contact-us{
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+}
