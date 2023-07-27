@@ -8,12 +8,13 @@ import {
     Twitter,
   } from "@material-ui/icons";
   import styled from "styled-components";
+import { mobile } from "../../responsive";
 
   const Container = styled.div`
     display: flex;
     background-color: #121D31;
     padding: 80px;
-    
+    ${mobile({ flexDirection: "column" })}
     
   `;
   
@@ -67,6 +68,7 @@ import {
     margin-top: 15px;
     background-color: transparent;
     text-align: center;
+    ${mobile({ display: "none" })}
   `;
   
   const Title = styled.h3`
@@ -74,7 +76,6 @@ import {
     font-family: 'Roboto Condensed';
     transition: 0.2s ease all;
     background-color: transparent;
-    
     &:hover{
         border-bottom: 5px solid white;
     }
@@ -96,7 +97,6 @@ import {
     font-family: 'Roboto Condensed';
     cursor: pointer;
     transition: 0.2s ease all;
-  
   `;
   
   const Right = styled.div`
@@ -104,6 +104,7 @@ import {
     flex: 1;
     padding: 20px;
     text-align: center;
+    ${mobile({ backgroundColor: "#fff8f8" })}
   `;
   
   const ContactItem = styled.div`

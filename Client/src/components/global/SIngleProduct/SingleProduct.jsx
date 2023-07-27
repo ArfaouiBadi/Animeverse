@@ -18,25 +18,34 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
-  height: 50vh;
+  height: 84vh;
+  
 `;
 
 const Image = styled.img`
-  max-width: 50%;
+  width: 100%;
   max-height: 100%;
   object-fit: contain;
-  ${mobile({ maxHeight: "40vh" })}
+  ${mobile({ maxHeight: "60vh" })}
 `;
 
 const ImgContainerCol = styled.div`
-  height: 10vh;
+  height: 84vh;
   width: 7vw;
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-right: 10px;
-
-  ${mobile({ flexDirection: "row" })}
+  border:1px white solid ;
+  ${mobile({ 
+    flexDirection: "row",
+    width: "92vw",
+    height: "10vh",
+    justifyContent:"center",
+    gap:"0px",
+    
+    
+    })}
 `;
 
 const InfoContainer = styled.div`
@@ -46,18 +55,19 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 200;
+  font-weight: 700;
   font-size: 24px;
   max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */
 `;
 
 const Desc = styled.p`
   margin: 20px 0px;
-  max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */
+  max-width: 100vw; /* Limit the width to 100% of the InfoContainer's width */
+  font-weight: 300;
 `;
 
 const Price = styled.span`
-  font-weight: 100;
+  font-weight: 500;
   font-size: 50px;
   color: white;
   max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */

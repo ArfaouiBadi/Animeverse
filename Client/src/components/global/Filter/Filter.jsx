@@ -10,6 +10,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
+import { mobile } from "../../responsive";
 
 
 const ITEM_HEIGHT = 48;
@@ -53,6 +54,7 @@ color: #121D31;
 font-weight: 500;
 padding: 25px;
 flex: 1;
+${mobile({ display: "none" })}
 `
 const Wrapper=styled.div`
   display: flex;

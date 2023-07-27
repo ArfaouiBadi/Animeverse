@@ -1,15 +1,17 @@
 .amount{
-    
   width: 30px;
   height: 30px;
-  border-radius: 10px;
-  border: 2px solid white;
+  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px 5px;
   color: white;
   margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  font-weight: 200;
   &:hover {
     background-color: #8080801a;
   }

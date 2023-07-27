@@ -7,11 +7,13 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 
 const Container = styled.div`
   height: 65px;
   background-color: #121D31;
+  ${mobile({ height: "50px" ,width:"100vw"})}
 `;
 
 const Wrapper = styled.div`
@@ -20,7 +22,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px white solid;
-  
+  ${mobile({ padding: "1px"})}
 `;
 
 const Left = styled.div`
@@ -28,9 +30,8 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   
-  
   Input{
-    width: 200px;
+    width: 12vw;
   }
 `;
 
@@ -38,29 +39,30 @@ const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
   color: white;
-  
-  
+  ${mobile({ display: "none" })}
 `;
 
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
+  border-radius:10px ;
   display: flex;
   align-items: center;
   margin-left: 25px;
   
-  
+  ${mobile({width:"40px",justifyContent:"center"})}
   padding: 5px;
 `;
 
 const Input = styled.input`
+margin-left: 10px;
   border: none;
   margin-right: 5px;
   background-color: #121D31;
-  
+  ${mobile({display: "none"})}
 `;
 
 const Center = styled.div`
-  flex: 1;
+  flex: 10;
   text-align: center;
   
 `;
@@ -70,15 +72,15 @@ const Logo = styled.h1`
   font-family: 'Lobster';
   cursor: pointer;
   text-decoration: none;
-  
+  padding-bottom:10px;
+  ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  
-  
+  ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 const MenuItem2 = styled(Link)`
   font-size: 14px;
@@ -88,7 +90,7 @@ const MenuItem2 = styled(Link)`
   margin-left: 25px;
   font-weight: 700;
   margin-right:10px ;
-  
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
   transition: 0.3s ease all;
   
 `;
@@ -100,7 +102,7 @@ const MenuItem = styled(Link)`
   margin-left: 25px;
   font-weight: 700;
   margin-right: 10px;
-  
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
   transition: 0.3s ease all;
   text-decoration: none;
   color: white;
@@ -109,6 +111,7 @@ const MenuItem = styled(Link)`
     border-bottom: 5px white solid;
     transform: scale(1.1);
   }
+  ${mobile({ display: "none"})}
 `;
 
 

@@ -1,6 +1,7 @@
 
 import styled from "styled-components";
 import './catagories.css'
+import { mobile } from "../../responsive";
 const Container = styled.div`
   height: 30px;
   background-color: white;
@@ -15,8 +16,7 @@ const Container = styled.div`
 const Catagorie = styled.div`
   background-color: transparent;
   height: 100%;
-  padding-top: 5px;
-  
+  padding-top: 10px;
   color: black;
   transition: all 0.1s ease;
   cursor: pointer;
@@ -30,6 +30,7 @@ const Catagorie = styled.div`
     scale: calc(1.1);
     
   }
+  ${mobile({ fontSize:"8px" })}
 `;
 
 const Catagories = () => {
