@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import imgback from '../../../assets/prod.jpg'
 import { produit } from "../../../data/data";
-import Product from "../product/product";
+import Product_card from "../product/Product_card";
 
 const Container = styled.div`
     padding: 20px;
@@ -23,7 +23,7 @@ const Products = () => {
   return (
     <Container>
       {produit.map((item) => (
-        <Product item={item} key={item.id} />
+        <Product_card item={item} key={item.id} />
       ))}
     </Container>
   );

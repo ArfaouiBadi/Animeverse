@@ -1,8 +1,9 @@
 const express = require("express")
+const dotenv = require("dotenv")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 const app = express()
-const _PORT = 3001;
+dotenv.config()
 const cors = require("cors")
 app.use(cors())
 app.use(express.json())
@@ -10,12 +11,14 @@ app.use(express.json())
 
 
 // CONNECT TO DB
-const   usernameDB = "arfaouibadi19",
-        password = "rFJ6cq541qfMfOmw",
-        database = "Animeverse";
 
 const mongoose = require("mongoose")
-mongoose.connect(`mongodb+srv://${usernameDB}:${password}@cluster0.fevcghn.mongodb.net/${database}?retryWrites=true&w=majority`)
+
+mongoose.connect(process.env.MONGO_URL).then(()=>{
+    console.log("DB Connection Successfully")
+}).catch((err)=>{
+    console.log(err)
+})
 
 
 // USER MODEL
@@ -34,36 +37,34 @@ app.post("/register", async (req, res)=>{
         phone,
         address,
         email,
+        isAdmin:false,
         password:hashedPassword,
         username,
         birth,
         role, 
      })
-     await newUser.save();
-     return res.json({message:"user created succefully"})
+     try{
+        await newUser.save();
+        return res.status(201).json({message:"user created succefully"})
+     }
+     catch(err){
+        console.log(err)
+     }
 
-
-
-
-     
 })
 app.post("/login",async(req,res)=>{
     const {username,email,password}=req.body
     const user=await UserModel.findOne({email})
     
     if(!user){
-       return res.json({message:"user dosn't exists"})
+       return res.status(404).json({message:"user dosn't exists"})
     }
     const isPasswordValid =await bcrypt.compare(password,user.password)
     
     if(!isPasswordValid){
-        return res.json({message:"Username or password is not correct"}) } 
-    const token = jwt.sign({id:user._id},usernameDB)
+        return res.status(401 ).json({message:"Username or password is not correct"}) } 
+    const token = jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT_SEC,{expiresIn:"3d"})
     return res.json({token,userid:user._id})
-})
-
-app.listen(_PORT, ()=>{
-    console.log("Server Works")
 })
 
 app.listen(3002, () => console.log(`🟢 server started on port 3002`))

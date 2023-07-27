@@ -96,9 +96,7 @@ import {
     font-family: 'Roboto Condensed';
     cursor: pointer;
     transition: 0.2s ease all;
-  &:hover{
-        text-decoration: underline;
-    }
+  
   `;
   
   const Right = styled.div`

@@ -38,7 +38,7 @@ const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
   color: white;
-  font-family: 'Josefin Sans';
+  
   
 `;
 
@@ -68,7 +68,8 @@ const Center = styled.div`
 const Logo = styled.h1`
   font-weight: 700;
   font-family: 'Lobster';
-  
+  cursor: pointer;
+  text-decoration: none;
   
 `;
 const Right = styled.div`
@@ -79,32 +80,34 @@ const Right = styled.div`
   
   
 `;
-const MenuItem2 = styled.div`
+const MenuItem2 = styled(Link)`
   font-size: 14px;
   height: 52px;
   padding-top: 14px;
-  
   cursor: pointer;
   margin-left: 25px;
   font-weight: 700;
   margin-right:10px ;
-  font-family: 'Josefin Sans';
+  
   transition: 0.3s ease all;
   
 `;
-const MenuItem = styled.div`
+const MenuItem = styled(Link)`
   font-size: 14px;
   height: 53px;
   padding-top: 17px;
   cursor: pointer;
   margin-left: 25px;
   font-weight: 700;
-  margin-right:10px ;
-  font-family: 'Josefin Sans';
+  margin-right: 10px;
+  
   transition: 0.3s ease all;
-  &:hover{
+  text-decoration: none;
+  color: white;
+
+  &:hover {
     border-bottom: 5px white solid;
-    scale: calc(1.1);
+    transform: scale(1.1);
   }
 `;
 
@@ -122,12 +125,12 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo >Animeverse.</Logo>
+        <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none"}}>Animeverse.</Link></Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem2>
+          <MenuItem to="/register">REGISTER</MenuItem>
+          <MenuItem to="/login">SIGN IN</MenuItem>
+          <MenuItem2 to={"/cart"}>
             <Badge badgeContent={4} color="secondary" overlap="rectangular">
               <ShoppingCartOutlined />
             </Badge>

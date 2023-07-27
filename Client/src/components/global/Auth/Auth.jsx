@@ -64,9 +64,13 @@ const Register = () => {
     const [birth, setBirth] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
+
+
+    //REGISTER
     const handleRegister = async() => {
       
       await Axios.post("http://localhost:3002/register",{firstName,lastName,phone,address,email,password,username,birth,role})
+      
       
     };
   

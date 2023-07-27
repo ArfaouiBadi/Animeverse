@@ -5,12 +5,13 @@ import './App.css'
 
 import Auth from './components/global/Auth/Auth'
 import Navbar from './components/global/navbar/Navbar'
-import { Home } from '@mui/icons-material';
+
 import Catagories from './components/global/Catagories/Catagories'
 import Footer from './components/global/Footer/Footer'
-import Newsletter from './components/global/Newsletter/Newsletter'
-import Products from './components/global/products/Products'
-import Filter from './components/global/Filter/Filter'
+
+import Home from './components/Home/Home'
+import SingleProduct from './components/global/SIngleProduct/SingleProduct'
+
 
 
 
@@ -19,24 +20,24 @@ import Filter from './components/global/Filter/Filter'
 function App() {
 
   return (
+    
     <div className='app'>
-      <Navbar/>
-      <Catagories/>
-      <Filter/>
-      <Products/>
-      <Newsletter/>
-      <Footer/>
+         
       
-      {/*
       <Router>
-        <Navbar/>
-        
+      <Navbar/>
+      
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/" element={<Home/>}/>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/register' element={<Auth/>}></Route>
+          <Route path='/login' element={<Auth/>}></Route>
+          <Route path='/SingleProduct' element={<SingleProduct />}></Route>
+          
         </Routes>
+        
+      <Footer/>
       </Router>
-      <Auth/>*/}
+      {/**/}
       
       
     </div>

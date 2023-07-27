@@ -37,7 +37,7 @@ const names = [
 ];
 
 const Container = styled.div`
-    font-family: 'Josefin Sans';
+    
     width: 100%;
     height: 80px;
     display: flex;
@@ -46,6 +46,19 @@ const Container = styled.div`
     background-color: white;
     border-top: 3px #121D31 solid;
     border-bottom: 1px white solid;
+`
+const Text=styled.h3`
+
+color: #121D31;
+font-weight: 500;
+padding: 25px;
+flex: 1;
+`
+const Wrapper=styled.div`
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;  
+  
 `
 const Filter = () => {
     const [Brand, setBrand] = useState([]);
@@ -75,8 +88,9 @@ const Filter = () => {
     return (
       <div>
         <Container>
-        <Grid container display="flex" justifyContent="space-between" >
-        <FormControl sx={{ m: 1, width: 70,flex:5 }} >
+        <Grid container display="flex" justifyContent="space-between">
+        <Wrapper><Text>Filter Products :</Text>
+        <FormControl sx={{ m: "auto", width: 100,scale:"calc(0.8)" }} >
           <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans'}}>BRAND</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
@@ -97,7 +111,7 @@ const Filter = () => {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 80 ,flex:1}}>
+        <FormControl sx={{ m: "auto", minWidth: 80 ,scale:"calc(0.8)"}}>
         <InputLabel id="demo-simple-select-autowidth-label" sx={{fontFamily: 'Josefin Sans'}}>SIZE</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
@@ -118,8 +132,11 @@ const Filter = () => {
           <MenuItem value={"XL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XL</MenuItem>
           <MenuItem value={"XXL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XXL</MenuItem>
         </Select>
-      </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 80 ,flex:5}}>
+      </FormControl></Wrapper>
+        
+      <Wrapper>
+      <Text>Sort Products :</Text>
+      <FormControl sx={{ m: "auto", minWidth: 80,scale:"calc(0.8)" }}>
         <InputLabel id="demo-simple-select-autowidth-label" sx={{fontFamily: 'Josefin Sans'}}>SORT</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
@@ -139,6 +156,8 @@ const Filter = () => {
           
         </Select>
       </FormControl>
+      </Wrapper>
+      
         </Grid>
         </Container>
       </div>
