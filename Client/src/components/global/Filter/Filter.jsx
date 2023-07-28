@@ -63,7 +63,10 @@ const Wrapper=styled.div`
   
 `
 const Filter = () => {
+    const [filters,setFilters]=useState([])
     const [Brand, setBrand] = useState([]);
+    const [Size, setSize] = useState('');
+    const [Sort, setSort] = useState('');
     const handleChangeBrand = (event) => {
       const {
         target: { value },
@@ -73,12 +76,6 @@ const Filter = () => {
         typeof value === 'string' ? value.split(',') : value,
       );
     };
-    
-
-
-    const [Size, setSize] = useState('');
-    const [Sort, setSort] = useState('');
-
   const handleChangeSize = (event) => {
     setSize(event.target.value);
   };
@@ -123,6 +120,7 @@ const Filter = () => {
           autoWidth
           label="Size"
           sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}
+          
         >
           
           <MenuItem value={""} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>None</MenuItem>

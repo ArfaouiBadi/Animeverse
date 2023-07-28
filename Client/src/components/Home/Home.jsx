@@ -8,8 +8,7 @@ import './Home.css'
 const Home = () => {
   return (
     <>
-      <Catagories/>
-      <Filter/>
+      
       <Products/>
       <Newsletter/>
     </>

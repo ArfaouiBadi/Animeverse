@@ -28,7 +28,7 @@ export const sliderItems = [
       otherView:[],
       price: 0,
       desc: "Bluelock Figure",
-      catagorie: "Figure",
+      catagorie: "Figures",
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ export const sliderItems = [
       otherView:[],
       price: 0,
       desc: "My Dress-Up Darling - Marin Kitagawa Noodle Stopper Figure Figure",
-      catagorie: "Figure",
+      catagorie: "Figures",
     },
     
     {
@@ -46,7 +46,7 @@ export const sliderItems = [
         image: "https://i.ibb.co/HqX3Rcz/Jujutsu-Kaisen-Satoru-Gojo-Nendoroid-Tokyo-Jujutsu-High-School-Ver-4.jpg",
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Figures",
       },
       {
         id: 6,
@@ -55,7 +55,7 @@ export const sliderItems = [
         otherView:["https://i.ibb.co/wySrwsv/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male-Back.jpg","https://i.ibb.co/9vgSNrM/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Female.jpg"],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
       {
         id: 7,
@@ -64,7 +64,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
       {
         id: 8,
@@ -73,7 +73,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
       {
         id: 9,
@@ -82,7 +82,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
       {
         id: 10,
@@ -91,7 +91,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Bags",
       },
       {
         id: 11,
@@ -100,7 +100,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
       {
         id: 12,
@@ -109,7 +109,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Bags",
       },
       {
         id: 13,
@@ -118,7 +118,7 @@ export const sliderItems = [
         otherView:[],
         price: 0,
         desc: "Bluelock Figure",
-        catagorie: "Figure",
+        catagorie: "Clothing",
       },
   ];
   

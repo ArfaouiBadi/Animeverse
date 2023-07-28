@@ -8,6 +8,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { useState } from "react";
 
 
 const Container = styled.div`
@@ -82,7 +83,7 @@ const Right = styled.div`
   justify-content: flex-end;
   ${mobile({ flex: 2, justifyContent: "center" })}
 `;
-const MenuItem2 = styled(Link)`
+const Cartmenu = styled(Link)`
   font-size: 14px;
   height: 52px;
   padding-top: 14px;
@@ -116,6 +117,11 @@ const MenuItem = styled(Link)`
 
 
 const Navbar = () => {
+
+  const[cartList,setCartList]=useState(false)
+  const showCartList=()=>{cartList?setCartList(false):setCartList(true)}
+  const products = useSelector(state=>state.cart.products)
+  console.log(products)
   return (
     <Container>
       
@@ -133,11 +139,11 @@ const Navbar = () => {
         <Right>
           <MenuItem to="/register">REGISTER</MenuItem>
           <MenuItem to="/login">SIGN IN</MenuItem>
-          <MenuItem2 to={"/cart"}>
+          <Cartmenu to={"/cart"}>
             <Badge badgeContent={4} color="secondary" overlap="rectangular">
               <ShoppingCartOutlined />
             </Badge>
-          </MenuItem2>
+          </Cartmenu>
         </Right>
       </Wrapper>
     </Container>

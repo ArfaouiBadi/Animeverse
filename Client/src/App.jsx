@@ -11,6 +11,9 @@ import Footer from './components/global/Footer/Footer'
 
 import Home from './components/Home/Home'
 import SingleProduct from './components/global/SIngleProduct/SingleProduct'
+import Cart from './components/global/Cart/Cart'
+import Products from './components/global/products/Products'
+import Filter from './components/global/Filter/Filter'
 
 
 
@@ -30,8 +33,12 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/register' element={<Auth/>}></Route>
-          <Route path='/login' element={<Auth/>}></Route>
+          <Route path="/products/Figures" element={<Products/>}></Route>
+          <Route path="/products/Clothing" element={<Products/>}></Route>
+          <Route path='/login' element={<Auth/>}>
+          </Route>
           <Route path='/SingleProduct' element={<SingleProduct />}></Route>
+          <Route path='/Cart' element={<Cart />}></Route>
           
         </Routes>
         

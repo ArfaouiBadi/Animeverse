@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { produit } from "../../../data/data";
 import './SingleProduct.css'
+import { useDispatch } from "react-redux";
 const Container = styled.div`
   background-color: #121D31;
   color: white;
+  width: 100vw;
 `;
 
 const Wrapper = styled.div`
@@ -36,7 +38,7 @@ const ImgContainerCol = styled.div`
   flex-direction: column;
   gap: 10px;
   margin-right: 10px;
-  border:1px white solid ;
+  
   ${mobile({ 
     flexDirection: "row",
     width: "92vw",
@@ -224,7 +226,7 @@ return (
             </AmountContainer>
 
           <AddContainer>
-            <Button >ADD TO CART</Button>
+            <Button onClick={()=>dispatch()}>ADD TO CART</Button>
           </AddContainer>
           <AddContainer>
           <Button >SAVE TO WHISHLIST</Button>

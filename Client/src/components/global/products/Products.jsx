@@ -3,7 +3,11 @@ import styled from "styled-components";
 import imgback from '../../../assets/prod.jpg'
 import { produit } from "../../../data/data";
 import Product_card from "../product/Product_card";
-
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import Catagories from "../Catagories/Catagories";
+import Filter from "../Filter/Filter";
+import StoreContext from "../../../hooks/storeContext";
 const Container = styled.div`
     padding: 20px;
     display: flex;
@@ -20,12 +24,23 @@ const Container = styled.div`
 `;
 
 const Products = () => {
+  const location=useLocation();
+  console.log(location.pathname.split("/")[2])
+
+  const [data,setData]=useState(produit)
+  console.log(data)
   return (
+  
+  <StoreContext.Provider value={{Number}}>
+    <Catagories/>
+    <Filter />
     <Container>
-      {produit.map((item) => (
+      
+      {data.map((item) => (
         <Product_card item={item} key={item.id} />
       ))}
     </Container>
+    </StoreContext.Provider>
   );
 };
 

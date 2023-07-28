@@ -6,7 +6,7 @@ import {
   import styled from "styled-components";
   import backimg from '../../../assets/logo1.png'
 import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
   const Info = styled.div`
     opacity: 0;
     width: 100%;

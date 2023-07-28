@@ -2,6 +2,9 @@
 import styled from "styled-components";
 import './catagories.css'
 import { mobile } from "../../responsive";
+import { Link } from "react-router-dom";
+import Filter from "../Filter/Filter";
+import Products from "../products/Products";
 const Container = styled.div`
   height: 30px;
   background-color: white;
@@ -13,8 +16,9 @@ const Container = styled.div`
  
   
 `;
-const Catagorie = styled.div`
+const Catagorie = styled(Link)`
   background-color: transparent;
+  text-decoration: none;
   height: 100%;
   padding-top: 10px;
   color: black;
@@ -38,10 +42,10 @@ const Catagories = () => {
     <Catagorie >
         NEW ARRIVALES
     </Catagorie>
-    <Catagorie >
+    <Catagorie to="/products/Figures">
         FIGURES
     </Catagorie>
-    <Catagorie>
+    <Catagorie to="/products/Clothing">
         CLOTHING
     </Catagorie>
     <Catagorie>
@@ -50,6 +54,7 @@ const Catagories = () => {
     <Catagorie>
         HOMEWARE
     </Catagorie>
+    
   </Container>;
 };
 

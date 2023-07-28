@@ -68,7 +68,7 @@ import { mobile } from "../../responsive";
     margin-top: 15px;
     background-color: transparent;
     text-align: center;
-    ${mobile({ display: "none" })}
+    
   `;
   
   const Title = styled.h3`
@@ -104,7 +104,7 @@ import { mobile } from "../../responsive";
     flex: 1;
     padding: 20px;
     text-align: center;
-    ${mobile({ backgroundColor: "#fff8f8" })}
+    
   `;
   
   const ContactItem = styled.div`
@@ -125,9 +125,7 @@ import { mobile } from "../../responsive";
         <Left>
           <Logo>Animeverse.</Logo>
           <Desc>
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don’t look even slightly believable.
+          Experience the captivating world through AnimeVerse ,your ultimate destination for immersive storytelling,stunning visuals and unforgettable characters
           </Desc>
           <SocialContainer>
             <SocialIcon >
