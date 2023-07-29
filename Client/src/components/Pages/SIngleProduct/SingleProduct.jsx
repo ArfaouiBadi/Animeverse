@@ -6,10 +6,13 @@ import './SingleProduct.css'
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../../requestMethods";
+import singleprod1 from "../../../assets/singleprod1.png"
+import singleprod2 from "../../../assets/singleprod2.png"
 const Container = styled.div`
-  background-color: #121D31;
+  background: url(${singleprod1}) no-repeat;
+  background-size:cover;
   color: white;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -17,6 +20,7 @@ const Wrapper = styled.div`
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
   color: white;
+  
 `;
 
 const ImgContainer = styled.div`

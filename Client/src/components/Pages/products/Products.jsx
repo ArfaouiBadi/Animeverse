@@ -7,13 +7,15 @@ import { useContext, useEffect, useState } from "react";
 import Catagories from "../../global/Catagories/Catagories";
 import Filter from "../../global/Filter/Filter";
 import StoreContext from "../../../hooks/storeContext";
+import waves from "../../../assets/waves.png"
 import axios from "axios";
+import Newsletter from "../../global/Newsletter/Newsletter";
 const Container = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #121D31;
-    /*background: url(${imgback}) no-repeat;*/
+    background-color: white;
+    
     background-position: 50% 100%;
     background-size: cover;
     justify-content: space-between;
@@ -80,6 +82,7 @@ const Products = () => {
         <Product_card item={item} key={item.id} />
       ))}
     </Container>
+    
     </>
   );
 };

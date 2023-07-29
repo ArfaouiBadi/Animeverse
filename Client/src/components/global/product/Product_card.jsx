@@ -31,7 +31,7 @@ import { Link, useLocation } from "react-router-dom";
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: transparent;
     position: relative;
     border-radius: 5px;
     

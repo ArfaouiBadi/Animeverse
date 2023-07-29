@@ -5,10 +5,15 @@ import { mobile } from "../../responsive";
 import { Link } from "react-router-dom";
 import Filter from "../Filter/Filter";
 import Products from "../../Pages/products/Products";
+import cata1 from '../../../assets/cata1.png'
+import cata2 from '../../../assets/cata2.png'
 const Container = styled.div`
   height: 30px;
-  background-color: white;
-  color: black;
+ background-color: #252029;
+
+  background-position: 50% 100%;
+  background-size: cover;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +26,7 @@ const Catagorie = styled(Link)`
   text-decoration: none;
   height: 100%;
   padding-top: 10px;
-  color: black;
+  color: white;
   transition: all 0.1s ease;
   cursor: pointer;
   width: 150px;
@@ -30,7 +35,7 @@ const Catagorie = styled(Link)`
   font-size: 13px;
   font-weight: 400;
   &:hover{
-    border-bottom: 3px solid #121D31;
+    border-bottom: 3px solid white;
     scale: calc(1.1);
     
   }

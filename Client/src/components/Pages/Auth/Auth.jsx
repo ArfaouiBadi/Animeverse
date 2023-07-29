@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import fb from "../../../assets/fb.png";
 import tw from "../../../assets/tw.png";
 import gp from "../../../assets/gp.png";
+import login from "../../../assets/login.png";
 import Axios from 'axios'
 import {useCookies} from "react-cookie"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -33,6 +34,7 @@ const Auth = () => {
 
   return (
     <div className="container">
+      <img src={login} className='loginImage'></img>
       <div className="contact-box">
         <div className="left"></div>
         <div className="right">

@@ -4,7 +4,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import './navbar.css'
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-
+import cata1 from '../../../assets/cata1.png'
 import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { useState } from "react";
@@ -13,6 +13,7 @@ import { useState } from "react";
 const Container = styled.div`
   height: 65px;
   background-color: #121D31;
+  background: url(${cata1});
   ${mobile({ height: "50px" ,width:"100vw"})}
 `;
 
@@ -57,7 +58,7 @@ const Input = styled.input`
 margin-left: 10px;
   border: none;
   margin-right: 5px;
-  background-color: #121D31;
+  background-color: transparent;
   ${mobile({display: "none"})}
 `;
 
