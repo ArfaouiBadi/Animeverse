@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
-import { produit } from "../../../data/data";
 import './SingleProduct.css'
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";

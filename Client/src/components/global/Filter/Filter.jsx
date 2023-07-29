@@ -90,14 +90,14 @@ const Filter = () => {
         <Grid container display="flex" justifyContent="space-between">
         <Wrapper><Text>Filter Products :</Text>
         <FormControl sx={{ m: "auto", width: 100,scale:"calc(0.8)" }} >
-          <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans'}}>BRAND</InputLabel>
+          <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans',color:"black"}}>Series</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
             value={Brand}
             onChange={handleChangeBrand}
-            input={<OutlinedInput label="Brand" />}
+            input={<OutlinedInput label="Series" />}
             renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
             sx={{fontFamily: 'Josefin Sans'}}

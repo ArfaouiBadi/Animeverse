@@ -4,7 +4,7 @@ import './catagories.css'
 import { mobile } from "../../responsive";
 import { Link } from "react-router-dom";
 import Filter from "../Filter/Filter";
-import Products from "../products/Products";
+import Products from "../../Pages/products/Products";
 const Container = styled.div`
   height: 30px;
   background-color: white;
@@ -39,19 +39,20 @@ const Catagorie = styled(Link)`
 
 const Catagories = () => {
   return <Container>
-    <Catagorie >
+    <Catagorie to="/products/NewArrivales">
         NEW ARRIVALES
     </Catagorie>
     <Catagorie to="/products/Figures">
         FIGURES
     </Catagorie>
+    <Catagorie to="/products/All_Products">
+        ALL
+    </Catagorie>
     <Catagorie to="/products/Clothing">
         CLOTHING
     </Catagorie>
-    <Catagorie>
-        COSPLAYS
-    </Catagorie>
-    <Catagorie>
+    
+    <Catagorie to="/products/Homeware">
         HOMEWARE
     </Catagorie>
     

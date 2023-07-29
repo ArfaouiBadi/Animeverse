@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 import imgback from '../../../assets/prod.jpg'
-import Product_card from "../product/Product_card";
+import Product_card from "../../global/product/Product_card";
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import Catagories from "../Catagories/Catagories";
-import Filter from "../Filter/Filter";
+import Catagories from "../../global/Catagories/Catagories";
+import Filter from "../../global/Filter/Filter";
 import StoreContext from "../../../hooks/storeContext";
 import axios from "axios";
 const Container = styled.div`
@@ -36,10 +36,9 @@ const Products = () => {
     const getProducts = async () => {
       try {
         
-        const res = await axios.get(cata==="All_Products" 
+        const res = await axios.get(cata=="All_Products" 
           ?
           "http://localhost:3002/api/products"
-          
           :
           `http://localhost:3002/api/products?category=${cata}`
           );

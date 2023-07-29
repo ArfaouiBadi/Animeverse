@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined } from "@mui/icons-material";
-import { useNavigate,Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import './navbar.css'
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
@@ -63,7 +62,7 @@ margin-left: 10px;
 `;
 
 const Center = styled.div`
-  flex: 10;
+  flex: 3;
   text-align: center;
   
 `;
@@ -83,7 +82,7 @@ const Right = styled.div`
   justify-content: flex-end;
   ${mobile({ flex: 2, justifyContent: "center" })}
 `;
-const Cartmenu = styled(Link)`
+const Left_icons = styled(Link)`
   font-size: 14px;
   height: 52px;
   padding-top: 14px;
@@ -95,34 +94,12 @@ const Cartmenu = styled(Link)`
   transition: 0.3s ease all;
   
 `;
-const MenuItem = styled(Link)`
-  font-size: 14px;
-  height: 53px;
-  padding-top: 17px;
-  cursor: pointer;
-  margin-left: 25px;
-  font-weight: 700;
-  margin-right: 10px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
-  transition: 0.3s ease all;
-  text-decoration: none;
-  color: white;
-
-  &:hover {
-    border-bottom: 5px white solid;
-    transform: scale(1.1);
-  }
-  ${mobile({ display: "none"})}
-  `;
-
-
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
   
   const[cartList,setCartList]=useState(false)
   const showCartList=()=>{cartList?setCartList(false):setCartList(true)}
   const products = useSelector(state=>state.cart.products)
-  console.log(products)
   return (
     <Container>
       
@@ -138,13 +115,14 @@ const Navbar = () => {
         <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none"}}>Animeverse.</Link></Logo>
         </Center>
         <Right>
-          <MenuItem to="/register">REGISTER</MenuItem>
-          <MenuItem to="/login">SIGN IN</MenuItem>
-          <Cartmenu to={"/cart"}>
+          <Left_icons to={"/login"}>
+          <AccountCircleOutlinedIcon/>
+          </Left_icons>
+          <Left_icons to={"/cart"}>
             <Badge badgeContent={cart.quantity} color="secondary" overlap="rectangular">
               <ShoppingCartOutlined />
             </Badge>
-          </Cartmenu>
+          </Left_icons>
         </Right>
       </Wrapper>
     </Container>

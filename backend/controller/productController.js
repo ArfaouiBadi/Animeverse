@@ -44,11 +44,26 @@ const createProduct = async (req, res) => {
 };
 
 const getProducts = async (req, res) => {
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
   try {
-    const product = await produits.find();
-    res.status(200).json(product);
+    let products;
+
+    if (qNew) {
+      products = await produits.find().sort({ createdAt: -1 }).limit(1);
+    } else if (qCategory) {
+      products = await produits.find({
+        category: {
+          $in: [qCategory],
+        },
+      });
+    } else {
+      products = await produits.find();
+    }
+
+    res.status(200).json(products);
   } catch (err) {
-    return res.status(404).json({ err: "not found" });
+    res.status(500).json(err);
   }
 };
 
