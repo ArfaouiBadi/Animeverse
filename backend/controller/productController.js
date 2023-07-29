@@ -49,8 +49,8 @@ const getProducts = async (req, res) => {
   try {
     let products;
 
-    if (qNew) {
-      products = await produits.find().sort({ createdAt: -1 }).limit(1);
+    if (qCategory=="NewArrivales") {
+      products = await produits.find().sort({ createdAt: -1 }).limit(3);
     } else if (qCategory) {
       products = await produits.find({
         category: {

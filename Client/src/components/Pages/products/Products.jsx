@@ -26,9 +26,7 @@ const Container = styled.div`
 const Products = () => {
   const location=useLocation();
   const cata =location.pathname.split("/")[2]
-  const [Brand, setBrand] = useState([]);
-  const [Size, setSize] = useState('All');
-  const [Sort, setSort] = useState('All');
+  const {Brand,Sort,Size}=useContext(StoreContext)
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -44,33 +42,45 @@ const Products = () => {
           );
         
         setProducts(res.data);
+        setFilteredProducts(res.data)
       } catch (err) {}
     };
     getProducts();
   }, [cata]);
-
+  
+  
   useEffect(() => {
-    if (Sort === "asc") {
+    let tempProducts = [...products];
+    if (Sort === "ASC") {
       setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+        [...prev].sort((a, b) => a.price - b.price)
       );
     }else {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
+      if(Sort === "DESC"){
+        setFilteredProducts((prev) =>
+          [...prev].sort((a, b) => b.price - a.price)
+        );
+      }
+      else{
+        setFilteredProducts(tempProducts)
+      }
     }
-  }, [Sort]);
-  return (
+    console.log(Sort)
+    console.log(filteredProducts)
+  }, [Sort,products]);
   
-  <StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
+  
+  return (
+  <>
+  
     <Catagories/>
     <Filter />
     <Container>
-      {products.map((item) => (
+      {filteredProducts.map((item) => (
         <Product_card item={item} key={item.id} />
       ))}
     </Container>
-    </StoreContext.Provider>
+    </>
   );
 };
 

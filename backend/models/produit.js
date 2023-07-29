@@ -34,7 +34,7 @@ const produitSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
-});
+},{ timestamps: true });
 
 const Produit = mongoose.model("produits", produitSchema);
 

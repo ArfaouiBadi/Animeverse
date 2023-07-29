@@ -83,7 +83,7 @@ const Filter = () => {
     setSort(event.target.value);
   };
 
-
+  
     return (
       <div>
         <Container>
@@ -149,10 +149,9 @@ const Filter = () => {
         >
           
           <MenuItem value={"All"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
-          
           <MenuItem value={"ASC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE LOW</MenuItem>
           <MenuItem value={"DESC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE HIGH</MenuItem>
-          <MenuItem value={"BS"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>BEST SELLER</MenuItem>
+          
           
         </Select>
       </FormControl>
