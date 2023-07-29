@@ -43,7 +43,7 @@ import { Link, useLocation } from "react-router-dom";
   `;
   
   const Image = styled.img`
-    height: 90%;
+    height: 95%;
     z-index: 2;
    
   `;
@@ -66,17 +66,16 @@ import { Link, useLocation } from "react-router-dom";
   `;
   
   const Product_card = ({ item }) => {
-    
+    const location = useLocation();
     return (
       <Container>
-        
         <Image src={item.image} />
         <Info>
           <Icon>
             <ShoppingCartOutlined />
           </Icon>
           <Icon>
-            <Link to="/SingleProduct"><SearchOutlined /></Link>
+            <Link to={{pathname:`/SingleProduct/${item._id}`}} ><SearchOutlined /></Link>
           </Icon>
           <Icon>
             <FavoriteBorderOutlined />

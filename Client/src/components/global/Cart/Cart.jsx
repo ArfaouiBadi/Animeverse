@@ -2,6 +2,7 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
 import './cart.css'
+import { useSelector } from "react-redux";
 const Container = styled.div`
 
 `;
@@ -86,9 +87,12 @@ const Details = styled.div`
 `;
 
 const ProductName = styled.span`
-color:black`;
+    color:black;
+`;
 
-const ProductId = styled.span``;
+const ProductId = styled.span`
+
+`;
 
 const ProductColor = styled.div`
   width: 20px;
@@ -167,7 +171,9 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
-const Cart = () => {
+const Cart = () => { 
+
+    const cart=useSelector(state=>state.cart)
   return (
     <Container>
       
@@ -183,58 +189,38 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://i.ibb.co/nrwvRZY/Naruto-Tshirt3.webp" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Naruto-Tshirt
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="black" />
-                  
-                  <ProductSize>
-                    <b>Size:</b> 37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://i.ibb.co/TmcXp3w/Hunter-x-Hunter-Chibi-Mini-Backpack1.jpg" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Hunter-x-Hunter-Chibi-Mini-Backpack
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="gray" />
-                  <ProductSize>
-                    <b>Size:</b> M
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products.map(product=>(
+                <>
+                <Product>
+                <ProductDetail>
+                  <Image src={product.image} />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductColor color="black" />
+                    <ProductSize>
+                      <b>Size:</b> {product.price}
+                    </ProductSize>
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>{product.price*product.quantity}</ProductPrice>
+                </PriceDetail>
+              </Product>
+              <Hr />
+              </>
+            ))}
+
+            
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

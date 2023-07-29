@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const produitSchema = new mongoose.Schema(
     {
-        name: {
+        title: {
             type: String,
             required: true
         },
@@ -10,6 +10,9 @@ const produitSchema = new mongoose.Schema(
             type: String,
             required: true,
             unique: true
+        },
+        otherViews:{
+            type:Array,
         },
         price: {
             type: Number,
@@ -19,7 +22,8 @@ const produitSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        idSubCategory: {
+        
+        series:{
             type: String,
         },
         idCategory: {

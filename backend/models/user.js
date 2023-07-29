@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
+    required: false,
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: String,
@@ -24,6 +24,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    required: false,
+    unique: false,
   },
   password: {
     type: String,

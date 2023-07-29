@@ -8,9 +8,10 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import { mobile } from "../../responsive";
+import StoreContext from "../../../hooks/storeContext";
 
 
 const ITEM_HEIGHT = 48;
@@ -63,10 +64,8 @@ const Wrapper=styled.div`
   
 `
 const Filter = () => {
-    const [filters,setFilters]=useState([])
-    const [Brand, setBrand] = useState([]);
-    const [Size, setSize] = useState('');
-    const [Sort, setSort] = useState('');
+    const {Brand,setBrand,Size,setSize,Sort,setSort}=useContext(StoreContext)
+  
     const handleChangeBrand = (event) => {
       const {
         target: { value },
@@ -76,6 +75,7 @@ const Filter = () => {
         typeof value === 'string' ? value.split(',') : value,
       );
     };
+    
   const handleChangeSize = (event) => {
     setSize(event.target.value);
   };
@@ -123,7 +123,7 @@ const Filter = () => {
           
         >
           
-          <MenuItem value={""} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>None</MenuItem>
+          <MenuItem value={"All"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
           
           <MenuItem value={"XS"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XS</MenuItem>
           <MenuItem value={"S"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>S</MenuItem>
@@ -148,11 +148,11 @@ const Filter = () => {
           sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}
         >
           
-          <MenuItem value={""} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
+          <MenuItem value={"All"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
           
-          <MenuItem value={"XS"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE LOW</MenuItem>
-          <MenuItem value={"S"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE HIGH</MenuItem>
-          <MenuItem value={"M"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>BEST SELLER</MenuItem>
+          <MenuItem value={"ASC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE LOW</MenuItem>
+          <MenuItem value={"DESC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE HIGH</MenuItem>
+          <MenuItem value={"BS"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>BEST SELLER</MenuItem>
           
         </Select>
       </FormControl>

@@ -113,11 +113,12 @@ const MenuItem = styled(Link)`
     transform: scale(1.1);
   }
   ${mobile({ display: "none"})}
-`;
+  `;
 
 
 const Navbar = () => {
-
+  const cart=useSelector(state=>state.cart)
+  
   const[cartList,setCartList]=useState(false)
   const showCartList=()=>{cartList?setCartList(false):setCartList(true)}
   const products = useSelector(state=>state.cart.products)
@@ -140,7 +141,7 @@ const Navbar = () => {
           <MenuItem to="/register">REGISTER</MenuItem>
           <MenuItem to="/login">SIGN IN</MenuItem>
           <Cartmenu to={"/cart"}>
-            <Badge badgeContent={4} color="secondary" overlap="rectangular">
+            <Badge badgeContent={cart.quantity} color="secondary" overlap="rectangular">
               <ShoppingCartOutlined />
             </Badge>
           </Cartmenu>

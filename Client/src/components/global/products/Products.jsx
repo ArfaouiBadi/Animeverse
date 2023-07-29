@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 import imgback from '../../../assets/prod.jpg'
-import { produit } from "../../../data/data";
 import Product_card from "../product/Product_card";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Catagories from "../Catagories/Catagories";
 import Filter from "../Filter/Filter";
 import StoreContext from "../../../hooks/storeContext";
+import axios from "axios";
 const Container = styled.div`
     padding: 20px;
     display: flex;
@@ -25,18 +25,55 @@ const Container = styled.div`
 
 const Products = () => {
   const location=useLocation();
-  console.log(location.pathname.split("/")[2])
+  const cata =location.pathname.split("/")[2]
+  const [Brand, setBrand] = useState([]);
+  const [Size, setSize] = useState('All');
+  const [Sort, setSort] = useState('All');
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const [data,setData]=useState(produit)
-  console.log(data)
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        
+        const res = await axios.get("http://localhost:3002/api/products");
+        
+        setProducts(res.data);
+      } catch (err) {}
+    };
+    getProducts();
+  }, [cata]);
+
+  useEffect(() => {
+    cata &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(Size+Brand).every(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+  }, [products, cata,Size,Brand]);
+
+  useEffect(() => {
+    if (Sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    }else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+    }
+  }, [Sort]);
   return (
   
-  <StoreContext.Provider value={{Number}}>
+  <StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
     <Catagories/>
     <Filter />
     <Container>
-      
-      {data.map((item) => (
+      {products.map((item) => (
+        
         <Product_card item={item} key={item.id} />
       ))}
     </Container>

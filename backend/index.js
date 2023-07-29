@@ -6,9 +6,9 @@ const produit = require("./models/produit");
 
 const express = require("express");
 const cors = require("cors");
-
+const bcrypt=require("bcrypt")
 const app = express();
-
+app.use(cors())
 /* app.use(
   cors({
     origin: "http://localhost:4000",
@@ -53,7 +53,7 @@ app.post("/check", async (req, res) => {
 });
 //routes
 app.use("/user", userRoutes);
-app.use("/produits", produitsRoutes);
+app.use("/api/products", produitsRoutes);
 app.post("check", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
@@ -85,9 +85,9 @@ app.post("check", async (req, res) => {
 });
 //connect to mogoose
 mongoose.connect(process.env.URL).then(() => {
-  console.log("connected");
+  console.log("`🟢 Connected To DataBase`");
   // listen for request
-  app.listen(process.env.PORT, () => {
-    console.log(process.env.PORT);
+  app.listen(3002, () => {
+    console.log("`🟢 server started on port 3002`");
   });
 });

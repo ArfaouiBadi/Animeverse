@@ -5,6 +5,8 @@ import { mobile } from "../../responsive";
 import { produit } from "../../../data/data";
 import './SingleProduct.css'
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { publicRequest } from "../../../requestMethods";
 const Container = styled.div`
   background-color: #121D31;
   color: white;
@@ -151,22 +153,29 @@ const Button = styled.button`
     background-color: #8080801a;
   }
 `;
+
 const SingleProduct = () => {
-    const [otherView, setOtherView] = useState([]);
-    useEffect(() => {
-      setOtherView(
-        produit[
-          produit.findIndex(
-            (product) =>
-              product.image ===
-              "https://i.ibb.co/0jckHyP/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male.jpg"
-          )
-        ].otherView
-      );
-    }, [otherView]);
-  
-    const [Amount, setAmount] = useState(0); // Set the initial amount to 0
-  
+    const location=useLocation()
+
+    const id =location.pathname.split("/")[2]
+    const [product,setProduct]=useState([])
+    useEffect(()=>{
+      const getProduct=async ()=>{
+        try{
+          const res=await publicRequest.get("/products/"+id)
+          
+          setProduct(res.data)
+          
+        }catch(err){
+          console.log(err);
+        }
+        
+      }
+      getProduct();
+    },[id])
+    
+
+    const [Amount, setAmount] = useState(1); // Set the initial amount to 0
     // Click event handlers
     const handleAdd = () => {
       setAmount((prevAmount) => prevAmount + 1); // Increment amount by 1
@@ -177,29 +186,30 @@ const SingleProduct = () => {
         setAmount((prevAmount) => prevAmount - 1); // Decrement amount by 1, but not below 0
       }
     };
-  
+    const dispatch=useDispatch()
+    const handleClick=()=>{
+    dispatch(addToCart({...product,size}))
+
+  }
+  console.log(product)
 return (
     <Container>
       <Wrapper>
         <ImgContainerCol>
         {
-            otherView.map((item) => (
-            <Image key={item} src={item} />
+            product.otherView?.map((view) => (
+            <Image key={view} src={view} />
           ))}
         </ImgContainerCol>
         <ImgContainer>
-          <Image src="https://i.ibb.co/0jckHyP/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male.jpg" />
+          <Image src={product.image} />
         </ImgContainer>
         <InfoContainer>
-        <Title>Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male</Title>
+        <Title>{product.title}</Title>
           <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+          {product.description}
           </Desc>
-          <Price>$ 20</Price>
+          <Price>{product.price} $</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color : </FilterTitle>
@@ -229,7 +239,7 @@ return (
             <Button onClick={()=>dispatch()}>ADD TO CART</Button>
           </AddContainer>
           <AddContainer>
-          <Button >SAVE TO WHISHLIST</Button>
+          <Button onClick={handleClick}>SAVE TO WHISHLIST</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

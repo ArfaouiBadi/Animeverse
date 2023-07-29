@@ -69,7 +69,7 @@ const Register = () => {
     //REGISTER
     const handleRegister = async() => {
       
-      await Axios.post("http://localhost:3002/register",{firstName,lastName,phone,address,email,password,username,birth,role})
+      await Axios.post("http://localhost:3002/user/register",{firstName,lastName,phone,address,email,password,username,birth,role})
       
       
     };
@@ -119,7 +119,7 @@ const Register = () => {
     const [_,setCookies]=useCookies(['acces-token'])
     const handleLogin = async() => {
       
-      const response =await Axios.post("http://localhost:3002/login",{username,email,password})
+      const response =await Axios.post("http://localhost:3002/user/login",{username,email,password})
       setCookies("acces-token",response.data.token)
       window.localStorage.setItem("userID",response.data.userid)
       console.log(response.data)
