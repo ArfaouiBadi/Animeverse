@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../../requestMethods";
 import singleprod1 from "../../../assets/singleprod1.png"
 import singleprod2 from "../../../assets/singleprod2.png"
+import { addToCart } from "../../Redux/cartReducer";
+import { addToWishList } from "../../Redux/wishListReducer";
 const Container = styled.div`
   background: url(${singleprod1}) no-repeat;
   background-size:cover;
@@ -158,10 +160,12 @@ const Button = styled.button`
 `;
 
 const SingleProduct = () => {
-    const location=useLocation()
 
+    const location=useLocation()
     const id =location.pathname.split("/")[2]
     const [product,setProduct]=useState([])
+
+    
     useEffect(()=>{
       const getProduct=async ()=>{
         try{
@@ -176,8 +180,6 @@ const SingleProduct = () => {
       }
       getProduct();
     },[id])
-    
-
     const [Amount, setAmount] = useState(1); // Set the initial amount to 0
     // Click event handlers
     const handleAdd = () => {
@@ -190,11 +192,15 @@ const SingleProduct = () => {
       }
     };
     const dispatch=useDispatch()
-    const handleClick=()=>{
-    dispatch(addToCart({...product,size}))
+    const handleClickCart=()=>{
+    dispatch(addToCart({ ...product, quantity:Amount}))
 
   }
-  console.log(product)
+  const handleClickWishList=()=>{
+    dispatch(addToWishList({ ...product, quantity:Amount}))
+
+  }
+  
 return (
     <Container>
       <Wrapper>
@@ -239,10 +245,10 @@ return (
             </AmountContainer>
 
           <AddContainer>
-            <Button onClick={()=>dispatch()}>ADD TO CART</Button>
+            <Button onClick={handleClickCart}>ADD TO CART</Button>
           </AddContainer>
           <AddContainer>
-          <Button onClick={handleClick}>SAVE TO WHISHLIST</Button>
+          <Button onClick={handleClickWishList}>SAVE TO WHISHLIST</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

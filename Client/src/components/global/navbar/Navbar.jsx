@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import './navbar.css'
 import { Badge } from "@material-ui/core";
@@ -8,7 +8,7 @@ import cata1 from '../../../assets/cata1.png'
 import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { useState } from "react";
-
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const Container = styled.div`
   height: 65px;
@@ -97,10 +97,7 @@ const Left_icons = styled(Link)`
 `;
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
-  
-  const[cartList,setCartList]=useState(false)
-  const showCartList=()=>{cartList?setCartList(false):setCartList(true)}
-  const products = useSelector(state=>state.cart.products)
+  const wishList=useSelector(state=>state.wishList)
   return (
     <Container>
       
@@ -118,7 +115,14 @@ const Navbar = () => {
         <Right>
           <Left_icons to={"/login"}>
           <AccountCircleOutlinedIcon/>
+          
           </Left_icons>
+          <Left_icons to={"/wishList"}>
+          <Badge badgeContent={wishList.quantity} color="secondary" overlap="rectangular">
+          <FavoriteBorderOutlinedIcon/>
+          </Badge>
+          </Left_icons>
+          
           <Left_icons to={"/cart"}>
             <Badge badgeContent={cart.quantity} color="secondary" overlap="rectangular">
               <ShoppingCartOutlined />

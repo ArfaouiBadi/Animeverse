@@ -67,8 +67,7 @@ const Products = () => {
         setFilteredProducts(tempProducts)
       }
     }
-    console.log(Sort)
-    console.log(filteredProducts)
+    
   }, [Sort,products]);
   
   

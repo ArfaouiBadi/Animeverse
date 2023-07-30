@@ -1,14 +1,11 @@
-import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
-import './cart.css'
+import './WishList.css'
 import { useDispatch, useSelector } from "react-redux";
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-import { addToCart,resetCart,removeFromCart } from "../../Redux/cartReducer";
+import { resetWishList } from "../../Redux/wishListReducer";
+import { Add, Remove } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
-const Container = styled.div`
-  transition: 0.3 all ease;
-`;
+const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -105,7 +102,6 @@ const ProductColor = styled.div`
 `;
 
 const ProductSize = styled.span`
-
 `;
 
 const PriceDetail = styled.div`
@@ -114,84 +110,41 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 0.5px solid lightgray;
-  border-radius: 10px;
-  margin-right: 10px;
-  margin: 10px;
-  font-family: 'Josefin Sans';
+`;
+
+const ProductAmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const ProductAmount = styled.div`
+  font-size: 24px;
+  margin: 5px;
+  ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  color:black;
   ${mobile({ marginBottom: "20px" })}
-  
 `;
 
 const Hr = styled.hr`
   background-color: #eee;
-  border: 1px #eee solid;
+  border: none;
   height: 1px;
-  margin: 10px;
 `;
 
-const Summary = styled.div`
-  flex: 1;
-  border: 0.5px solid lightgray;
-  border-radius: 10px;
-  padding: 20px;
-  height: 55vh;
-  
-`;
+const WishList = () => { 
+    const wishList = useSelector((state) => state.wishList);
+    const cart = useSelector((state) => state.cart);
 
-const SummaryTitle = styled.h1`
-  font-weight: 200;
-  color:black;
-  
-`;
-
-const SummaryItem = styled.div`
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
-`;
-
-const SummaryItemText = styled.span``;
-
-const SummaryItemPrice = styled.span``;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: #121D31;
-  color: white;
-  font-weight: 600;
-`;
-const Btn=styled.button`
-  width: 50%;
-  padding: 10px;
-  border: 1px solid #121D31;
-  margin-top: 15px;
-  cursor: pointer;
-  color: #121D31;
-  font-weight: 600;
-  border-radius: 10px;
-`
-const Cart = () => { 
-  const navigate = useNavigate();
-  
-  const cart=useSelector(state=>state.cart)
-  const wishList=useSelector(state=>state.wishList)
-  const dispatch=useDispatch()
-  const handleReset = () => {
-    dispatch(resetCart({}));
-  };
-  const handleRemove = (product) => {
-    dispatch(removeFromCart({ id: product.id }));
-  };
+    const dispatch = useDispatch();
+    const handleReset = () => {
+      dispatch(resetWishList());
+    };
+    const navigate = useNavigate();
   return (
     <Container>
       
@@ -203,37 +156,35 @@ const Cart = () => {
             <TopText to="/cart">Shopping Bag({cart.quantity})</TopText>
             <TopText to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton type="filled" onClick={handleReset}>REST SHOPPING CART</TopButton>
+          <TopButton type="filled" onClick={handleReset}>REST WISHLIST</TopButton>
         </Top>
         <Bottom>
           <Info>
-            {cart.products.map(product=>(
+            {wishList.products.map(product=>(
                 <>
-                <Product >
+                <Product>
                 <ProductDetail>
                   <Image src={product.image} />
                   <Details>
                     <ProductName>
                       <b>Product:</b> {product.title}
                     </ProductName>
-                    <ProductId >
+                    <ProductId>
                       <b>ID:</b> {product._id}
                     </ProductId>
+                    <ProductColor color="black" />
                     <ProductSize>
-                      <b>Quantity:</b> {product.quantity}
-                    </ProductSize>
-                    <ProductSize>
-                      <b>Price:</b> {product.price}
+                      <b>Size:</b> {product.price}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
-                
                 <PriceDetail>
-                
-                <ProductPrice className="totalAmount"><b>Total Price :</b></ProductPrice>
-                
-                  <ProductPrice><b>{product.price*product.quantity}</b></ProductPrice>
-                  <Btn onClick={() => handleRemove(product)}>Remove</Btn>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>{product.price*product.quantity}</ProductPrice>
                 </PriceDetail>
               </Product>
               <Hr />
@@ -242,26 +193,7 @@ const Cart = () => {
 
             
           </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
+          
         </Bottom>
       </Wrapper>
       
@@ -269,4 +201,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default WishList;

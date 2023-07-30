@@ -5,6 +5,7 @@ import './App.css'
 
 import Auth from './components/Pages/Auth/Auth'
 import Navbar from './components/global/navbar/Navbar'
+import WishList from './components/global/WishList/WishList'
 import Footer from './components/global/Footer/Footer'
 import Cart from './components/Pages/Cart/Cart'
 import SingleProduct from './components/Pages/SIngleProduct/SingleProduct'
@@ -33,6 +34,7 @@ function App() {
           </Route>
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
+          <Route path="/wishList" element={<WishList/>}></Route>
         </Routes>
        
       <Footer/>

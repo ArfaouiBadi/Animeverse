@@ -5,8 +5,10 @@ import {
   } from "@material-ui/icons";
   import styled from "styled-components";
   import backimg from '../../../assets/logo1.png'
-import { Typography } from "@material-ui/core";
-import { Link, useLocation } from "react-router-dom";
+  import { addToCart } from "../../Redux/cartReducer";
+  import { addToWishList } from "../../Redux/wishListReducer";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
   const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -66,18 +68,27 @@ import { Link, useLocation } from "react-router-dom";
   `;
   
   const Product_card = ({ item }) => {
-    const location = useLocation();
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+  
+  const handleClickCart = () => {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  };
+  const handleClickWishList = () => {
+    dispatch(addToWishList({ ...item, quantity: 1 }));
+  };
+    
     return (
       <Container>
         <Image src={item.image} />
         <Info>
-          <Icon>
-            <ShoppingCartOutlined />
+          <Icon onClick={handleClickCart}>
+            <ShoppingCartOutlined/>
           </Icon>
           <Icon>
             <Link to={{pathname:`/SingleProduct/${item._id}`}} ><SearchOutlined /></Link>
           </Icon>
-          <Icon>
+          <Icon onClick={handleClickWishList}>
             <FavoriteBorderOutlined />
           </Icon>
         </Info>
