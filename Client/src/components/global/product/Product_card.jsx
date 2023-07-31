@@ -79,6 +79,7 @@ import { useDispatch, useSelector } from "react-redux";
   };
     
     return (
+      
       <Container>
         <Image src={item.image} />
         <Info >
