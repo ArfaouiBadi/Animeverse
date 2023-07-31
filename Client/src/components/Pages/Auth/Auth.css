@@ -19,16 +19,10 @@
   position: relative;
   
 }
-.loginImage{
-  filter: blur(6px);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-size: cover;
-}
 
 .contact-box {
-  
+  background-color: #0b111d;
+  color: black;
   max-width: 750px;
   display: grid;
   grid-template-columns: repeat(2, 2fr);
@@ -43,8 +37,8 @@
   box-shadow: 10px 5px 50px 5px rgba(0, 0, 0, 0.4);
 }
 .left_login {
-  background: url("..\..\..\assets\login.png") no-repeat ;
-  background-position: 20% 50%;
+  background: url("..\..\..\assets\bg.png") no-repeat ;
+  background-position: 50% 50%;
   background-size: cover;
   height: 100%;
 }
@@ -78,6 +72,7 @@
   border: 0;
   outline: none;
   position: relative;
+  
 }
 
 #btn {
@@ -86,9 +81,10 @@
   position: absolute;
   width: 110px;
   height: 100%;
-  background: linear-gradient(to right, #47211D, #FBB851);
+  background: linear-gradient(to right, #FF125D,#FCA707 );
   border-radius: 30px;
   transition: 0.5s;
+  
 }
 
 .btn {
@@ -97,9 +93,11 @@
   left: 0;
   width: 110px;
   height: 100%;
-  background: linear-gradient(to right, #47211D, #FBB851);
+  background: linear-gradient(to right, #FF125D,#FCA707 );
   border-radius: 30px;
   transition: 0.5s;
+  
+  
 }
 
 .btn-register {
@@ -108,9 +106,10 @@
   position: absolute;
   width: 110px;
   height: 100%;
-  background: linear-gradient(to right, #47211D, #FBB851);
+  background: linear-gradient(to right, #FF125D,#FCA707 );
   border-radius: 30px;
   transition: 0.5s;
+  
 }
 
 .social-icons {
@@ -148,9 +147,10 @@
   cursor: pointer;
   display: block;
   margin: auto;
-  background: linear-gradient(to right, #47211D, #FBB851);
+  background: linear-gradient(to right, #FF125D,#FCA707 );
   border: 0;
   outline: none;
+  
   border-radius: 30px;
 }
 
@@ -164,6 +164,7 @@ span {
 }
 .input {
   position:relative;
+  
 }
 
 .showHidePw {
