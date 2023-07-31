@@ -229,9 +229,7 @@ const Cart = () => {
                 </ProductDetail>
                 
                 <PriceDetail>
-                
                 <ProductPrice className="totalAmount"><b>Total Price :</b></ProductPrice>
-                
                   <ProductPrice><b>{product.price*product.quantity}</b></ProductPrice>
                   <Btn onClick={() => handleRemove(product)}>Remove</Btn>
                 </PriceDetail>

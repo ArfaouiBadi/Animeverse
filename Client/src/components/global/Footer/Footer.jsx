@@ -9,14 +9,26 @@ import {
   } from "@material-ui/icons";
   import styled from "styled-components";
 import { mobile } from "../../responsive";
+import Contact from "../Contact/Contact";
 
   const Container = styled.div`
     display: flex;
     background-color: #121D31;
+    height: 70vh;
     padding: 80px;
+    
     ${mobile({ flexDirection: "column" })}
     
   `;
+  const Copyright=styled.div`
+    color: white;
+    background-color: #121D31;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+   
+    
+  `
   
   const Left = styled.div`
     flex: 1;
@@ -120,7 +132,10 @@ import { mobile } from "../../responsive";
   `;
   
   const Footer = () => {
+    const date = new Date().getFullYear().toLocaleString();
     return (
+      <>
+      <Contact/>
       <Container>
         <Left>
           <Logo>Animeverse.</Logo>
@@ -157,20 +172,13 @@ import { mobile } from "../../responsive";
             <ListItem>Terms</ListItem>
           </List>
         </Center>
-        <Right>
-          <Title>Contact</Title>
-          <ContactItem >
-            <Room style={{marginRight:"10px"}}/> Tunis al khathra
-          </ContactItem>
-          <ContactItem>
-            <Phone style={{marginRight:"10px"}}/> +1 234 56 78
-          </ContactItem>
-          <ContactItem>
-            <MailOutline style={{marginRight:"10px"}} /> contact@g.com
-          </ContactItem>
-          <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-        </Right>
+        
+        
       </Container>
+      <Copyright>
+        Copyright @{date} All Right reserved | ❤ by SwitfCode
+      </Copyright></>
+      
      
     );
   };

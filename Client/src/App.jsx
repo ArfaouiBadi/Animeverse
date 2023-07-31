@@ -12,6 +12,7 @@ import SingleProduct from './components/Pages/SIngleProduct/SingleProduct'
 import Products from './components/Pages/products/Products'
 import Home from './components/Pages/Home/Home'
 import StoreContext from './hooks/storeContext'
+import Contact from './components/global/Contact/Contact'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
+         
         </Routes>
        
       <Footer/>

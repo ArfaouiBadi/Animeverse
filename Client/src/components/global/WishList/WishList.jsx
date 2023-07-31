@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 import './WishList.css'
 import { useDispatch, useSelector } from "react-redux";
-import { resetWishList } from "../../Redux/wishListReducer";
+import { resetWishList,removeFromWishList } from "../../Redux/wishListReducer";
 import { Add, Remove } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 const Container = styled.div``;
@@ -135,7 +135,16 @@ const Hr = styled.hr`
   border: none;
   height: 1px;
 `;
-
+const Btn=styled.button`
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #121D31;
+  margin-top: 15px;
+  cursor: pointer;
+  color: #121D31;
+  font-weight: 600;
+  border-radius: 10px;
+`
 const WishList = () => { 
     const wishList = useSelector((state) => state.wishList);
     const cart = useSelector((state) => state.cart);
@@ -145,6 +154,9 @@ const WishList = () => {
       dispatch(resetWishList());
     };
     const navigate = useNavigate();
+    const handleRemoveFromWishList=(product)=>{
+        dispatch(removeFromWishList({ id: product.id }))
+    }
   return (
     <Container>
       
@@ -179,12 +191,9 @@ const WishList = () => {
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
-                  <ProductAmountContainer>
-                    <Add />
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove />
-                  </ProductAmountContainer>
-                  <ProductPrice>{product.price*product.quantity}</ProductPrice>
+                <ProductPrice className="totalAmount"><b>Total Price :</b></ProductPrice>
+                  <ProductPrice><b>{product.price*product.quantity}</b></ProductPrice>
+                  <Btn onClick={() => handleRemoveFromWishList(product)}>Remove</Btn>
                 </PriceDetail>
               </Product>
               <Hr />

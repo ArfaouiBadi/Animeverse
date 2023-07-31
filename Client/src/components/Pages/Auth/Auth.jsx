@@ -36,7 +36,7 @@ const Auth = () => {
     <div className="container">
       <img src={login} className='loginImage'></img>
       <div className="contact-box">
-        <div className="left"></div>
+        <div className="left_login"></div>
         <div className="right">
           <div className="button-box">
             <div className={isActive ? 'btn-register' : 'btn'}></div>
