@@ -3,13 +3,17 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
+  userName: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
-    required: false,
+    required: true,
   },
   lastName: {
     type: String,
-    required: false,
+    required: true,
   },
   phone: {
     type: String,
@@ -42,8 +46,7 @@ const userSchema = new Schema({
     type: String,
     default: "client",
   },
-});
-//static
+},{timestamps:true});
 
 
 const user = mongoose.model("user", userSchema);

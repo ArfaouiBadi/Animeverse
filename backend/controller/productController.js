@@ -2,40 +2,43 @@ const produits = require("../models/produit");
 const multer = require("multer");
 const path = require("path");
 const createProduct = async (req, res) => {
-  const { name, image, price, description, idSubCategory, idCategory } =
+  const { title, image, price, description,otherView, category,quantity } =
     req.body;
   let emptyFields = [];
-  if (!name) {
-    emptyFields.push("name");
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!otherView) {
+    emptyFields.push([]);
+  }
+  if (!quantity) {
+    emptyFields.push(0);
   }
   if (!image) {
     emptyFields.push("image");
   }
   if (!price) {
-    emptyFields.push("price");
+    emptyFields.push(0);
   }
   if (!description) {
     emptyFields.push("description");
   }
-  if (!idSubCategory) {
-    emptyFields.push("idSubCategory");
-  }
-  if (!idCategory) {
+  
+  if (!category) {
     emptyFields.push("idCategory");
   }
-  if (emptyFields.length > 0) {
-    return res.status(400).json({ error: "fill all field", emptyFields });
-  }
+  
   try {
     const product = await produits.create({
-      name,
+      title,
       image,
-      id,
+      category,
+      quantity,
       price,
       description,
-      idSubCategory,
-      idCategory,
+      otherView,
     });
+    
     res.status(201).json(product);
     console.log(product);
   } catch (err) {

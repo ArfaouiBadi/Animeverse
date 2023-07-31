@@ -54,6 +54,8 @@ app.post("/check", async (req, res) => {
 //routes
 app.use("/user", userRoutes);
 app.use("/api/products", produitsRoutes);
+
+
 app.post("check", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
