@@ -81,7 +81,7 @@ import { useDispatch, useSelector } from "react-redux";
     return (
       <Container>
         <Image src={item.image} />
-        <Info>
+        <Info >
           <Icon onClick={handleClickCart}>
             <ShoppingCartOutlined/>
           </Icon>

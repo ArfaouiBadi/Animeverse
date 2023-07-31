@@ -14,7 +14,7 @@ import Contact from "../Contact/Contact";
   const Container = styled.div`
     display: flex;
     background-color: #121D31;
-    height: 70vh;
+    height: 100%;
     padding: 80px;
     
     ${mobile({ flexDirection: "column" })}
@@ -25,7 +25,7 @@ import Contact from "../Contact/Contact";
     background-color: #121D31;
     text-align: center;
     width: 100%;
-    margin-top: 20px;
+    
    
     
   `

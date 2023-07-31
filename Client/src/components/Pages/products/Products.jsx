@@ -78,7 +78,7 @@ const Products = () => {
     <Filter />
     <Container>
       {filteredProducts.map((item) => (
-        <Product_card item={item} key={item.id} />
+        <Product_card item={item} key={item._id} />
       ))}
     </Container>
     

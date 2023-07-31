@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react'
-import { BrowserRouter as Router ,Route,Routes,useLocation} from 'react-router-dom'
+import { BrowserRouter as Router ,Route,Routes,Navigate ,useLocation} from 'react-router-dom'
 
 import './App.css'
 
@@ -13,12 +13,15 @@ import Products from './components/Pages/products/Products'
 import Home from './components/Pages/Home/Home'
 import StoreContext from './hooks/storeContext'
 import Contact from './components/global/Contact/Contact'
-
+import { useSelector } from "react-redux";
 
 function App() {
   const [Brand, setBrand] = useState([]);
   const [Size, setSize] = useState("");
   const [Sort, setSort] = useState("");
+  const user=useSelector((state) => state.user.currentUser);
+  console.log(user)
+  
   return (
     
     <><StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
@@ -28,11 +31,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/register' element={<Auth/>}></Route>
-          
           <Route path="/products/*" element={<Products/>}></Route>
-          
-          <Route path='/login' element={<Auth/>}>
-          </Route>
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Auth />}></Route>
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>

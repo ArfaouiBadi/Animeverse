@@ -2,19 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { CssBaseline } from '@mui/material'
 import { Provider } from 'react-redux'
-import { store } from './components/Redux/Store.js'
-
+import { store ,persistor } from './components/Redux/Store.js'
+import { PersistGate } from 'redux-persist/integration/react'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/*<CssBaseline/>*/}
-    
-    
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
-    
-    
   </React.StrictMode>,
 )
