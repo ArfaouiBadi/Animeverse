@@ -30,7 +30,7 @@ const Title = styled.h3`
 
 const Contact = () => {
   const map =
-    'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6775315.518954521!2d9.560763999999999!3d33.98586695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2stn!4v1689590230350!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade';
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.584864765967!2d10.74376967472897!3d34.74085708105891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1301d3033abc9f7b%3A0x67fc53f889c7a0ac!2sSwiftcode!5e0!3m2!1sfr!2stn!4v1690793185715!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade';
 
   return (
     <>
