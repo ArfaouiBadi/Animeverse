@@ -7,11 +7,11 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../../requestMethods";
 import singleprod1 from "../../../assets/singleprod1.png"
-import singleprod2 from "../../../assets/singleprod2.png"
+
 import { addToCart } from "../../Redux/cartReducer";
 import { addToWishList } from "../../Redux/wishListReducer";
 const Container = styled.div`
-  background: url(${singleprod1}) no-repeat;
+  background-color:#121D31;
   background-size:cover;
   color: white;
   width: 100%;

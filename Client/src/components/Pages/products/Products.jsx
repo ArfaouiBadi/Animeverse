@@ -15,11 +15,10 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    
     background-position: 50% 100%;
     background-size: cover;
-    justify-content: space-between;
     
+    justify-content: space-between;
     padding-top: 30px;
     padding-bottom: 30px;
     

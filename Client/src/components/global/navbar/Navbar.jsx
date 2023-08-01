@@ -98,6 +98,15 @@ const Left_icons = styled(Link)`
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
   const wishList=useSelector(state=>state.wishList)
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <Container>
       

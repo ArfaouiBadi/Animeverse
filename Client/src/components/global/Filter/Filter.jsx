@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { useContext, useEffect, useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Slider } from "@material-ui/core";
 import { mobile } from "../../responsive";
 import StoreContext from "../../../hooks/storeContext";
 
@@ -83,7 +83,8 @@ const Filter = () => {
     setSort(event.target.value);
   };
 
-  
+  const cata =location.pathname.split("/")[2]
+
     return (
       <div>
         <Container>
@@ -93,7 +94,7 @@ const Filter = () => {
           <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans',color:"black"}}>Series</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
+            id="demo-multiple-checkbox "
             multiple
             value={Brand}
             onChange={handleChangeBrand}
@@ -110,6 +111,9 @@ const Filter = () => {
             ))}
           </Select>
         </FormControl>
+        
+        {cata=="Clothing"
+        ?
         <FormControl sx={{ m: "auto", minWidth: 80 ,scale:"calc(0.8)"}}>
         <InputLabel id="demo-simple-select-autowidth-label" sx={{fontFamily: 'Josefin Sans'}}>SIZE</InputLabel>
         <Select
@@ -132,7 +136,10 @@ const Filter = () => {
           <MenuItem value={"XL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XL</MenuItem>
           <MenuItem value={"XXL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XXL</MenuItem>
         </Select>
-      </FormControl></Wrapper>
+      </FormControl>
+      :<div></div>
+      }
+      </Wrapper>
         
       <Wrapper>
       <Text>Sort Products :</Text>

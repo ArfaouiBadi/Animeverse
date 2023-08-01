@@ -174,7 +174,7 @@ const WishList = () => {
           <Info>
             {wishList.products.map(product=>(
                 <>
-                <Product>
+                <Product key={product.image}>
                 <ProductDetail>
                   <Image src={product.image} />
                   <Details>
