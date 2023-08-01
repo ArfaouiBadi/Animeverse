@@ -14,17 +14,23 @@ import Home from './components/Pages/Home/Home'
 import StoreContext from './hooks/storeContext'
 import Contact from './components/global/Contact/Contact'
 import { useSelector } from "react-redux";
-
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { ColorModeContext, useMode } from './theme';
 function App() {
   const [Brand, setBrand] = useState([]);
   const [Size, setSize] = useState("");
   const [Sort, setSort] = useState("");
   const user=useSelector((state) => state.user.currentUser);
   console.log(user)
-  
+  const { theme, toggleColorMode } = useMode();
+
   return (
     
-    <><StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
+    <>
+    <ColorModeContext.Provider value={{ toggleColorMode }}>
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
       <Router>
       <Navbar/>
       
@@ -42,8 +48,10 @@ function App() {
       <Footer/>
       </Router>
       </StoreContext.Provider>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
       {/**/}
-      
+     
       
     </>
   )

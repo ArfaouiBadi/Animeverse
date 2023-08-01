@@ -9,6 +9,7 @@ import tw from '../../../assets/tw.png';
 import gp from '../../../assets/gp.png';
 import bg from '../../../assets/bg.png';
 import { login } from '../../Redux/apiCalls';
+import {  useTheme } from "@mui/material/styles";
 
 import './Auth.css';
 
@@ -30,18 +31,20 @@ const Auth = () => {
     setRegisterVisible(false);
     setLoginVisible(true);
   };
+  const theme = useTheme();
+
 
   return (
-    <div className="container">
-      <div className="contact-box">
+    <div className="container"  theme={theme} style={{backgroundColor:theme.palette.background.main}}>
+      <div className="contact-box" style={{backgroundColor:theme.palette.background.main}}>
         <div className="left_login"></div>
         <div className="right">
           <div className="button-box">
             <div className={isActive ? 'btn-register' : 'btn'}></div>
-            <button type="button" className="toggle-btn" id="btn-login" onClick={handleClickLogin}>
+            <button type="button" className="toggle-btn"style={{color:theme.palette.primary.main}} id="btn-login" onClick={handleClickLogin}>
               Log In
             </button>
-            <button type="button" className="toggle-btn" onClick={handleClickRegister}>
+            <button type="button" className="toggle-btn" style={{color:theme.palette.primary.main}}onClick={handleClickRegister}>
               Register
             </button>
           </div>

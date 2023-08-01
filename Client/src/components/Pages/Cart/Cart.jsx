@@ -6,8 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import { addToCart,resetCart,removeFromCart } from "../../Redux/cartReducer";
 import { Link, useNavigate } from "react-router-dom";
+import {  useTheme } from "@mui/material/styles";
+
 const Container = styled.div`
   transition: 0.3 all ease;
+  background-color: ${(props) => props.theme.palette.background.main};
+
 `;
 
 const Wrapper = styled.div`
@@ -192,18 +196,20 @@ const Cart = () => {
   const handleRemove = (product) => {
     dispatch(removeFromCart({ id: product.id }));
   };
+  const theme = useTheme();
+
   return (
-    <Container>
+    <Container theme={theme}>
       
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        <Title style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => navigate(-1)} style={{color:theme.palette.primary.main}}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
-            <TopText to="/cart">Shopping Bag({cart.quantity})</TopText>
-            <TopText to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
+            <TopText style={{color:theme.palette.primary.main}} to="/cart">Shopping Bag({cart.quantity})</TopText>
+            <TopText style={{color:theme.palette.primary.main}} to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton type="filled" onClick={handleReset}>REST SHOPPING CART</TopButton>
+          <TopButton style={{color:theme.palette.primary.main}} onClick={handleReset}>REST SHOPPING CART</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -214,23 +220,23 @@ const Cart = () => {
                   <Image src={product.image} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b style={{color:theme.palette.primary.main}}>Product:</b> {product.title}
                     </ProductName>
                     <ProductId >
-                      <b>ID:</b> {product._id}
+                      <b style={{color:theme.palette.primary.main}}>ID:</b> {product._id}
                     </ProductId>
                     <ProductSize>
-                      <b>Quantity:</b> {product.quantity}
+                      <b style={{color:theme.palette.primary.main}}>Quantity:</b> {product.quantity}
                     </ProductSize>
                     <ProductSize>
-                      <b>Price:</b> {product.price}
+                      <b style={{color:theme.palette.primary.main}}>Price:</b> {product.price}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
                 
                 <PriceDetail>
-                <ProductPrice className="totalAmount"><b>Total Price :</b></ProductPrice>
-                  <ProductPrice><b>{product.price*product.quantity}</b></ProductPrice>
+                <ProductPrice className="totalAmount"><b style={{color:theme.palette.primary.main}}>Total Price :</b></ProductPrice>
+                  <ProductPrice><b style={{color:theme.palette.primary.main}}>{product.price*product.quantity}</b></ProductPrice>
                   <Btn onClick={() => handleRemove(product)}>Remove</Btn>
                 </PriceDetail>
               </Product>
@@ -241,7 +247,7 @@ const Cart = () => {
             
           </Info>
           <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryTitle style={{color:theme.palette.primary.main}}>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
               <SummaryItemPrice>{cart.total}</SummaryItemPrice>

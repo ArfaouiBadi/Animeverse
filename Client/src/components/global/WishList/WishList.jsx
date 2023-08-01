@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetWishList,removeFromWishList } from "../../Redux/wishListReducer";
 import { Add, Remove } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
-const Container = styled.div``;
+import {  useTheme } from "@mui/material/styles";
+
+const Container = styled.div`
+background-color: ${(props) => props.theme.palette.background.main};
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -146,6 +150,8 @@ const Btn=styled.button`
   border-radius: 10px;
 `
 const WishList = () => { 
+  const theme = useTheme();
+
     const wishList = useSelector((state) => state.wishList);
     const cart = useSelector((state) => state.cart);
 
@@ -158,17 +164,17 @@ const WishList = () => {
         dispatch(removeFromWishList({ id: product.id }))
     }
   return (
-    <Container>
+    <Container theme={theme}>
       
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        <Title  style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
+          <TopButton  style={{color:theme.palette.primary.main}} onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
-            <TopText to="/cart">Shopping Bag({cart.quantity})</TopText>
-            <TopText to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
+            <TopText to="/cart" style={{color:theme.palette.primary.main}}>Shopping Bag({cart.quantity})</TopText>
+            <TopText to="/wishList" style={{color:theme.palette.primary.main}}>Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton type="filled" onClick={handleReset}>REST WISHLIST</TopButton>
+          <TopButton  style={{color:theme.palette.primary.main}} onClick={handleReset}>REST WISHLIST</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -179,20 +185,20 @@ const WishList = () => {
                   <Image src={product.image} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b style={{color:theme.palette.primary.main}}>Product:</b> {product.title}
                     </ProductName>
                     <ProductId>
-                      <b>ID:</b> {product._id}
+                      <b style={{color:theme.palette.primary.main}}>ID:</b> {product._id}
                     </ProductId>
                     <ProductColor color="black" />
                     <ProductSize>
-                      <b>Size:</b> {product.price}
+                      <b style={{color:theme.palette.primary.main}}>Size:</b> {product.price}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
-                <ProductPrice className="totalAmount"><b>Total Price :</b></ProductPrice>
-                  <ProductPrice><b>{product.price*product.quantity}</b></ProductPrice>
+                <ProductPrice className="totalAmount"><b style={{color:theme.palette.primary.main}}>Total Price :</b></ProductPrice>
+                  <ProductPrice><b style={{color:theme.palette.primary.main}}>{product.price*product.quantity}</b></ProductPrice>
                   <Btn onClick={() => handleRemoveFromWishList(product)}>Remove</Btn>
                 </PriceDetail>
               </Product>

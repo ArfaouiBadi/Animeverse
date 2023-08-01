@@ -9,6 +9,11 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { useState } from "react";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+import {IconButton ,useTheme} from '@mui/material';
+import { ColorModeContext } from "../../../theme";
+import   { useContext } from "react";
+
 
 const Container = styled.div`
   height: 65px;
@@ -98,12 +103,43 @@ const Left_icons = styled(Link)`
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
   const wishList=useSelector(state=>state.wishList)
+  const colorMode = useContext(ColorModeContext);
+  const theme = useTheme(); 
   return (
     <Container>
       
       <Wrapper>
         <Left>
           <Language>EN</Language>
+          <div>
+      {theme.palette.mode === "light" ? (
+        <IconButton
+          onClick={() => {
+            localStorage.setItem(
+              "mode",
+              theme.palette.mode === "dark" ? "light" : "dark"
+            );
+            colorMode.toggleColorMode();
+          }}
+          color="inherit"
+        >
+          <LightModeOutlined />
+        </IconButton>
+      ) : (
+        <IconButton
+          onClick={() => {
+            localStorage.setItem(
+              "mode",
+              theme.palette.mode === "dark" ? "light" : "dark"
+            );
+            colorMode.toggleColorMode();
+          }}
+          color="inherit"
+        >
+          <DarkModeOutlined />
+        </IconButton>
+      )}
+    </div>
           <SearchContainer>
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16 }} />
