@@ -13,7 +13,7 @@ const Create = () => {
 
     const product = { title, image, price, description, quantity, catagorie };
 
-    const response = await fetch("/produits", {
+    const response = await fetch("/api/products", {
       method: "POST",
       body: JSON.stringify(product),
       headers: {
