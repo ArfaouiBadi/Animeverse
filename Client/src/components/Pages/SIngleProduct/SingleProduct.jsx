@@ -6,12 +6,12 @@ import './SingleProduct.css'
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../../requestMethods";
-import singleprod1 from "../../../assets/singleprod1.png"
-import singleprod2 from "../../../assets/singleprod2.png"
 import { addToCart } from "../../Redux/cartReducer";
 import { addToWishList } from "../../Redux/wishListReducer";
+import {  useTheme } from "@mui/material/styles";
+
 const Container = styled.div`
-  background: url(${singleprod1}) no-repeat;
+  background: ${(props) => props.theme.palette.background.main} ;
   background-size:cover;
   color: white;
   width: 100%;
@@ -160,7 +160,7 @@ const Button = styled.button`
 `;
 
 const SingleProduct = () => {
-
+    const theme = useTheme();
     const location=useLocation()
     const id =location.pathname.split("/")[2]
     const [product,setProduct]=useState([])
@@ -202,7 +202,7 @@ const SingleProduct = () => {
   }
   
 return (
-    <Container>
+    <Container theme={theme}>
       <Wrapper>
         <ImgContainerCol>
         {
@@ -213,21 +213,21 @@ return (
         <ImgContainer>
           <Image src={product.image} />
         </ImgContainer>
-        <InfoContainer>
-        <Title>{product.title}</Title>
-          <Desc>
+        <InfoContainer >
+        <Title  style={{color:theme.palette.primary.main}}>{product.title}</Title>
+          <Desc  style={{color:theme.palette.primary.main}} >
           {product.description}
           </Desc>
-          <Price>{product.price} $</Price>
+          <Price  style={{color:theme.palette.primary.main}}>{product.price} $</Price>
           <FilterContainer>
-            <Filter>
-              <FilterTitle>Color : </FilterTitle>
+            <Filter >
+              <FilterTitle  style={{color:theme.palette.primary.main}}>Color : </FilterTitle>
               <FilterColor color="black" />
               <FilterColor color="darkblue" />
               <FilterColor color="gray" />
             </Filter>
             <Filter>
-              <FilterTitle>Size :</FilterTitle>
+              <FilterTitle  style={{color:theme.palette.primary.main}}>Size :</FilterTitle>
               <FilterSize>
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
@@ -239,16 +239,16 @@ return (
             </Filter>
           </FilterContainer>
           <AmountContainer>
-          <Remove onClick={handleDec}/>
-              <div className="amount">{Amount}</div>
-              <Add onClick={handleAdd}/>
+          <Remove onClick={handleDec} style={{ fill: theme.palette.primary.main}}/>
+              <div className="amount"  style={{color:theme.palette.primary.main,borderColor:theme.palette.primary.main}}>{Amount}</div>
+              <Add onClick={handleAdd} style={{ fill: theme.palette.primary.main}}/>
             </AmountContainer>
 
-          <AddContainer>
-            <Button onClick={handleClickCart}>ADD TO CART</Button>
+          <AddContainer >
+            <Button onClick={handleClickCart}  style={{color:theme.palette.primary.main,borderColor:theme.palette.primary.main}}>ADD TO CART</Button>
           </AddContainer>
           <AddContainer>
-          <Button onClick={handleClickWishList}>SAVE TO WHISHLIST</Button>
+          <Button onClick={handleClickWishList}  style={{color:theme.palette.primary.main,borderColor:theme.palette.primary.main}}>SAVE TO WHISHLIST</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
