@@ -9,7 +9,7 @@ import {
   } from "@material-ui/icons";
   import styled from "styled-components";
 import { mobile } from "../../responsive";
-import Contact from "../Contact/Contact";
+
 
   const Container = styled.div`
     display: flex;
@@ -135,7 +135,7 @@ import Contact from "../Contact/Contact";
     const date = new Date().getFullYear().toLocaleString();
     return (
       <>
-      <Contact/>
+      
       <Container>
         <Left>
           <Logo>Animeverse.</Logo>

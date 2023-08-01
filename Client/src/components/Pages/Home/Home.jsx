@@ -1,5 +1,6 @@
 
 import Newsletter from '../../global/Newsletter/Newsletter'
+import Contact from '../../global/Contact/Contact'
 import Products from '../../Pages/products/Products'
 import './Home.css'
 
@@ -8,6 +9,7 @@ const Home = () => {
     <>
       <Products/>
       <Newsletter/>
+      <Contact></Contact>
     </>
   )
 }

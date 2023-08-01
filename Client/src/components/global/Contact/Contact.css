@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    
+    padding: 100px;
     
 }
 .space{
@@ -13,6 +13,7 @@
 }
 
 .contact iframe {
+    
     width: 100%;
     height: 100%;
     display: flex;
@@ -22,15 +23,17 @@
     
 }
 .contact .right {
-    width: 100%;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 80%;
     height: 100%;
     padding: 50px;
     
 
 } 
 .contact .left {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     padding: 25px;
 
 

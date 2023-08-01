@@ -12,7 +12,7 @@ import SingleProduct from './components/Pages/SIngleProduct/SingleProduct'
 import Products from './components/Pages/products/Products'
 import Home from './components/Pages/Home/Home'
 import StoreContext from './hooks/storeContext'
-import Contact from './components/global/Contact/Contact'
+
 import { useSelector } from "react-redux";
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ColorModeContext, useMode } from './theme';
@@ -45,7 +45,7 @@ function App() {
          
         </Routes>
        
-      <Footer/>
+      
       </Router>
       </StoreContext.Provider>
       </ThemeProvider>

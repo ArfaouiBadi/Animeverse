@@ -110,7 +110,7 @@ const Navbar = () => {
       
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          
           <div>
       {theme.palette.mode === "light" ? (
         <IconButton
