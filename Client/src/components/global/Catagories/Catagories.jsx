@@ -7,9 +7,11 @@ import Filter from "../Filter/Filter";
 import Products from "../../Pages/products/Products";
 import cata1 from '../../../assets/cata1.png'
 import cata2 from '../../../assets/cata2.png'
+import {  useTheme } from "@mui/material/styles";
+
 const Container = styled.div`
   height: 30px;
- background-color: #252029;
+ background-color: ${(props) => props.theme.palette.background.main};
 
   background-position: 50% 100%;
   background-size: cover;
@@ -43,21 +45,23 @@ const Catagorie = styled(Link)`
 `;
 
 const Catagories = () => {
-  return <Container>
-    <Catagorie to="/products/NewArrivales">
+  const theme = useTheme();
+
+  return <Container theme={theme}>
+    <Catagorie to="/products/NewArrivales" style={{color:theme.palette.primary.main}}>
         NEW ARRIVALES
     </Catagorie>
-    <Catagorie to="/products/Figures">
+    <Catagorie to="/products/Figures" style={{color:theme.palette.primary.main}}>
         FIGURES
     </Catagorie>
-    <Catagorie to="/products/All_Products">
+    <Catagorie to="/products/All_Products" style={{color:theme.palette.primary.main}}>
         ALL
     </Catagorie>
-    <Catagorie to="/products/Clothing">
+    <Catagorie to="/products/Clothing" style={{color:theme.palette.primary.main}}>
         CLOTHING
     </Catagorie>
     
-    <Catagorie to="/products/Homeware">
+    <Catagorie to="/products/Homeware" style={{color:theme.palette.primary.main}}>
         HOMEWARE
     </Catagorie>
     

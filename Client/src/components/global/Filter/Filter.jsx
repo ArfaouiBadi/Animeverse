@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import { mobile } from "../../responsive";
 import StoreContext from "../../../hooks/storeContext";
+import {  useTheme } from "@mui/material/styles";
 
 
 const ITEM_HEIGHT = 48;
@@ -45,7 +46,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: white;
+    background-color:${(props) => props.theme.palette.background.main};
     border-top: 3px #121D31 solid;
     border-bottom: 1px white solid;
 `
@@ -82,15 +83,16 @@ const Filter = () => {
   const handleChangeSort = (event) => {
     setSort(event.target.value);
   };
+  const theme = useTheme();
 
   
     return (
       <div>
-        <Container>
+        <Container theme={theme}>
         <Grid container display="flex" justifyContent="space-between">
-        <Wrapper><Text>Filter Products :</Text>
+        <Wrapper><Text style={{color:theme.palette.primary.main}}>Filter Products :</Text>
         <FormControl sx={{ m: "auto", width: 100,scale:"calc(0.8)" }} >
-          <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans',color:"black"}}>Series</InputLabel>
+          <InputLabel id="demo-multiple-checkbox-label" sx={{fontFamily: 'Josefin Sans',color:theme.palette.primary.main}}>Series</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
@@ -123,19 +125,19 @@ const Filter = () => {
           
         >
           
-          <MenuItem value={"All"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
+          <MenuItem value={"All"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>All</MenuItem>
           
-          <MenuItem value={"XS"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XS</MenuItem>
-          <MenuItem value={"S"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>S</MenuItem>
-          <MenuItem value={"M"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>M</MenuItem>
-          <MenuItem value={"L"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>L</MenuItem>
-          <MenuItem value={"XL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XL</MenuItem>
-          <MenuItem value={"XXL"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>XXL</MenuItem>
+          <MenuItem value={"XS"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>XS</MenuItem>
+          <MenuItem value={"S"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>S</MenuItem>
+          <MenuItem value={"M"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>M</MenuItem>
+          <MenuItem value={"L"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>L</MenuItem>
+          <MenuItem value={"XL"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>XL</MenuItem>
+          <MenuItem value={"XXL"} sx={{color:theme.palette.primary.main,fontFamily: 'Josefin Sans'}}>XXL</MenuItem>
         </Select>
       </FormControl></Wrapper>
         
       <Wrapper>
-      <Text>Sort Products :</Text>
+      <Text style={{color:theme.palette.primary.main}}>Sort Products :</Text>
       <FormControl sx={{ m: "auto", minWidth: 80,scale:"calc(0.8)" }}>
         <InputLabel id="demo-simple-select-autowidth-label" sx={{fontFamily: 'Josefin Sans'}}>SORT</InputLabel>
         <Select
@@ -145,12 +147,12 @@ const Filter = () => {
           onChange={handleChangeSort}
           autoWidth
           label="Sort"
-          sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}
+          sx={{color:theme.palette.text.primary,fontFamily: 'Josefin Sans'}}
         >
           
-          <MenuItem value={"All"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>All</MenuItem>
-          <MenuItem value={"ASC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE LOW</MenuItem>
-          <MenuItem value={"DESC"} sx={{color:"#121D31",fontFamily: 'Josefin Sans'}}>PRICE HIGH</MenuItem>
+          <MenuItem value={"All"} sx={{color:theme.palette.text.primary,fontFamily: 'Josefin Sans'}}>All</MenuItem>
+          <MenuItem value={"ASC"} sx={{color:theme.palette.text.primary,fontFamily: 'Josefin Sans'}}>PRICE LOW</MenuItem>
+          <MenuItem value={"DESC"} sx={{color:theme.palette.text.primary,fontFamily: 'Josefin Sans'}}>PRICE HIGH</MenuItem>
           
           
         </Select>

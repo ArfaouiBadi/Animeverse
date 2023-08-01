@@ -10,11 +10,13 @@ import StoreContext from "../../../hooks/storeContext";
 import waves from "../../../assets/waves.png"
 import axios from "axios";
 import Newsletter from "../../global/Newsletter/Newsletter";
+import {  useTheme } from "@mui/material/styles";
+
 const Container = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: white;
+    background-color:  ${(props) => props.theme.palette.background.main};
     
     background-position: 50% 100%;
     background-size: cover;
@@ -69,14 +71,15 @@ const Products = () => {
     }
     
   }, [Sort,products]);
-  
+  const theme = useTheme();
+
   
   return (
   <>
   
     <Catagories/>
     <Filter />
-    <Container>
+    <Container  theme={theme}>
       {filteredProducts.map((item) => (
         <Product_card item={item} key={item.id} />
       ))}
