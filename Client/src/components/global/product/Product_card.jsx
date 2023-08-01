@@ -29,6 +29,7 @@ import './Product_cart.css'
   `;
   
   const Container = styled.div`
+    background-color: white;
     flex: 1 0 21%;
     margin: 5px;
     width: 280px;

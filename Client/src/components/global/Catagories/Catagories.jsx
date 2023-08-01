@@ -37,7 +37,7 @@ const Catagorie = styled(Link)`
   font-size: 13px;
   font-weight: 400;
   &:hover{
-    border-bottom: 3px solid ${color=theme.palette.primary.background};
+    border-bottom: 3px solid white;
     scale: calc(1.1);
     
   }

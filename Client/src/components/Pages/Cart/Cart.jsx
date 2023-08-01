@@ -11,7 +11,7 @@ import {  useTheme } from "@mui/material/styles";
 const Container = styled.div`
   transition: 0.3 all ease;
   background-color: ${(props) => props.theme.palette.background.main};
-
+  height: 100vh;
 `;
 
 const Wrapper = styled.div`

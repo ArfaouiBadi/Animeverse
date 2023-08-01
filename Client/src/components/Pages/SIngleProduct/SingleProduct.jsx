@@ -28,13 +28,29 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   flex: 1;
   height: 84vh;
-  
+  ${mobile({ justifyContent:"start"})}
 `;
 
 const Image = styled.img`
   width: 100%;
   max-height: 100%;
   object-fit: contain;
+  border: 5px solid white;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer
+  ;
+  ${mobile({ maxHeight: "60vh" })}
+`;
+const ImageCol = styled.img`
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border: 5px solid white;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer
+  ;
   ${mobile({ maxHeight: "60vh" })}
 `;
 
@@ -48,10 +64,12 @@ const ImgContainerCol = styled.div`
   
   ${mobile({ 
     flexDirection: "row",
-    width: "92vw",
+    width: "10vw",
+    margin:"Auto",
+    marginBottom:"10px",
     height: "10vh",
     justifyContent:"center",
-    gap:"0px",
+    gap:"10px",
     
     
     })}
@@ -60,25 +78,30 @@ const ImgContainerCol = styled.div`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
-  ${mobile({ padding: "10px" })}
+  
+  ${mobile({ padding: "10px"})}
 `;
 
 const Title = styled.h1`
   font-weight: 700;
-  font-size: 24px;
+  font-size: 50px;
   max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */
+  ${mobile({ fontSize: "30px"})}
 `;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  font-size: 20px;
   max-width: 100vw; /* Limit the width to 100% of the InfoContainer's width */
   font-weight: 300;
+  
 `;
 
-const Price = styled.span`
+const Price = styled.div`
   font-weight: 500;
   font-size: 50px;
   color: white;
+  
   max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */
 `;
 
@@ -92,9 +115,11 @@ const FilterColor = styled.div`
 `;
 
 const FilterContainer = styled.div`
-  width: 80%;
-  margin: 30px auto;
+  width: 100%;
+  margin: 20px 0px;
   display: flex;
+  flex-direction: column;
+
   justify-content: space-between;
   color:white;
   ${mobile({ width: "100%" })}
@@ -103,7 +128,8 @@ const FilterContainer = styled.div`
 const Filter = styled.div`
   display: flex;
   align-items: center;
-  
+  margin: 20px 0px;
+
   
   
 `;
@@ -159,6 +185,7 @@ const Button = styled.button`
   }
 `;
 
+
 const SingleProduct = () => {
     const theme = useTheme();
     const location=useLocation()
@@ -185,7 +212,6 @@ const SingleProduct = () => {
     const handleAdd = () => {
       setAmount((prevAmount) => prevAmount + 1); // Increment amount by 1
     };
-  
     const handleDec = () => {
       if (Amount > 0) {
         setAmount((prevAmount) => prevAmount - 1); // Decrement amount by 1, but not below 0
@@ -200,18 +226,30 @@ const SingleProduct = () => {
     dispatch(addToWishList({ ...product, quantity:Amount}))
 
   }
-  
+  const [imageDisplayed,setImageDisplayed]=useState("")
+  useEffect(()=>{
+    setImageDisplayed(product.image)
+  },[product])
+  const HandleImageSwitch = (e)=>{
+    const x=imageDisplayed
+    setImageDisplayed(e.target.src)
+    e.target.src=x
+  }
+
+
 return (
     <Container theme={theme}>
       <Wrapper>
         <ImgContainerCol>
+        
         {
             product.otherView?.map((view) => (
-            <Image key={view} src={view} />
+            <ImageCol key={view} src={view} onClick={HandleImageSwitch}/>
           ))}
+          
         </ImgContainerCol>
         <ImgContainer>
-          <Image src={product.image} />
+          <Image src={imageDisplayed}/>
         </ImgContainer>
         <InfoContainer >
         <Title  style={{color:theme.palette.primary.main}}>{product.title}</Title>

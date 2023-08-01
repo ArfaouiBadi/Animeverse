@@ -9,6 +9,7 @@ import {  useTheme } from "@mui/material/styles";
 
 const Container = styled.div`
 background-color: ${(props) => props.theme.palette.background.main};
+height: 100vh;
 `;
 
 const Wrapper = styled.div`
