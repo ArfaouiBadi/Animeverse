@@ -204,12 +204,12 @@ const Cart = () => {
       <Wrapper>
         <Title style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => navigate(-1)} style={{color:theme.palette.primary.main}}>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => navigate(-1)} style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText style={{color:theme.palette.primary.main}} to="/cart">Shopping Bag({cart.quantity})</TopText>
             <TopText style={{color:theme.palette.primary.main}} to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton style={{color:theme.palette.primary.main}} onClick={handleReset}>REST SHOPPING CART</TopButton>
+          <TopButton style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}} onClick={handleReset}>REST SHOPPING CART</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -264,7 +264,7 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>
