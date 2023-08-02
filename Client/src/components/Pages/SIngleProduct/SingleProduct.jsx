@@ -36,7 +36,7 @@ const Image = styled.img`
   max-height: 100%;
   object-fit: contain;
   border: 5px solid white;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: #eee;
   cursor: pointer
   ;
@@ -47,7 +47,7 @@ const ImageCol = styled.img`
   max-height: 100%;
   object-fit: contain;
   border: 5px solid white;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #eee;
   cursor: pointer
   ;
@@ -84,7 +84,7 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
   font-weight: 700;
-  font-size: 50px;
+  font-size: 40px;
   max-width: 100%; /* Limit the width to 100% of the InfoContainer's width */
   ${mobile({ fontSize: "30px"})}
 `;
@@ -154,6 +154,7 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option`
   cursor: pointer;
   border: none;
+  
 `;
 
 const AddContainer = styled.div`
@@ -163,6 +164,7 @@ const AddContainer = styled.div`
   justify-content: center;
   margin-bottom: 10px;
   ${mobile({ width: "100%" })}
+  
 `;
 
 const AmountContainer = styled.div`
@@ -171,10 +173,12 @@ const AmountContainer = styled.div`
   font-weight: 700;
   margin:auto;
   justify-content: center;
+  
 `;
 
 const Button = styled.button`
   width: 180px;
+  border-radius: 10px;
   padding: 15px;
   border: 1px solid white;
   background-color: transparent;
