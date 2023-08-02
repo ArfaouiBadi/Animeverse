@@ -2,6 +2,7 @@
   width: 30px;
   height: 30px;
   border: 1px solid white;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
