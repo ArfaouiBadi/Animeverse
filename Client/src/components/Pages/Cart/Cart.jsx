@@ -171,6 +171,7 @@ const Button = styled.button`
   width: 100%;
   padding: 10px;
   background-color: #121D31;
+  cursor: pointer;
   color: white;
   font-weight: 600;
 `;
@@ -197,6 +198,31 @@ const Cart = () => {
     dispatch(removeFromCart({ id: product.id }));
   };
   const theme = useTheme();
+
+
+    const check = async (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3002/check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json((json) => Promise.reject(json));
+        }
+      })
+      .then(({ url }) => {
+        window.location = url;
+        console.log(url);
+        console.log("eeeeeee");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <Container theme={theme}>
@@ -264,7 +290,7 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button onClick={check}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>
