@@ -170,12 +170,12 @@ const WishList = () => {
       <Wrapper>
         <Title  style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
-          <TopButton  style={{color:theme.palette.primary.main}} onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
+          <TopButton  style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}} onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText to="/cart" style={{color:theme.palette.primary.main}}>Shopping Bag({cart.quantity})</TopText>
             <TopText to="/wishList" style={{color:theme.palette.primary.main}}>Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton  style={{color:theme.palette.primary.main}} onClick={handleReset}>REST WISHLIST</TopButton>
+          <TopButton  style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}} onClick={handleReset}>REST WISHLIST</TopButton>
         </Top>
         <Bottom>
           <Info>
