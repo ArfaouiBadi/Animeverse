@@ -1,0 +1,69 @@
+/* Center the items vertically and horizontally using Flexbox */
+.aboutHome {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-image: url('/public/images/18.jpg');
+    background-size: cover;
+    padding: 60px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  .container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; }
+  }
+  
+  .aboutHome #heading {
+    text-align: left;
+    padding: 0;
+    color: rgb(246, 255, 255);
+  }
+  
+  .aboutHome .items {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .aboutHome .item {
+    background: rgb(255, 255, 255);
+    margin-top: 30px;
+    padding: 60px;
+    transition: 0.5s;
+    border-radius: 20px 40px 10px 30px;
+  }
+  .aboutHome .item h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .aboutHome .img {
+    width: 400px;
+        height:200px;
+}
+  .aboutHome .item:hover {
+    color: d1cece;
+    cursor: pointer;
+    box-shadow: 0 5px 25px -2px rgba(0 0 0 / 6%);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .aboutHome {
+      margin-top: 80%;
+    }
+    .aboutHome .container {
+      flex-direction: column-reverse;
+    }
+    .aboutHome .row {
+      width: 100%;
+    }
+  }
+  
+  .AWrapper {
+    height: 50vh;
+  }
+  
