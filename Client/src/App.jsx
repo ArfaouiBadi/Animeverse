@@ -21,7 +21,7 @@ function App() {
   const [Size, setSize] = useState("");
   const [Sort, setSort] = useState("");
   const user=useSelector((state) => state.user.currentUser);
-  console.log(user)
+  console.log(user._id)
   const { theme, toggleColorMode } = useMode();
 
   return (
@@ -30,7 +30,7 @@ function App() {
     <ColorModeContext.Provider value={{ toggleColorMode }}>
     <ThemeProvider theme={theme}>
     <CssBaseline />
-    <StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort}}>
+    <StoreContext.Provider value={{Brand,setBrand,Size,setSize,Sort,setSort,user}}>
       <Router>
       <Navbar/>
       

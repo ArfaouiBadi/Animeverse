@@ -11,7 +11,7 @@ import {  useTheme } from "@mui/material/styles";
 const Container = styled.div`
   transition: 0.3 all ease;
   background-color: ${(props) => props.theme.palette.background.main};
-  height: 100vh;
+  height: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -38,6 +38,8 @@ const TopButton = styled.button`
   color: black;
   font-weight: 600;
   cursor: pointer;
+  border: 1px #121D31 solid;
+  border-radius: 10px;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
     props.type === "filled" ? "#121D31" : "transparent"};
@@ -46,9 +48,11 @@ const TopButton = styled.button`
 
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
+  
 `;
 const TopText = styled(Link)`
   text-decoration: underline;
+  
   cursor: pointer;
   margin: 0px 10px;
   color: #121D31;
@@ -70,6 +74,8 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+
   ${mobile({ flexDirection: "column" })}
   
 `;
@@ -82,7 +88,8 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
-  
+  border: 1px solid #eeeeee11;
+  border-radius: 10px;
 `;
 
 const Details = styled.div`
@@ -90,6 +97,7 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  
   
 `;
 
@@ -123,6 +131,7 @@ const PriceDetail = styled.div`
   margin-right: 10px;
   margin: 10px;
   font-family: 'Josefin Sans';
+
 `;
 
 const ProductPrice = styled.div`
@@ -135,7 +144,7 @@ const ProductPrice = styled.div`
 
 const Hr = styled.hr`
   background-color: #eee;
-  border: 1px #eee solid;
+  
   height: 1px;
   margin: 10px;
 `;
@@ -170,9 +179,12 @@ const SummaryItemPrice = styled.span``;
 const Button = styled.button`
   width: 100%;
   padding: 10px;
+  border: 1px #121D31 solid;
+  border-radius: 10px;
   background-color: #121D31;
   color: white;
   font-weight: 600;
+  margin-top: 20px;
 `;
 const Btn=styled.button`
   width: 50%;
@@ -186,7 +198,6 @@ const Btn=styled.button`
 `
 const Cart = () => { 
   const navigate = useNavigate();
-  
   const cart=useSelector(state=>state.cart)
   const wishList=useSelector(state=>state.wishList)
   const dispatch=useDispatch()
@@ -197,24 +208,45 @@ const Cart = () => {
     dispatch(removeFromCart({ id: product.id }));
   };
   const theme = useTheme();
+  const check = async (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3002/check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart }),
+    }) 
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json((json) => Promise.reject(json));
+        }
+      })
+      .then(({ url }) => {
+        window.location = url;
 
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <Container theme={theme}>
       
       <Wrapper>
         <Title style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => navigate(-1)} style={{color:theme.palette.primary.main}}>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => navigate(-1)} style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText style={{color:theme.palette.primary.main}} to="/cart">Shopping Bag({cart.quantity})</TopText>
             <TopText style={{color:theme.palette.primary.main}} to="/wishList">Your Wishlist ({wishList.quantity})</TopText>
           </TopTexts>
-          <TopButton style={{color:theme.palette.primary.main}} onClick={handleReset}>REST SHOPPING CART</TopButton>
+          <TopButton style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}} onClick={handleReset}>REST SHOPPING CART</TopButton>
         </Top>
         <Bottom>
           <Info>
             {cart.products.map(product=>(
-                <>
+                <div key={product._id}>
                 <Product >
                 <ProductDetail>
                   <Image src={product.image} />
@@ -239,12 +271,13 @@ const Cart = () => {
                   <ProductPrice><b style={{color:theme.palette.primary.main}}>{product.price*product.quantity}</b></ProductPrice>
                   <Btn onClick={() => handleRemove(product)}>Remove</Btn>
                 </PriceDetail>
+                
               </Product>
-              <Hr />
-              </>
+              <Hr/>
+              </div>
             ))}
 
-            
+          
           </Info>
           <Summary>
             <SummaryTitle style={{color:theme.palette.primary.main}}>ORDER SUMMARY</SummaryTitle>
@@ -263,8 +296,9 @@ const Cart = () => {
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>{cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+              </SummaryItem>
+              <Button onClick={check} style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}}> CHECKOUT NOW</Button>
+            
           </Summary>
         </Bottom>
       </Wrapper>

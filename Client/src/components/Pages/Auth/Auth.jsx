@@ -129,13 +129,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [_, setCookies] = useCookies(['acces-token']);
   const dispatch = useDispatch();
-  
+ 
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3002/user/login', {
         username,
         email,
         password,
+        
       });
 
       if (response.data.message) {
@@ -146,7 +147,7 @@ const Login = () => {
         
         setCookies('access-token', response.data.token);
         window.localStorage.setItem('userID', response.data._id);
-        login(dispatch, { username, password, email });
+        login(dispatch, { username, password, email});
       }
     } catch (error) {
       console.error('Error during login:', error);

@@ -23,7 +23,6 @@ app.post("/check", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-
       line_items: await req.body.cart.products.map((item) => {
         return {
           price_data: {

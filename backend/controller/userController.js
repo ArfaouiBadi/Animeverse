@@ -45,7 +45,7 @@ const login = async (req, res) => {
     });
   }
   const token = createToken(Loguser);
-  const { ...others } = Loguser._doc; 
+  const { ...others } = Loguser._doc;
   res.status(200).json({...others, token});
   
 };
