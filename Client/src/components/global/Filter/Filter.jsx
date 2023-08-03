@@ -28,15 +28,17 @@ const MenuProps = {
 
 const names = [
   'One Piece',
-  'Hunter X Hunter',
+  'Hunter x Hunter',
   'Dragon Ball Z',
   'Naruto',
   'Death Note',
-  'My Dress Up Darling',
+  'My Dress-Up Darling',
   'Swort Art Online',
-  'Jujtsu Kaisen',
+  'Jujutsu Kaisen',
   'Fairy Tail',
-  'Boku No Hero Academia',
+  'My Hero Academia',
+  'Bungou Stray Dogs',
+  'Tokyo Ghoul',
 ];
 
 const Container = styled.div`

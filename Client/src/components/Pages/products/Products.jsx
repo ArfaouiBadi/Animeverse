@@ -21,7 +21,7 @@ const Container = styled.div`
     background-position: 50% 100%;
     background-size: cover;
     justify-content: space-between;
-    
+    height: 100vh;
     padding-top: 30px;
     padding-bottom: 30px;
     
@@ -71,9 +71,23 @@ const Products = () => {
     }
     
   }, [Sort,products]);
-  const theme = useTheme();
 
-  
+
+  const BrandName = (series) => {
+    return Brand.includes(series) ? series : null;
+  };
+
+  const filterProductByBrand = () => {
+    let tempProducts = [...products];
+    if (Brand.length > 0) {
+      tempProducts = tempProducts.filter(product =>
+        Brand.includes(product.series)
+      );
+    }
+    setFilteredProducts(tempProducts);
+  };
+  useEffect(filterProductByBrand, [Brand, products]);
+  const theme = useTheme();
   return (
   <>
   

@@ -8,7 +8,6 @@ import StoreContext from '../../../hooks/storeContext'
 
 const Home = () => {
   const {user}=useContext(StoreContext)
-  console.log(user)
   return (
     <>
       <Products/>

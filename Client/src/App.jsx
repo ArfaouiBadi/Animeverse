@@ -21,7 +21,6 @@ function App() {
   const [Size, setSize] = useState("");
   const [Sort, setSort] = useState("");
   const user=useSelector((state) => state.user.currentUser);
-  console.log(user._id)
   const { theme, toggleColorMode } = useMode();
 
   return (
