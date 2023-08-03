@@ -8,14 +8,16 @@ import { Link, useNavigate } from "react-router-dom";
 import {  useTheme } from "@mui/material/styles";
 import Footer from "../Footer/Footer";
 
+
 const Container = styled.div`
-background-color: ${(props) => props.theme.palette.background.main};
-height: 100%;
+  transition: 0.3 all ease;
+  background-color: ${(props) => props.theme.palette.background.main};
+  height: 100%;
 `;
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })};
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -37,6 +39,8 @@ const TopButton = styled.button`
   color: black;
   font-weight: 600;
   cursor: pointer;
+  border: 1px #121D31 solid;
+  border-radius: 10px;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
     props.type === "filled" ? "#121D31" : "transparent"};
@@ -45,9 +49,11 @@ const TopButton = styled.button`
 
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
+  
 `;
 const TopText = styled(Link)`
   text-decoration: underline;
+  
   cursor: pointer;
   margin: 0px 10px;
   color: #121D31;
@@ -69,6 +75,8 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+
   ${mobile({ flexDirection: "column" })}
   
 `;
@@ -81,7 +89,8 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
-  
+  border: 1px solid #eeeeee11;
+  border-radius: 10px;
 `;
 
 const Details = styled.div`
@@ -90,24 +99,20 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: space-around;
   
+  
 `;
 
 const ProductName = styled.span`
-    color:black;
+    color:#eeeeee11;
 `;
 
 const ProductId = styled.span`
 
 `;
 
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
 
 const ProductSize = styled.span`
+
 `;
 
 const PriceDetail = styled.div`
@@ -116,31 +121,29 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin: 10px;
+  font-family: 'Josefin Sans';
 
-const ProductAmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
+  color:black;
   ${mobile({ marginBottom: "20px" })}
+  
 `;
 
 const Hr = styled.hr`
   background-color: #eee;
-  border: none;
+  
   height: 1px;
+  margin: 10px;
 `;
+
 const Btn=styled.button`
   width: 50%;
   padding: 10px;
@@ -151,12 +154,11 @@ const Btn=styled.button`
   font-weight: 600;
   border-radius: 10px;
 `
+const ProductColor=styled.div``
 const WishList = () => { 
   const theme = useTheme();
-  
     const wishList = useSelector((state) => state.wishList);
     const cart = useSelector((state) => state.cart);
-
     const dispatch = useDispatch();
     const handleReset = () => {
       dispatch(resetWishList());
@@ -167,7 +169,6 @@ const WishList = () => {
     }
   return (
     <Container theme={theme}>
-      
       <Wrapper>
         <Title style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
@@ -186,14 +187,14 @@ const WishList = () => {
                 <ProductDetail>
                   <Image src={product.image} />
                   <Details>
-                    <ProductName>
+                    <ProductName style={{color:theme.palette.primary.main}}>
                       <b style={{color:theme.palette.primary.main}}>Product:</b> {product.title}
                     </ProductName>
-                    <ProductId>
+                    <ProductId style={{color:theme.palette.primary.main}}>
                       <b style={{color:theme.palette.primary.main}}>ID:</b> {product._id}
                     </ProductId>
-                    <ProductColor color="black" />
-                    <ProductSize>
+                    <ProductColor color="black" style={{color:theme.palette.primary.main}}/>
+                    <ProductSize style={{color:theme.palette.primary.main}}>
                       <b style={{color:theme.palette.primary.main}}>Size:</b> {product.price}
                     </ProductSize>
                   </Details>
@@ -207,10 +208,7 @@ const WishList = () => {
               <Hr />
               </>
             ))}
-
-            
           </Info>
-          
         </Bottom>
       </Wrapper>
       <Footer/>

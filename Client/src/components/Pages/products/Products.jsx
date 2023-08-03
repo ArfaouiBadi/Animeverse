@@ -1,15 +1,11 @@
 import styled from "styled-components";
-
-import imgback from '../../../assets/prod.jpg'
 import Product_card from "../../global/product/Product_card";
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Catagories from "../../global/Catagories/Catagories";
 import Filter from "../../global/Filter/Filter";
 import StoreContext from "../../../hooks/storeContext";
-import waves from "../../../assets/waves.png"
 import axios from "axios";
-import Newsletter from "../../global/Newsletter/Newsletter";
 import {  useTheme } from "@mui/material/styles";
 
 const Container = styled.div`
@@ -21,7 +17,7 @@ const Container = styled.div`
     background-position: 50% 100%;
     background-size: cover;
     justify-content: space-between;
-    height: 100%;
+    height: 100vh;
     padding-top: 30px;
     padding-bottom: 30px;
     

@@ -8,9 +8,8 @@ const Container=styled.div`
 display:flex;
 flex-direction: row;
 background-color: #121D31;
-justify-content: space-between;
 flex-wrap: wrap;
-padding: 50px;
+padding: 20px;
 gap:10px;
 height: 100%;
 border: 10px solid white;

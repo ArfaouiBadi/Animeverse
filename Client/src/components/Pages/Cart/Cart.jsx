@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 import './cart.css'
 import { useDispatch, useSelector } from "react-redux";
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-import { addToCart,resetCart,removeFromCart } from "../../Redux/cartReducer";
+import { resetCart,removeFromCart } from "../../Redux/cartReducer";
 import { Link, useNavigate } from "react-router-dom";
 import {  useTheme } from "@mui/material/styles";
 
@@ -50,6 +49,8 @@ const TopTexts = styled.div`
   ${mobile({ display: "none" })}
   
 `;
+const ProductColor=styled.div``
+
 const TopText = styled(Link)`
   text-decoration: underline;
   
@@ -109,12 +110,6 @@ const ProductId = styled.span`
 
 `;
 
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
 
 const ProductSize = styled.span`
 
@@ -251,16 +246,17 @@ const Cart = () => {
                 <ProductDetail>
                   <Image src={product.image} />
                   <Details>
-                    <ProductName>
-                      <b style={{color:theme.palette.primary.main}}>Product:</b> {product.title}
+                    <ProductName style={{color:theme.palette.primary.main}}> 
+                      <b style={{color:theme.palette.primary.main}}>Product: {product.title}</b> 
                     </ProductName>
-                    <ProductId >
+                    <ProductId style={{color:theme.palette.primary.main}}>
+                    
                       <b style={{color:theme.palette.primary.main}}>ID:</b> {product._id}
-                    </ProductId>
-                    <ProductSize>
+                    </ProductId >
+                    <ProductSize style={{color:theme.palette.primary.main}}>
                       <b style={{color:theme.palette.primary.main}}>Quantity:</b> {product.quantity}
                     </ProductSize>
-                    <ProductSize>
+                    <ProductSize style={{color:theme.palette.primary.main}}>
                       <b style={{color:theme.palette.primary.main}}>Price:</b> {product.price}
                     </ProductSize>
                   </Details>
