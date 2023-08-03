@@ -5,14 +5,18 @@ import Products from '../../Pages/products/Products'
 import './Home.css'
 import { useContext } from 'react'
 import StoreContext from '../../../hooks/storeContext'
+import About from '../../global/About_Us/About'
+import Footer from '../../global/Footer/Footer'
 
 const Home = () => {
   const {user}=useContext(StoreContext)
   return (
     <>
       <Products/>
+      <About/>
       <Newsletter/>
-      <Contact></Contact>
+      <Contact/>
+      <Footer/>
     </>
   )
 }

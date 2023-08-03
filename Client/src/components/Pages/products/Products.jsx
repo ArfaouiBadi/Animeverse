@@ -21,7 +21,7 @@ const Container = styled.div`
     background-position: 50% 100%;
     background-size: cover;
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
     

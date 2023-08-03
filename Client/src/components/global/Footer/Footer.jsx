@@ -9,6 +9,8 @@ import {
   } from "@material-ui/icons";
   import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { Link } from "react-router-dom";
+
 
 
   const Container = styled.div`
@@ -102,8 +104,8 @@ import { mobile } from "../../responsive";
     background-color: transparent;
   `;
   
-  const ListItem = styled.li`
-  background-color: transparent;
+  const ListItem = styled(Link)`
+    
     width: 50%;
     margin-bottom: 10px;
     font-family: 'Roboto Condensed';
@@ -160,16 +162,17 @@ import { mobile } from "../../responsive";
         <Center>
           <Title>Useful Links</Title>
           <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Cart</ListItem>
-            <ListItem>Man Fashion</ListItem>
-            <ListItem>Woman Fashion</ListItem>
-            <ListItem>Accessories</ListItem>
-            <ListItem>My Account</ListItem>
-            <ListItem>Order Tracking</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Terms</ListItem>
+            <ListItem style={{color:"white"}} to="/">Home</ListItem>
+            <ListItem style={{color:"white"}} to="/cart">Cart</ListItem>
+            <ListItem style={{color:"white"}} to="/products/Clothing">Clothing</ListItem>
+            <ListItem style={{color:"white"}} to="products/Figures">Figures</ListItem>
+            <ListItem style={{color:"white"}} to="">Accessories</ListItem>
+            <ListItem style={{color:"white"}} to="">My Account</ListItem>
+            <ListItem style={{color:"white"}} to="">Order Tracking</ListItem>
+            <ListItem style={{color:"white"}} to="/Wishlist">Wishlist</ListItem>
+            <ListItem style={{color:"white"}} to="">About Us</ListItem>
+            <ListItem style={{color:"white"}} to="">ContactUs</ListItem>
+            <ListItem style={{color:"white"}} to="">Terms</ListItem>
           </List>
         </Center>
         

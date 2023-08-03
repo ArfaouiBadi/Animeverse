@@ -6,10 +6,11 @@ import { resetWishList,removeFromWishList } from "../../Redux/wishListReducer";
 import { Add, Remove } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import {  useTheme } from "@mui/material/styles";
+import Footer from "../Footer/Footer";
 
 const Container = styled.div`
 background-color: ${(props) => props.theme.palette.background.main};
-height: 100vh;
+height: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -152,7 +153,7 @@ const Btn=styled.button`
 `
 const WishList = () => { 
   const theme = useTheme();
-  console.log(user)
+  
     const wishList = useSelector((state) => state.wishList);
     const cart = useSelector((state) => state.cart);
 
@@ -168,7 +169,7 @@ const WishList = () => {
     <Container theme={theme}>
       
       <Wrapper>
-        <Title  style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
+        <Title style={{color:theme.palette.primary.main}}>YOUR BAG</Title>
         <Top>
           <TopButton  style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}} onClick={() => navigate(-1)} >CONTINUE SHOPPING</TopButton>
           <TopTexts>
@@ -181,7 +182,7 @@ const WishList = () => {
           <Info>
             {wishList.products.map(product=>(
                 <>
-                <Product>
+                <Product key={product._id}>
                 <ProductDetail>
                   <Image src={product.image} />
                   <Details>
@@ -212,7 +213,7 @@ const WishList = () => {
           
         </Bottom>
       </Wrapper>
-      
+      <Footer/>
     </Container>
   );
 };
