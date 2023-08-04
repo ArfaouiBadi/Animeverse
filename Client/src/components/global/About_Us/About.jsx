@@ -3,6 +3,7 @@ import AboutCard from "./AboutCard"
 import { styled } from 'styled-components'
 import aboutUsData from './dummydata.js'
 import { mobile } from '../../responsive'
+import {  useTheme } from "@mui/material/styles";
 
 const Container=styled.div`
 display:flex;
@@ -18,8 +19,10 @@ transition: all 0.3 ease;
 ${mobile({flexDirection:"column",})}
 `
 const About = () => {
+  const theme = useTheme();
+
   return (
-    <Container>
+    <Container theme={theme} style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
       {aboutUsData.map((item) => (
         <AboutCard key={item.id} cover={item.cover} title={item.title} desc={item.desc} />
       ))}
