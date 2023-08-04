@@ -3,8 +3,8 @@ const Commande = require("../models/commande");
 // Create a new commande
 const createCommande = async (req, res) => {
   try {
-    const { address, products, idUser, totalPrice } = req.body;
-    const commande = new Commande({ address, products, idUser, totalPrice });
+    const { address, products, idUser, totalPrice,email } = req.body;
+    const commande = new Commande({ address, products, idUser, totalPrice,email });
     const savedCommande = await commande.save();
     res.status(201).json(savedCommande);
   } catch (error) {

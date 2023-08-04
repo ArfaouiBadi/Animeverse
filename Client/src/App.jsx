@@ -16,6 +16,7 @@ import StoreContext from './hooks/storeContext'
 import { useSelector } from "react-redux";
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ColorModeContext, useMode } from './theme';
+import Succ from './components/Pages/AfterPayment/Succ'
 function App() {
   const [Brand, setBrand] = useState([]);
   const [Size, setSize] = useState("");
@@ -41,12 +42,14 @@ function App() {
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
-         
+          <Route path="/success" element={<Succ/>}></Route>
         </Routes>
        
       
       </Router>
+      
       </StoreContext.Provider>
+
       </ThemeProvider>
     </ColorModeContext.Provider>
       {/**/}

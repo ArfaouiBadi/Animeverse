@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
@@ -12,6 +12,7 @@ import { login } from '../../Redux/apiCalls';
 import {  useTheme } from "@mui/material/styles";
 
 import './Auth.css';
+import { loginFailure, loginSuccess } from '../../Redux/userReducer';
 
 const Auth = () => {
   const [isRegisterVisible, setRegisterVisible] = useState(false);
@@ -127,38 +128,36 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [erreur, setErreur] = useState("");
   const [_, setCookies] = useCookies(['acces-token']);
   const dispatch = useDispatch();
- 
+
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3002/user/login', {
-        username,
-        email,
-        password,
-        
-      });
-
+      const response = await axios.post('http://localhost:3002/user/login', {password, email});
+      console.log(response.data)
+      
       if (response.data.message) {
+        dispatch(loginFailure());
+        console.log("eee")
         
-        console.log(response.data.message);
         
       } else {
-        
+        console.log("dkhal")
+        dispatch(loginSuccess(response.data));
         setCookies('access-token', response.data.token);
         window.localStorage.setItem('userID', response.data._id);
-        login(dispatch, { username, password, email});
       }
     } catch (error) {
+      dispatch(loginFailure());
       console.error('Error during login:', error);
       
     }
   };
-
+ 
   return (
     <Form
       label="Login"
-      showUsername
       showEmail
       showPassword
       username={username}
@@ -168,6 +167,7 @@ const Login = () => {
       email={email}
       setEmail={setEmail}
       onClick={handleLogin}
+
     />
   );
 };
@@ -202,17 +202,20 @@ const Form = ({
   phone,
   setPhone,
   onClick,
+
+  
 }) => {
   const handleClick = () => {
     onClick(); // Call the onSubmit function passed as a prop
   };
-
+  
   const [isVisible, setVisible] = useState(false);
 
   const handleClickView = () => {
     setVisible((prevState) => !prevState);
   };
-  const {isFetching,error}=useSelector((state)=> state.user)
+  
+
   return (
     <div onSubmit={handleClick}>
       {showUsername && (
@@ -301,10 +304,11 @@ const Form = ({
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
+        
       )}
       <input type="checkbox" className="check-box" required />
       <span>I agree to the terms & conditions</span>
-      <button type="submit" className="submit-btn" onClick={handleClick} disabled={isFetching}>
+      <button type="submit" className="submit-btn" onClick={handleClick}>
         {label}
       </button>
     </div>

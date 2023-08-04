@@ -2,10 +2,7 @@ const mongoose = require("mongoose")
 
 const commandeSchema = new mongoose.Schema(
     {
-        address: {
-            type: String,
-            required: true
-        },
+        
         products:[mongoose.Schema.Types.Mixed],
         idUser: {
             type: String,
@@ -16,6 +13,10 @@ const commandeSchema = new mongoose.Schema(
             required: true
         },
         address: {
+            type: String,
+            required: true
+        },
+        email: {
             type: String,
             required: true
         }

@@ -9,7 +9,6 @@ const createToken = (user) => {
 const UserModel = require('../models/user')
 const register = async (req, res) => {
   const {username,lastName,email,password,firstName,role,birth,address,phone}=req.body
-  console.log({username,lastName,email,password,firstName,role,birth,address,phone})
   const user = await UserModel.findOne({ email });
   if (user) {
     return res.json({ message: "user already exists" });
@@ -34,20 +33,23 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, email, password} = req.body;
-  const Loguser = await UserModel.findOne({ email });
-  if (!Loguser) {
-    return res.json({ message: "User dosn't exists" });
-  }
-  const isPasswordValid = await bcrypt.compare(password, Loguser.password);
-  if (!isPasswordValid) {
-    return res.json({
-      message: "Username or password is not correct",
-    });
-  }
-  const token = createToken(Loguser);
-  const { ...others } = Loguser._doc;
-  res.status(200).json({...others, token});
-  
+  try{
+    const Loguser = await UserModel.findOne({ email });
+    if (!Loguser ) {
+      return res.json({ message: "User dosn't exists" });
+    }
+    const isPasswordValid = await bcrypt.compare(password, Loguser.password);
+    if (!isPasswordValid) {
+      return res.json({
+        message: "Username or password is not correct",
+      });
+    }
+    const token = createToken(Loguser);
+    const { ...others } = Loguser._doc;
+    res.status(200).json({...others, token});
+}catch(err){
+  console.log(err)
+}
 };
 
 module.exports = { login, register };
