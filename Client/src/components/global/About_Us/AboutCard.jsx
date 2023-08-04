@@ -50,7 +50,7 @@ const AboutCard = ({title,cover,desc}) => {
         
         <a className="card1" href="#">
         <img className="img_about"src={cover}/>
-        <h3 className="title">{title}</h3>
+        <h2 className="title">{title}</h2>
         <p className="small">{desc}</p>
         <div className="go-corner" href="#">
       <div className="go-arrow">
