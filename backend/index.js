@@ -47,6 +47,8 @@ app.post("/check", async (req, res) => {
 //routes
 app.use("/user", userRoutes);
 app.use("/api/products", produitsRoutes);
+app.use("/api/orders", ordersRoutes);
+
 //connect to mogoose
 mongoose.connect(process.env.URL).then(() => {
   console.log("`🟢 Connected To DataBase`");
