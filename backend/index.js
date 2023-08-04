@@ -33,7 +33,7 @@ app.post("/check", async (req, res) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `${process.env.SERVER}success`,
+      success_url: `${process.env.SERVER}/Succ`,
       cancel_url: `${process.env.SERVER}cancel`,
     });
     console.log(session.url);
