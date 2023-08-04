@@ -1,12 +1,10 @@
 const userRoutes = require("./routes/userRoutes");
 const produitsRoutes = require("./routes/produitsRoutes");
+const ordersRoutes = require("./routes/ordersRoutes");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const produit = require("./models/produit");
-
 const express = require("express");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
 const app = express();
 app.use(cors());
 
@@ -35,8 +33,8 @@ app.post("/check", async (req, res) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `${process.env.SERVER}/success.html`,
-      cancel_url: `${process.env.SERVER}/cancel.html`,
+      success_url: `${process.env.SERVER}success`,
+      cancel_url: `${process.env.SERVER}cancel`,
     });
     console.log(session.url);
     res.status(200).json({ url: session.url });
