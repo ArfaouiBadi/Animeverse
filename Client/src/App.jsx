@@ -42,7 +42,7 @@ function App() {
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
-         
+
         </Routes>
        
       <Footer/>
