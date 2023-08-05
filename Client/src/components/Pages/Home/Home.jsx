@@ -7,12 +7,16 @@ import { useContext } from 'react'
 import StoreContext from '../../../hooks/storeContext'
 import About from '../../global/About_Us/About'
 import Footer from '../../global/Footer/Footer'
+import Slider from '../../global/Slider/Slider'
+import Catagories from '../../global/Catagories/Catagories'
 
 const Home = () => {
   const {user}=useContext(StoreContext)
   return (
     <>
-      <Products/>
+      
+      <Catagories/>
+      <Slider/>
       <About/>
       <Newsletter/>
       <Contact/>
