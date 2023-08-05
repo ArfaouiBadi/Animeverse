@@ -272,3 +272,37 @@
     catagorie: "Homeaware",
   },
 ];
+
+
+export const Slides =[
+  {
+    id: 6,
+    title: "Naruto-Team-Liquid-x-Naruto-Kakashi-Vest",
+    image: "https://i.ibb.co/0jckHyP/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male.jpg",
+    otherView:["https://i.ibb.co/wySrwsv/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Male-Back.jpg","https://i.ibb.co/9vgSNrM/Naruto-Team-Liquid-x-Naruto-Kakashi-Vest-Female.jpg"],
+    price: "100$",
+    series:"Naruto",
+    desc: "Bluelock Figure",
+    catagorie: "Clothing",
+  },
+  {
+    id: 1,
+    title: "Bluelock",
+    image: "https://i.ibb.co/Bs0ZKpf/BLUELOCK1.webp",
+    otherView:["https://i.ibb.co/hKG7HQY/BLUELOCK2.webp","https://i.ibb.co/GsXtDk9/BLUELOCK3.webp","https://i.ibb.co/vV1Zbt9/BLUELOCK4.webp"],
+    price: "100$",
+    series:"Naruto",
+    desc: "Bluelock Figure",
+    catagorie: "Figures",
+  },
+  {
+    id: 2,
+    title: "My Dress-Up Darling - Marin Kitagawa Noodle Stopper Figure",
+    image: "https://i.ibb.co/V3h9Zs2/My-Dress-Up-Darling-Marin-Kitagawa-Noodle-Stopper-Figure1.webp",
+    otherView:["https://i.ibb.co/Rg5h3Kt/My-Dress-Up-Darling-Marin-Kitagawa-Noodle-Stopper-Figure3.webp","https://i.ibb.co/LYZ369B/My-Dress-Up-Darling-Marin-Kitagawa-Noodle-Stopper-Figure2.webp","https://i.ibb.co/XLNKL3K/My-Dress-Up-Darling-Marin-Kitagawa-Noodle-Stopper-Figure4.webp"],
+    price: "100$",
+    series:"Naruto",
+    desc: "My Dress-Up Darling - Marin Kitagawa Noodle Stopper Figure Figure",
+    catagorie: "Figures",
+  },
+]
