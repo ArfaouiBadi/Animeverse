@@ -33,8 +33,11 @@ const Text=styled.div`
   position: absolute;
   right:5%;
   top:0;
-  padding: 40px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:0px 50px;
+  user-select: text;
   width: 30%;
   height: 100%;
   font-weight: 700;
@@ -68,7 +71,7 @@ export const Carousel = ({ data }) => {
           />
           
           <Text>{item.title}</Text>
-          <Button>SHOP NOW</Button>
+          <Button to="/products/All_Products">SHOP NOW</Button>
           </div>
         );
       })}
