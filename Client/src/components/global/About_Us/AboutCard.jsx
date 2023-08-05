@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import "./about.css"
 import { mobile } from '../../responsive';
 import './about.css'
+import {  useTheme } from "@mui/material/styles";
+
 const Container=styled.div`
   border: 1px solid white;
   padding: 10px;
@@ -43,9 +45,10 @@ font-size: 12px;
 
 
 const AboutCard = ({title,cover,desc}) => {
-  
+  const theme = useTheme();
+
   return (
-    <Container>
+    <Container theme={theme} style={{borderColor:theme.palette.primary.main}}>
       <div className="container_about">
         
         <a className="card1" href="#">
