@@ -40,7 +40,7 @@ function App() {
           <Route path="/products/*" element={<Products/>}></Route>
           <Route path="/login" element={user ? <Navigate to="/" /> : <Auth />}></Route>
           <Route path='/SingleProduct/:id' element={<SingleProduct />}></Route>
-          <Route path='/Cart' element={<Cart />}></Route>
+          <Route path='/Cart' element={user ? <Cart /> : <Auth/>}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
           <Route path="/success" element={<Succ/>}></Route>
         </Routes>

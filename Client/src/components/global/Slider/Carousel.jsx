@@ -4,6 +4,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import "./Carousel.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {  useTheme } from "@mui/material/styles";
 
 
 const Button=styled(Link)`
@@ -44,7 +45,7 @@ const Text=styled.div`
   text-transform: uppercase;
 `
 export const Carousel = ({ data }) => {
-
+  const theme = useTheme();
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
@@ -58,7 +59,6 @@ export const Carousel = ({ data }) => {
   return (
     <div className="carousel">
       <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
-      
       {data.map((item, idx) => {
         return (
           <div className={slide === idx ? "slide" : "slide slide-hidden"}>
@@ -71,7 +71,7 @@ export const Carousel = ({ data }) => {
           />
           
           <Text>{item.title}</Text>
-          <Button to="/products/All_Products">SHOP NOW</Button>
+          <Button to="/products/All_Products" style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>SHOP NOW</Button>
           </div>
         );
       })}
