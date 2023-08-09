@@ -131,7 +131,7 @@ const Login = () => {
   const [erreur, setErreur] = useState("");
   const [_, setCookies] = useCookies(['acces-token']);
   const dispatch = useDispatch();
-
+  
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3002/user/login', {password, email});
@@ -154,6 +154,7 @@ const Login = () => {
       
     }
   };
+
  
   return (
     <Form
@@ -214,7 +215,8 @@ const Form = ({
   const handleClickView = () => {
     setVisible((prevState) => !prevState);
   };
-  
+  const theme = useTheme();
+
 
   return (
     <div onSubmit={handleClick}>
@@ -279,8 +281,8 @@ const Form = ({
         />
       )}
       {showBirth && (
-        <input
-          type="text"
+        <input style={{color:theme.palette.primary.main}}
+          type="date"
           className="input-field"
           placeholder="Birth"
           value={birth}
