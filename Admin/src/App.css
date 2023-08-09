@@ -1,10 +1,12 @@
 .container{
     display: flex;
     margin-top: 10px;
+    font-family: 'Josefin Sans';
 }
 
 
 .link{
     text-decoration: none;
     color: inherit;
+    font-family: 'Josefin Sans';
 }

@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  
 }
 
 .featuredItem {
@@ -16,6 +17,7 @@
 
 .featuredTitle{
     font-size: 20px;
+    
 }
 
 .featuredMoneyContainer{
