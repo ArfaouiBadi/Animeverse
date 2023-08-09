@@ -139,11 +139,9 @@ const Login = () => {
       
       if (response.data.message) {
         dispatch(loginFailure());
-        console.log("eee")
         
         
       } else {
-        console.log("dkhal")
         dispatch(loginSuccess(response.data));
         setCookies('access-token', response.data.token);
         window.localStorage.setItem('userID', response.data._id);
