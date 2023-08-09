@@ -9,8 +9,9 @@ export default function WidgetLg() {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await userRequest.get("orders");
+        const res = await userRequest.get("/api/orders");
         setOrders(res.data);
+        console.log(res.data)
       } catch {}
     };
     getOrders();
@@ -31,12 +32,12 @@ export default function WidgetLg() {
         {orders.map((order) => (
           <tr className="widgetLgTr" key={order._id}>
             <td className="widgetLgUser">
-              <span className="widgetLgName">{order.userId}</span>
+              <span className="widgetLgName">{order.idUser}</span>
             </td>
             <td className="widgetLgDate">{format(order.createdAt)}</td>
-            <td className="widgetLgAmount">${order.amount}</td>
+            <td className="widgetLgAmount">${order.totalPrice}</td>
             <td className="widgetLgStatus">
-              <Button type={order.status} />
+              <Button type={"approved"} />
             </td>
           </tr>
         ))}
