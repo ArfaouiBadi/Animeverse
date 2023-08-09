@@ -12,6 +12,7 @@ export default function ProductList() {
 
   useEffect(() => {
     getProducts(dispatch);
+    
   }, [dispatch]);
 
   const handleDelete = (id) => {
@@ -27,13 +28,13 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
+            <img className="productListImg" src={params.row.image} alt="" />
             {params.row.title}
           </div>
         );
       },
     },
-    { field: "inStock", headerName: "Stock", width: 200 },
+    { field: "quantity", headerName: "Stock", width: 200 },
     {
       field: "price",
       headerName: "Price",

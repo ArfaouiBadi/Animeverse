@@ -10,14 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
+    "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.14.3",
+    "@mui/x-data-grid": "^6.11.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "firebase": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.14.2",
     "react-scripts": "^5.0.1",
     "recharts": "^2.0.9",
+    "redux-persist": "^6.0.0",
     "timeago.js": "^4.0.2",
     "web-vitals": "^3.4.0"
   },

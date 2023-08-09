@@ -43,9 +43,9 @@ function App() {
           <Route path='/Cart' element={<Cart />}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
           <Route path="/success" element={<Succ/>}></Route>
+          
         </Routes>
-       
-      
+        <Footer/>
       </Router>
       
       </StoreContext.Provider>

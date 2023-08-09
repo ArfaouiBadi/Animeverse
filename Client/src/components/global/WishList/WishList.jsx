@@ -211,7 +211,7 @@ const WishList = () => {
           </Info>
         </Bottom>
       </Wrapper>
-      <Footer/>
+      
     </Container>
   );
 };

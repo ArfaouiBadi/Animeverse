@@ -175,7 +175,19 @@ import { Link } from "react-router-dom";
             <ListItem style={{color:"white"}} to="">Terms</ListItem>
           </List>
         </Center>
-        
+        <Right>
+        <Title>Contact</Title>
+        <ContactItem>
+          <Room style={{marginRight:"10px"}}/> Tunis
+        </ContactItem>
+        <ContactItem>
+          <Phone style={{marginRight:"10px"}}/> +1 234 56 78
+        </ContactItem>
+        <ContactItem>
+          <MailOutline style={{marginRight:"10px"}} /> Animeverse@gmail.com
+        </ContactItem>
+        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+      </Right>
         
       </Container>
       <Copyright>

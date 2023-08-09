@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Catagories from "../../global/Catagories/Catagories";
 import Filter from "../../global/Filter/Filter";
+import Footer from "../../global/Footer/Footer";
 import StoreContext from "../../../hooks/storeContext";
 import axios from "axios";
 import {  useTheme } from "@mui/material/styles";
@@ -17,7 +18,7 @@ const Container = styled.div`
     background-position: 50% 100%;
     background-size: cover;
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
     
