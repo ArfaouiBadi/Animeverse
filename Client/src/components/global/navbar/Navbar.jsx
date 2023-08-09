@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountMenu from '../../global/AccountMenu/AccountMenu';
 import './navbar.css'
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
@@ -105,6 +106,7 @@ const Navbar = () => {
   const wishList=useSelector(state=>state.wishList)
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme(); 
+  const user=useSelector((state) => state.user.currentUser);
   return (
     <Container>
       
@@ -149,10 +151,16 @@ const Navbar = () => {
         <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none"}}>Animeverse.</Link></Logo>
         </Center>
         <Right>
-          <Left_icons to={"/login"}>
-          <AccountCircleOutlinedIcon/>
-          
-          </Left_icons>
+        {user && (
+         <AccountMenu/>
+        )}
+        {!user && (
+         <Left_icons to={"/login"}>
+         <AccountCircleOutlinedIcon/>
+         </Left_icons>
+        )}
+
+         
           <Left_icons to={"/wishList"}>
           <Badge badgeContent={wishList.quantity} color="secondary" overlap="rectangular">
           <FavoriteBorderOutlinedIcon/>

@@ -90,9 +90,9 @@ const Products = () => {
   
     <Catagories/>
     <Filter />
-    <Container  theme={theme}>
+    <Container  theme={theme} style={{ flex: '1 1 auto', overflowY: 'auto',color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
       {filteredProducts.map((item) => (
-        <Product_card item={item} key={item._id} />
+        <Product_card item={item} key={item._id}/>
       ))}
     </Container>
     

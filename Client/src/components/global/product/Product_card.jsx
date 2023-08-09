@@ -3,12 +3,12 @@ import {
     SearchOutlined,
     ShoppingCartOutlined,
   } from "@material-ui/icons";
-  import styled from "styled-components";
-
-  import { addToCart } from "../../Redux/cartReducer";
-  import { addToWishList } from "../../Redux/wishListReducer";
+import styled from "styled-components";
+import { addToCart } from "../../Redux/cartReducer";
+import { addToWishList } from "../../Redux/wishListReducer";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {  useTheme } from "@mui/material/styles";
 import './Product_cart.css'
   const Info = styled.div`
     opacity: 0;
@@ -103,10 +103,11 @@ import './Product_cart.css'
   const handleClickWishList = () => {
     dispatch(addToWishList({ ...item, quantity: 1 }));
   };
-    
+  const theme = useTheme();
+
     return (
       
-      <Container>
+      <Container theme={theme} >
         
         <Image src={item.image} />
         <Info >
