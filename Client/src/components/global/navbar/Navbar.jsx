@@ -106,18 +106,7 @@ const Left_icons = styled(Link)`
   transition: 0.3s ease all;
   
 `;
-const Btn = styled.button`
- font-size: 14px;
-  height: 52px;
-  padding-top: 14px;
-  cursor: pointer;
-  color:white;
-  margin-left: 25px;
-  font-weight: 700;
-  margin-right:10px ;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
-  transition: 0.3s ease all;
-`
+
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
   const wishList=useSelector(state=>state.wishList)
@@ -184,9 +173,9 @@ const Navbar = () => {
         )}
         
         {admin && (
-         <Left_icons to={"/admin"} style={{marginBottom:"10px"}}>
-         <Button onClick={handleToggleClick}><AdminPanelSettingsIcon  /></Button>
-         </Left_icons>
+         <Link to={"/admin"} style={{marginLeft:"10px"}}>
+         <Button onClick={handleToggleClick} ><AdminPanelSettingsIcon  /></Button>
+         </Link>
         )}
          
           <Left_icons to={"/wishList"} >

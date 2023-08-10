@@ -18,7 +18,7 @@ export default function UserList() {
     };
     getUsers();
   }, []);
-console.log(data)
+
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item._id !== id));

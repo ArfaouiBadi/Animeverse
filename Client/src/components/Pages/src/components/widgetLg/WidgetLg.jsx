@@ -43,7 +43,6 @@ export default function WidgetLg() {
             </td>
           </tr>
         ))}
-
         </tbody>
         
       </table>
