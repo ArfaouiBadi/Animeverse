@@ -101,7 +101,6 @@ const Catagories = () => {
           onClick={handleClick}
           sx={{
             width: 222,
-            // @ts-ignore
             height:30,
             backgroundColor: theme.palette.background.main,
             scale:"calc(0.9)",
