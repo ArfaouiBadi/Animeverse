@@ -106,7 +106,7 @@ const Catagories = () => {
             scale:"calc(0.9)",
             
             color: theme.palette.primary.main,
-            
+
           }}
         >
           <WindowIcon />
@@ -115,7 +115,8 @@ const Catagories = () => {
               padding: "0",
               textTransform: "capitalize",
               mx: 1,
-              fontFamily:'Josefin Sans',
+              fontFamily:'Josefin Sans',             
+
             }}
           >
             Categories
@@ -198,13 +199,13 @@ const Catagories = () => {
           </MenuItem>
         </Menu>
         </div>
-    
+        <Catagorie_Home to="/" style={{color:theme.palette.primary.main}}>
+        HOME
+    </Catagorie_Home>
     <Catagorie_Home  style={{color:theme.palette.primary.main}} >
         ABOUT US
     </Catagorie_Home>
-    <Catagorie_Home to="/" style={{color:theme.palette.primary.main}}>
-        HOME
-    </Catagorie_Home>
+    
     <Catagorie_Home  style={{color:theme.palette.primary.main}}>
        CONTACT
     </Catagorie_Home>
