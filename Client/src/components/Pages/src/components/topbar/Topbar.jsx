@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import StoreContext from "../../../../../hooks/storeContext";
+import { Button } from "@mui/material";
 
 export default function Topbar() {
+  const {adminDashboard,setadminDashboard}=useContext(StoreContext)
+const handleToggleClick = () => {
+    setadminDashboard(!adminDashboard)
+  };
   return (
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">Animeverse Admin Dashboard</span>
+          <span className="logo">Admin Dashboard</span>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
@@ -15,8 +22,8 @@ export default function Topbar() {
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
+            <Button onClick={handleToggleClick}><Link to="/"><Language /></Link></Button>
+            
           </div>
           <div className="topbarIconContainer">
             <Settings />

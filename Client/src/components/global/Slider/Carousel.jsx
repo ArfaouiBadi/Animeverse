@@ -61,7 +61,7 @@ export const Carousel = ({ data }) => {
       <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
       {data.map((item, idx) => {
         return (
-          <div className={slide === idx ? "slide" : "slide slide-hidden"} key={item._id}>
+          <div className={slide === idx ? "slide" : "slide slide-hidden"} key={item.id}>
           <img
             src={item.image}
             alt={item.title}

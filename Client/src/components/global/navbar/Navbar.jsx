@@ -183,7 +183,7 @@ const Navbar = () => {
          </Left_icons>
         )}
         
-        {!admin && (
+        {admin && (
          <Left_icons to={"/admin"} style={{marginBottom:"10px"}}>
          <Button onClick={handleToggleClick}><AdminPanelSettingsIcon  /></Button>
          </Left_icons>

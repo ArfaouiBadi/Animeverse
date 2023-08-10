@@ -44,7 +44,6 @@ function App() {
       {!adminDashboard?(
         <Router>
         <Navbar/>
-        
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/register' element={<Auth/>}></Route>
@@ -54,11 +53,10 @@ function App() {
           <Route path='/Cart' element={user ? <Cart /> : <Auth/>}></Route>
           <Route path="/wishList" element={<WishList/>}></Route>
           <Route path="/success" element={<Succ/>}></Route>
-            
           </Routes>
           <Footer/>
       </Router>
-      ):(!admin &&(
+      ):(admin &&(
         
         <Router>
           
