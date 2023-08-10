@@ -6,15 +6,62 @@ import {
   PhoneAndroid,
   Publish,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./user.css";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../requestMethods";
+import axios from "axios";
 
 export default function User() {
+  const location=useLocation()
+  const id =location.pathname.split("/")[3]
+ 
+  
+  const [user,setUser]=useState([])
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await userRequest.get("user/find/"+id);
+        setUser(res.data);
+      } catch {}
+    };
+    getUser();
+  }, []);
+  const [userName, setUsername] = useState(user.userName);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [role, setRole] = useState(user.role);
+  const [birth, setBirth] = useState(user.birth);
+  const [address, setAddress] = useState(user.address);
+  const [phone, setPhone] = useState(user.phone);
+  const handleUserUpdate = async()=>{
+    
+        try {
+          const updatedUserData = {
+            userName,
+            email,
+            password,
+            firstName,
+            lastName,
+            role,
+            birth,
+            address,
+            phone,
+          };
+          const res = await axios.put("http://localhost:3002/user/"+id, updatedUserData);
+          console.log(res)
+        } catch (err){
+          console.log(err)
+        }
+      
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
-        <Link to="/newUser">
+        <Link to="/admin/newUser">
           <button className="userAddButton">Create</button>
         </Link>
       </div>
@@ -27,32 +74,32 @@ export default function User() {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Anna Becker</span>
-              <span className="userShowUserTitle">Software Engineer</span>
+              <span className="userShowUsername">{user.userName}</span>
+              <span className="userShowUserTitle">{user.role}</span>
             </div>
           </div>
           <div className="userShowBottom">
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99</span>
+              <span className="userShowInfoTitle">{user.userName}</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">10.12.1999</span>
+              <span className="userShowInfoTitle">{user.birth?.split("T")[0]}</span>
             </div>
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
               <PhoneAndroid className="userShowIcon" />
-              <span className="userShowInfoTitle">+1 123 456 67</span>
+              <span className="userShowInfoTitle">{user.phone}</span>
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99@gmail.com</span>
+              <span className="userShowInfoTitle">{user.email}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">New York | USA</span>
+              <span className="userShowInfoTitle">{user.address}</span>
             </div>
           </div>
         </div>
@@ -61,27 +108,48 @@ export default function User() {
           <form className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Username</label>
+                <label>User Name</label>
                 <input
                   type="text"
-                  placeholder="annabeck99"
+                  placeholder="UserName"
                   className="userUpdateInput"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Full Name</label>
+                <label>First Name</label>
                 <input
                   type="text"
-                  placeholder="Anna Becker"
+                  placeholder="First Name"
                   className="userUpdateInput"
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Email</label>
+                <label>Last Name</label>
                 <input
                   type="text"
-                  placeholder="annabeck99@gmail.com"
+                  placeholder="Last Name"
                   className="userUpdateInput"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>{user.email}</label>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  className="userUpdateInput"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Password</label>
+                <input
+                  type="text"
+                  placeholder="Password"
+                  className="userUpdateInput"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="userUpdateItem">
@@ -96,8 +164,9 @@ export default function User() {
                 <label>Address</label>
                 <input
                   type="text"
-                  placeholder="New York | USA"
+                  placeholder="Adress"
                   className="userUpdateInput"
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
             </div>
@@ -108,12 +177,10 @@ export default function User() {
                   src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                   alt=""
                 />
-                <label htmlFor="file">
-                  <Publish className="userUpdateIcon" />
-                </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                
+                
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton" onClick={handleUserUpdate}>Update</button>
             </div>
           </form>
         </div>

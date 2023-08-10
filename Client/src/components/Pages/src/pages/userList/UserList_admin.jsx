@@ -4,7 +4,8 @@ import { DeleteOutline } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { userRequest } from "../../requestMethods";
+import { publicRequest, userRequest } from "../../requestMethods";
+import { Alert } from "@mui/material";
 
 export default function UserList() {
   const [data, setData] = useState([]);
@@ -20,10 +21,16 @@ export default function UserList() {
   }, []);
 
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item._id !== id));
+  const handleDelete = async (id) => {
+    
+    try{await userRequest.delete("user/"+id);
+    
+  }catch{
+      
+    }
+    
   };
-  
+ 
   const columns = [
     
     { field: "_id", headerName: "ID", width: 100 },
@@ -57,14 +64,15 @@ export default function UserList() {
       headerName: "Action",
       width: 150,
       renderCell: (params) => {
+        
         return (
           <>
-            <Link to={"/user/" + params.row}>
+            <Link to={"/admin/user/" + params.row._id}>
               <button className="userListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -74,6 +82,7 @@ export default function UserList() {
 
   return (
     <div className="userList">
+      
       <DataGrid
         rows={data}
         disableSelectionOnClick
