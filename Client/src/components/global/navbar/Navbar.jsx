@@ -8,19 +8,22 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import cata1 from '../../../assets/cata1.png'
 import styled from "styled-components";
 import { mobile } from "../../responsive";
-import { useState } from "react";
+
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
-import {IconButton ,useTheme} from '@mui/material';
+import {Button, IconButton ,useTheme} from '@mui/material';
 import { ColorModeContext } from "../../../theme";
-import   { useContext } from "react";
-
+import   { useContext, useEffect } from "react";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import StoreContext from "../../../hooks/storeContext";
 
 const Container = styled.div`
   height: 65px;
+  width: 100%;
   background-color: #121D31;
   background: url(${cata1});
   ${mobile({ height: "50px" ,width:"100vw"})}
+
 `;
 
 const Wrapper = styled.div`
@@ -75,6 +78,7 @@ const Center = styled.div`
 `;
 
 const Logo = styled.h1`
+
   font-weight: 700;
   font-family: 'Lobster';
   cursor: pointer;
@@ -94,6 +98,7 @@ const Left_icons = styled(Link)`
   height: 52px;
   padding-top: 14px;
   cursor: pointer;
+  color:white;
   margin-left: 25px;
   font-weight: 700;
   margin-right:10px ;
@@ -101,12 +106,29 @@ const Left_icons = styled(Link)`
   transition: 0.3s ease all;
   
 `;
+const Btn = styled.button`
+ font-size: 14px;
+  height: 52px;
+  padding-top: 14px;
+  cursor: pointer;
+  color:white;
+  margin-left: 25px;
+  font-weight: 700;
+  margin-right:10px ;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  transition: 0.3s ease all;
+`
 const Navbar = () => {
   const cart=useSelector(state=>state.cart)
   const wishList=useSelector(state=>state.wishList)
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme(); 
   const user=useSelector((state) => state.user.currentUser);
+  const {adminDashboard,setadminDashboard}=useContext(StoreContext)
+  const admin = useSelector((state) => state.user.currentUser?.isAdmin);
+  const handleToggleClick = () => {
+    setadminDashboard(!adminDashboard)
+  };
   return (
     <Container>
       
@@ -148,28 +170,34 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-        <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none"}}>Animeverse.</Link></Logo>
+        <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none",color:'white'}}>Animeverse.</Link></Logo>
         </Center>
         <Right>
+         
         {user && (
          <AccountMenu/>
         )}
         {!user && (
-         <Left_icons to={"/login"}>
+         <Left_icons to={"/login"} onClick={handleToggleClick}>
          <AccountCircleOutlinedIcon/>
          </Left_icons>
         )}
-
+        
+        {!admin && (
+         <Left_icons to={"/admin"} style={{marginBottom:"10px"}}>
+         <Button onClick={handleToggleClick}><AdminPanelSettingsIcon  /></Button>
+         </Left_icons>
+        )}
          
-          <Left_icons to={"/wishList"}>
+          <Left_icons to={"/wishList"} >
           <Badge badgeContent={wishList.quantity} color="secondary" overlap="rectangular">
-          <FavoriteBorderOutlinedIcon/>
+          <FavoriteBorderOutlinedIcon style={{fill:'white'}}/>
           </Badge>
           </Left_icons>
           
           <Left_icons to={"/cart"}>
             <Badge badgeContent={cart.quantity} color="secondary" overlap="rectangular">
-              <ShoppingCartOutlined />
+              <ShoppingCartOutlined style={{fill:'white'}}/>
             </Badge>
           </Left_icons>
         </Right>

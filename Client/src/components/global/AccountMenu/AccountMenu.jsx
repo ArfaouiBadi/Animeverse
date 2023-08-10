@@ -4,12 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../Redux/userReducer'
@@ -32,13 +28,10 @@ export default function AccountMenu() {
   };
   const user=useSelector((state) => state.user.currentUser);
   const theme = useTheme();
-
-
- 
   return (
     <React.Fragment>
       <div theme={theme}>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center'}}>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -48,7 +41,8 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{user.firstName[0]}</Avatar>
+            <Avatar sx={{ width: 32, height: 32 ,backgroundColor:"white",color:"#121D31",scale:"calc(0.7)",textAlign:'center',textTransform:"uppercase"
+          }}>{user.firstName[0]}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -61,6 +55,7 @@ export default function AccountMenu() {
         PaperProps={{
           elevation: 0,
           sx: {
+            
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
@@ -89,10 +84,9 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         
       >
-        
-       
+      
         <MenuItem  onClick={() => { handleClose(); handleLogout(); }}   sx={{
-            color: theme.palette.primary.main            }}>
+            color: theme.palette.primary.main}}>
           <ListItemIcon >
             <Logout  sx={{fill:theme.palette.primary.main}}fontSize="small"  />
           </ListItemIcon>

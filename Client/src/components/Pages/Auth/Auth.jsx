@@ -36,7 +36,7 @@ const Auth = () => {
 
 
   return (
-    <div className="container"  theme={theme} style={{backgroundColor:theme.palette.background.main}}>
+    <div className="container_auth"  theme={theme} style={{backgroundColor:theme.palette.background.main}}>
       <div className="contact-box" style={{backgroundColor:theme.palette.background.main}}>
         <div className="left_login"></div>
         <div className="right">
@@ -86,6 +86,7 @@ const Register = () => {
       birth,
       role,
     });
+    
   };
 
   return (

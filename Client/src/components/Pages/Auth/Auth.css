@@ -1,13 +1,9 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   font-family: 'Josefin Sans';
   
-  color: white;
 }
 
-.container {
+.container_auth {
   
   width: 100%;
   height: 800px;
@@ -44,8 +40,6 @@
 
 .right {
   padding: 25px 40px;
-  
-  
 }
 
 .button-box {
@@ -158,7 +152,7 @@
 }
 
 span {
-  color: #777;
+  color: black;
   font-size: 12px;
 }
 .input {
