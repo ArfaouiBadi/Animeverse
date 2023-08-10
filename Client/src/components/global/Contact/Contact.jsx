@@ -29,18 +29,17 @@ const Title = styled.h3`
 `;
 
 const Contact = () => {
-  const map =
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.584864765967!2d10.74376967472897!3d34.74085708105891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1301d3033abc9f7b%3A0x67fc53f889c7a0ac!2sSwiftcode!5e0!3m2!1sfr!2stn!4v1690793185715!5m2!1sfr!2stn" width="600" height="450"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade';
+  const map ='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.584864765967!2d10.74376967472897!3d34.74085708105891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1301d3033abc9f7b%3A0x67fc53f889c7a0ac!2sSwiftcode!5e0!3m2!1sfr!2stn!4v1690793185715!5m2!1sfr!2stn" width="600" height="450"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade';
     const theme = useTheme();
 
   return (
     <>
-      <div className="contact" theme={theme} >
-      <div className="container"style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
-          <div className="left row">
+      <div className="contact" theme={theme}  style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main, }}>
+      <div className="container" style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
+          <div className="left row" style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
             <iframe src={map} title="Map"></iframe>
           </div>
-          <div className="right row space">
+          <div className="right row space" style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main,border:`1px solid ${theme.palette.primary.main}`}}>
             <h1 className="space">Contact Us</h1>
             <p className="space">We would love to hear from you! </p>
             <div className="items grid2">
@@ -55,7 +54,7 @@ const Contact = () => {
           </ContactItem>
           <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
             </div>
-            <form action="" >
+            <form action=""  style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
               <div className="flexSB" >
                 <input type="text" placeholder="Name" style={{backgroundColor:theme.palette.primary.main,color:theme.palette.background.main}} />
                 <input type="email" placeholder="Email" style={{backgroundColor:theme.palette.primary.main,color:theme.palette.background.main}} />

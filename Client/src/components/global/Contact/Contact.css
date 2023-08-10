@@ -1,5 +1,4 @@
 .contact{
-    background-color: #121D31;
     width: 100%;
     height: 100%;
     display: flex;
@@ -23,7 +22,6 @@
     
 }
 .contact .right {
-    border: 1px solid white;
     border-radius: 10px;
     width: 80%;
     height: 100%;

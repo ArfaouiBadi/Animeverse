@@ -1,6 +1,7 @@
 import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 import imagesnew from './images/Newsletter.jpg'
+import {  useTheme } from "@mui/material/styles";
 
 const Container = styled.div`
   height: 50vh;
@@ -56,14 +57,16 @@ const Button = styled.button`
 `;
 
 const Newsletter = () => {
+  const theme = useTheme();
+
   return (
-    <Container>
+    <Container  theme={theme} style={{color:"#fff"}}>
       <Title>Newsletter</Title>
       <Desc>Get timely updates from your favorite products.</Desc>
-      <InputContainer>
+      <InputContainer style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}}>
         <Input placeholder="Your email" />
         <Button>
-          <Send />
+          <Send style={{color:theme.palette.primary.main,backgroundColor:theme.palette.background.main}} />
         </Button>
         
       </InputContainer>
