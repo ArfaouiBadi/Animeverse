@@ -147,7 +147,7 @@ const Navbar = () => {
           }}
           color="inherit"
         >
-          <LightModeOutlined />
+          <LightModeOutlined  sx={{fill:"#fff"}}/>
         </IconButton>
       ) : (
         <IconButton
@@ -160,7 +160,7 @@ const Navbar = () => {
           }}
           color="inherit"
         >
-          <DarkModeOutlined />
+          <DarkModeOutlined  sx={{fill:"#fff"}}/>
         </IconButton>
       )}
     </div>
