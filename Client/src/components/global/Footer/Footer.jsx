@@ -37,10 +37,11 @@ import { Link } from "react-router-dom";
     display: flex;
     flex-direction: column;
     padding: 20px;
-    
+    color: white;
   `;
   
   const Logo = styled.h1`
+  color:"white";
   font-weight: 700;
   font-family: 'Lobster';
   transition: 0.2s ease all;
@@ -77,6 +78,7 @@ import { Link } from "react-router-dom";
   `;
   
   const Center = styled.div`
+    color: white;
     flex: 1;
     padding: 20px;
     margin-top: 15px;
@@ -86,6 +88,7 @@ import { Link } from "react-router-dom";
   `;
   
   const Title = styled.h3`
+  color: white;
     margin-bottom: 30px;
     font-family: 'Roboto Condensed';
     transition: 0.2s ease all;
@@ -96,6 +99,7 @@ import { Link } from "react-router-dom";
   `;
   
   const List = styled.ul`
+  
     margin: 0;
     padding: 0;
     list-style: none;
@@ -114,6 +118,7 @@ import { Link } from "react-router-dom";
   `;
   
   const Right = styled.div`
+  color: white;
     margin-top: 15px;
     flex: 1;
     padding: 20px;

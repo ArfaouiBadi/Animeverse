@@ -57,6 +57,22 @@ const Catagorie = styled(Link)`
   font-family: 'Josefin Sans';
   font-size: 13px;
   font-weight: 400;
+  
+  ${mobile({ fontSize:"8px" })}
+`;
+const Catagorie_Home = styled(Link)`
+  background-color: transparent;
+  text-decoration: none;
+  height: 100%;
+  padding-top: 10px;
+  color: white;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  font-family: 'Josefin Sans';
+  font-size: 13px;
+  font-weight: 400;
   &:hover{
     border-bottom: 3px solid white;
     scale: calc(1.1);
@@ -88,8 +104,10 @@ const Catagories = () => {
             // @ts-ignore
             height:30,
             backgroundColor: theme.palette.background.main,
-
+            scale:"calc(0.9)",
+            
             color: theme.palette.primary.main,
+            
           }}
         >
           <WindowIcon />
@@ -98,6 +116,7 @@ const Catagories = () => {
               padding: "0",
               textTransform: "capitalize",
               mx: 1,
+              fontFamily:'Josefin Sans',
             }}
           >
             Categories
@@ -180,16 +199,16 @@ const Catagories = () => {
           </MenuItem>
         </Menu>
         </div>
-    <Catagorie to="/" style={{color:theme.palette.primary.main}}>
-        Home
-    </Catagorie>
-    <Catagorie  style={{color:theme.palette.primary.main}}>
-        About Us
-    </Catagorie>
     
-    <Catagorie  style={{color:theme.palette.primary.main}}>
-       Contact Us
-    </Catagorie>
+    <Catagorie_Home  style={{color:theme.palette.primary.main}} >
+        ABOUT US
+    </Catagorie_Home>
+    <Catagorie_Home to="/" style={{color:theme.palette.primary.main}}>
+        HOME
+    </Catagorie_Home>
+    <Catagorie_Home  style={{color:theme.palette.primary.main}}>
+       CONTACT
+    </Catagorie_Home>
     
   </Container>;
 };

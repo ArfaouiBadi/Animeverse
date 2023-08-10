@@ -173,8 +173,8 @@ const Navbar = () => {
         )}
         
         {admin && (
-         <Link to={"/admin"} style={{marginLeft:"10px"}}>
-         <Button onClick={handleToggleClick} ><AdminPanelSettingsIcon  /></Button>
+         <Link to={"/admin"} style={{marginLeft:"10px",}}>
+         <Button onClick={handleToggleClick} ><AdminPanelSettingsIcon  style={{fill:"white"}}/></Button>
          </Link>
         )}
          

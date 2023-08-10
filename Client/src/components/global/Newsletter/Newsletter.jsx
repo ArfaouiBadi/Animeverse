@@ -13,7 +13,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   transition: 0.3s ease all;
-    
+  color:white;
 `;
 const Title = styled.h1`
   font-size: 70px;
@@ -45,6 +45,7 @@ const Input = styled.input`
   flex: 10;
   padding-left: 20px;
   background-color: transparent;
+  
 `;
 
 const Button = styled.button`
@@ -53,6 +54,7 @@ const Button = styled.button`
   color: black;
   cursor: pointer;
   background-color: transparent;
+  color:white;
 `;
 
 const Newsletter = () => {
