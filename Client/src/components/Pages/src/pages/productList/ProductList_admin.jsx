@@ -20,7 +20,15 @@ export default function ProductList() {
     
     getProducts();
   }, []);
-  
+  const handleDelete = async (id) => {
+    
+    try{await userRequest.delete("api/products/"+id);
+    
+  }catch{
+      
+    }
+    
+  };
   const columns = [
     { field: "_id", headerName: "ID", width: 220 },
     {
