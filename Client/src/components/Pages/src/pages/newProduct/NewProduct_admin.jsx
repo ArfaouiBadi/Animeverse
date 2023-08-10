@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./newProduct.css";
 import {
   getStorage,
@@ -9,22 +9,53 @@ import {
 import app from "../../firebase";
 import { addProduct } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { publicRequest, userRequest } from "../../requestMethods";
+import axios from "axios";
 
 export default function NewProduct() {
+  const location = useLocation();
+  const productId = location.pathname.split("/")[3];
+  const [product,setProduct]=useState([])
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await userRequest.get("api/products/"+productId);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, []);
+
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState([]);
   const dispatch = useDispatch();
+  const [title,setTitle]=useState(product.title)
+  const [image,setImage]=useState(product.image)
+  const [quantity,setQuantity]=useState(product.quantity)
+  const [series,setSeries]=useState(product.series)
+  const [price,setPrice]=useState(product.price)
+  const [category,setCategory  ]=useState(product.category)
+  const [description,setDesc]=useState(product.description)
 
-  const handleChange = (e) => {
-    setInputs((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-  const handleCat = (e) => {
-    setCat(e.target.value.split(","));
-  };
+  
+  const handleCreate = async () => {
 
+    const CreatedProductData = {
+      title,
+      image:"https://i.ibb.co/vL7hwq4/uchiha-itachi-naruto-shippuuden-anbu-silhouette-wallpaper-preview.jpg",
+      quantity,
+      series,
+      price,
+      category,
+      description,
+      otherView:[],
+      
+    };
+    await axios.post('http://localhost:3002/api/products',CreatedProductData);
+    
+  };
   const handleClick = (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file.name;
@@ -86,7 +117,7 @@ export default function NewProduct() {
             name="title"
             type="text"
             placeholder="Apple Airpods"
-            onChange={handleChange}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="addProductItem">
@@ -95,7 +126,16 @@ export default function NewProduct() {
             name="desc"
             type="text"
             placeholder="description..."
-            onChange={handleChange}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Stock</label>
+          <input
+            name="Stock"
+            type="number"
+            placeholder="100"
+            onChange={(e) => setQuantity(e.target.value)}
           />
         </div>
         <div className="addProductItem">
@@ -104,23 +144,26 @@ export default function NewProduct() {
             name="price"
             type="number"
             placeholder="100"
-            onChange={handleChange}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Series</label>
+          <input
+            name="Series"
+            type="text"
+            placeholder="100"
+            onChange={(e) => setSeries(e.target.value)}
           />
         </div>
         <div className="addProductItem">
           <label>Categories</label>
-          <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
+          <input type="text" placeholder="Clothing,Figues" onChange={(e) => setCategory(e.target.value)} />
         </div>
-        <div className="addProductItem">
-          <label>Stock</label>
-          <select name="inStock" onChange={handleChange}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-        <button onClick={handleClick} className="addProductButton">
-          Create
-        </button>
+        
+        <input type="button" onClick={handleCreate} className="addProductButton" value="Create"/>
+          
+        
       </form>
     </div>
   );

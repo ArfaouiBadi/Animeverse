@@ -102,7 +102,7 @@ const Filter = () => {
             value={Brand}
             onChange={handleChangeBrand}
             input={<OutlinedInput label="Series" />}
-            renderValue={(selected) => selected.join(', ')}
+            renderValue={(selected) => selected.join(',')}
             MenuProps={MenuProps}
             sx={{fontFamily: 'Josefin Sans'}}
           >

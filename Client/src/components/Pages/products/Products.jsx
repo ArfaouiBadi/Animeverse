@@ -83,7 +83,9 @@ const Products = () => {
     }
     setFilteredProducts(tempProducts);
   };
+  
   useEffect(filterProductByBrand, [Brand, products]);
+  
   const theme = useTheme();
   return (
   <>

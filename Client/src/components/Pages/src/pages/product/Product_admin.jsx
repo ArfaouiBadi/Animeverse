@@ -6,15 +6,22 @@ import { Publish } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
+import axios from "axios";
 
 export default function Product() {
   const location = useLocation();
-  const productId = location.pathname.split("/")[2];
+  const productId = location.pathname.split("/")[3];
   const [pStats, setPStats] = useState([]);
-
-  const product = useSelector((state) =>
-    state.product.products.find((product) => product._id === productId)
-  );
+  const [product,setProduct]=useState([])
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await userRequest.get("api/products/"+productId);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, []);
   
   const MONTHS = useMemo(
     () => [
@@ -34,7 +41,7 @@ export default function Product() {
     []
   );
 
-  useEffect(() => {
+  {/*useEffect(() => {
     const getStats = async () => {
       try {
         const res = await userRequest.get("orders/income?pid=" + productId);
@@ -52,13 +59,42 @@ export default function Product() {
       }
     };
     getStats();
-  }, [productId, MONTHS]);
+  }, [productId, MONTHS]); */}
+  const [title,setTitle]=useState(product.title)
+  const [image,setImage]=useState(product.image)
+  const [quantity,setQuantity]=useState(product.quantity)
+  const [series,setSeries]=useState(product.series)
+  const [price,setPrice]=useState(product.price)
+  const [category,setCategory  ]=useState(product.category)
+  const [desc,setDesc]=useState(product.description)
 
+  const handleUserUpdate = async()=>{
+    
+    try {
+      const updatedProductData = {
+        title,
+        image,
+        quantity,
+        series,
+        price,
+        category,
+        desc,
+        otherView:[],
+        
+      };
+      console.log(productId)
+      const res = await axios.patch("http://localhost:3002/api/products/"+productId, updatedProductData);
+      console.log(res)
+    } catch (err){
+      console.log(err)
+    }
+  
+}
   return (
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Product</h1>
-        <Link to="/newproduct">
+        <Link to="/admin/newproduct">
           <button className="productAddButton">Create</button>
         </Link>
       </div>
@@ -90,17 +126,18 @@ export default function Product() {
       <div className="productBottom">
         <form className="productForm">
           <div className="productFormLeft">
-            <label>Product Name</label>
-            <input type="text" placeholder={product.title} />
+            <label>Product Title</label>
+            <input type="text" placeholder={product.title} onChange={(e) => setTitle(e.target.value)} />
             <label>Product Description</label>
-            <input type="text" placeholder={product.desc} />
+            <input type="text" placeholder="Description"  onChange={(e) => setDesc(e.target.value)}/>
             <label>Price</label>
-            <input type="text" placeholder={product.price} />
-            <label>In Stock</label>
-            <select name="inStock" id="idStock">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
+            <input type="text" placeholder={product.price} onChange={(e) => setPrice(e.target.value)} />
+            <label>Stock</label>
+            <input type="text" placeholder={product.quantity} onChange={(e) => setQuantity(e.target.value)} />
+            <label>Series</label>
+            <input type="text" placeholder={product.series} onChange={(e) => setSeries(e.target.value)} />
+            <label>Category</label>
+            <input type="text" placeholder={product.category} onChange={(e) => setCategory(e.target.value)} />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
@@ -110,7 +147,7 @@ export default function Product() {
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <input type="button" className="productButton" onClick={handleUserUpdate} value="Update"/>
           </div>
         </form>
       </div>

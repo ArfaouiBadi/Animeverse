@@ -9,7 +9,7 @@ const produitSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
   },
   otherView:{
     type:Array,

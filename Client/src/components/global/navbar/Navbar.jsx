@@ -167,7 +167,7 @@ const Navbar = () => {
          <AccountMenu/>
         )}
         {!user && (
-         <Left_icons to={"/login"} onClick={handleToggleClick}>
+         <Left_icons to={"/login"}>
          <AccountCircleOutlinedIcon/>
          </Left_icons>
         )}

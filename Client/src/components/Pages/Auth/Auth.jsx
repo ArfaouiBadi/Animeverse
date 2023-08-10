@@ -7,20 +7,14 @@ import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import fb from '../../../assets/fb.png';
 import tw from '../../../assets/tw.png';
 import gp from '../../../assets/gp.png';
-import bg from '../../../assets/bg.png';
-import { login } from '../../Redux/apiCalls';
 import {  useTheme } from "@mui/material/styles";
-
 import './Auth.css';
 import { loginFailure, loginSuccess } from '../../Redux/userReducer';
-
 const Auth = () => {
   const [isRegisterVisible, setRegisterVisible] = useState(false);
   const [isLoginVisible, setLoginVisible] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  
 
-  
   const handleClickRegister = (e) => {
     setIsActive(true);
     setRegisterVisible(true);
@@ -33,8 +27,6 @@ const Auth = () => {
     setLoginVisible(true);
   };
   const theme = useTheme();
-
-
   return (
     <div className="container_auth"  theme={theme} style={{backgroundColor:theme.palette.background.main}}>
       <div className="contact-box" style={{backgroundColor:theme.palette.background.main}}>
@@ -129,7 +121,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [erreur, setErreur] = useState("");
+  const [erreur, setErreur] = useState(false);
   const [_, setCookies] = useCookies(['acces-token']);
   const dispatch = useDispatch();
   
@@ -140,8 +132,7 @@ const Login = () => {
       
       if (response.data.message) {
         dispatch(loginFailure());
-        
-        
+        setErreur(true)
       } else {
         dispatch(loginSuccess(response.data));
         setCookies('access-token', response.data.token);
@@ -167,7 +158,7 @@ const Login = () => {
       email={email}
       setEmail={setEmail}
       onClick={handleLogin}
-
+      erreur
     />
   );
 };
@@ -202,7 +193,7 @@ const Form = ({
   phone,
   setPhone,
   onClick,
-
+  erreur,
   
 }) => {
   const handleClick = () => {
@@ -307,6 +298,7 @@ const Form = ({
         />
         
       )}
+      
       <input type="checkbox" className="check-box" required />
       <span>I agree to the terms & conditions</span>
       <button type="submit" className="submit-btn" onClick={handleClick}>

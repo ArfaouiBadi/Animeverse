@@ -30,7 +30,9 @@ function App() {
   const [Size, setSize] = useState("");
   const [Sort, setSort] = useState("");
   const [adminDashboard, setadminDashboard] = useState(false);
- 
+  useEffect(()=>{
+    console.log(adminDashboard)
+  },[adminDashboard])
   const user=useSelector((state) => state.user.currentUser);
   const { theme, toggleColorMode } = useMode();
   const admin = useSelector((state) => state.user.currentUser?.isAdmin);
@@ -64,6 +66,7 @@ function App() {
       <div className="container">
         <Sidebar/>
         <Routes>
+          
           <Route path="/admin" element={<Home_admin/>} />
           <Route path="/admin/users" element={<UserList_admin />} />
           <Route path="/admin/user/:userId" element={<User_admin />} />

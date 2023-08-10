@@ -1,50 +1,66 @@
 const produits = require("../models/produit");
 const multer = require("multer");
 const path = require("path");
+
 const createProduct = async (req, res) => {
-  const { title, image, price, description,otherView, category,quantity } =
-    req.body;
-  let emptyFields = [];
+  const { title, image, price, description, otherView, series, category, quantity } = req.body;
+  const emptyFields = [];
+
   if (!title) {
     emptyFields.push("title");
   }
   if (!otherView) {
-    emptyFields.push([]);
+    emptyFields.push("otherView");
   }
   if (!quantity) {
-    emptyFields.push(0);
+    emptyFields.push("quantity");
   }
   if (!image) {
     emptyFields.push("image");
   }
   if (!price) {
-    emptyFields.push(0);
+    emptyFields.push("price");
   }
   if (!description) {
     emptyFields.push("description");
   }
-  
   if (!category) {
-    emptyFields.push("idCategory");
+    emptyFields.push("category");
   }
-  
+
+{/*  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: `Missing required fields: ${emptyFields.join(", ")}` });
+  }*/}
+
   try {
-    const product = await produits.create({
+    const product = new produits({
       title,
       image,
       category,
       quantity,
       price,
+      series,
       description,
       otherView,
     });
-    
+
+    await product.save();
+
     res.status(201).json(product);
-    console.log(product);
+    
   } catch (err) {
-    return res.status(400).json({ err: err.message });
+    console.log("lenna");
+    console.log(err)
+    return res.status(500).json({ error: "Failed to create product" });
   }
 };
+
+// Replace "produits" with the actual model name you are using
+
+module.exports = {
+  createProduct,
+};
+
 
 const getProducts = async (req, res) => {
   const qNew = req.query.new;
