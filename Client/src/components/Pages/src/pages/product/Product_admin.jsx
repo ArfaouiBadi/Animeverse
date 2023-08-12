@@ -83,7 +83,7 @@ export default function Product() {
         
       };
       console.log(productId)
-      const res = await axios.patch("http://localhost:3002/api/products/"+productId, updatedProductData);
+      const res = await axios.patch("https://animeverse-backend.onrender.com/api/products/"+productId, updatedProductData);
       console.log(res)
     } catch (err){
       console.log(err)

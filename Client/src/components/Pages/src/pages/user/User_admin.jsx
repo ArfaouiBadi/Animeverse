@@ -50,7 +50,7 @@ export default function User() {
             address,
             phone,
           };
-          const res = await axios.put("http://localhost:3002/user/"+id, updatedUserData);
+          const res = await axios.put("https://animeverse-backend.onrender.com/user/"+id, updatedUserData);
           console.log(res)
         } catch (err){
           console.log(err)

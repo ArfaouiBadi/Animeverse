@@ -86,6 +86,7 @@ export default function UserList() {
   return (
     <div className="userList">
       <DataGrid
+        style={{color:"black"}}
         rows={data}
         disableSelectionOnClick
         columns={columns}
