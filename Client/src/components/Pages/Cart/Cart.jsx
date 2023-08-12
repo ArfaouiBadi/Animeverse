@@ -180,6 +180,7 @@ const Button = styled.button`
   color: white;
   font-weight: 600;
   margin-top: 20px;
+  cursor:pointer;
 `;
 const Btn=styled.button`
   width: 50%;
@@ -205,7 +206,7 @@ const Cart = () => {
   const theme = useTheme();
   const check = async (e) => {
     e.preventDefault();
-    fetch("http://localhost:3002/check", {
+    fetch("https://animeverse-backend.onrender.com/check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cart }),
