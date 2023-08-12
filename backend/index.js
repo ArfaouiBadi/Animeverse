@@ -8,7 +8,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors(
   {
-    origin:[""],
+    origin:["https://animeverse-front.vercel.app"],
     methods:["POST","GET","DELETE","PATCH","PUT"],
     credentials: true,
   }
