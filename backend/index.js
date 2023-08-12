@@ -13,14 +13,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// Add this middleware to set the Access-Control-Allow-Origin header
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://animeverse-front.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE","PATCH");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
-
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
