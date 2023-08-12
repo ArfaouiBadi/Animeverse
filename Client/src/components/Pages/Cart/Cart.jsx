@@ -279,7 +279,7 @@ const Cart = () => {
           
           </Info>
           <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryTitle style={{color:theme.palette.primary.main}}>ORDER SUMMARY</SummaryTitle>
             <SummaryItem >
               <SummaryItemText style={{color:theme.palette.primary.main}}>Subtotal</SummaryItemText>
               <SummaryItemPrice style={{color:theme.palette.primary.main}}>{cart.total}</SummaryItemPrice>

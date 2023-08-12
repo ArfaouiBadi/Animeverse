@@ -92,7 +92,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ flex: 2, justifyContent: "center", scale:'calc(0.6)' })}
 `;
 const Left_icons = styled(Link)`
   font-size: 14px;
