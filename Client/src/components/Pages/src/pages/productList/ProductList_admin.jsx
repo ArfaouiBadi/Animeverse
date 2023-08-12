@@ -19,7 +19,7 @@ export default function ProductList() {
     };
     
     getProducts();
-  }, []);
+  }, [products]);
   const handleDelete = async (id) => {
     
     try{await userRequest.delete("api/products/"+id);

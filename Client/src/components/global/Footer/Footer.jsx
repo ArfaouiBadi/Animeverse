@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
   const Container = styled.div`
     display: flex;
     background-color: #121D31;
-    height: 100%;
+    height: 100vh;
     padding: 80px;
     
     ${mobile({ flexDirection: "column" })}

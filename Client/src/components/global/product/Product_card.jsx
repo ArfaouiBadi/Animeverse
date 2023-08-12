@@ -10,23 +10,22 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {  useTheme } from "@mui/material/styles";
 import './Product_cart.css'
-  const Info = styled.div`
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(42, 67, 118, 0.5);
-    z-index: 6;
-    display: flex;
-    overflow:hidden;
-
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    position: absolute;
-    cursor: pointer;
-  `;
+const Info = styled.div`
+opacity: 0;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background-color: rgba(42, 67, 118, 0.5);
+z-index: 6;
+display: flex;
+overflow:hidden;
+align-items: center;
+justify-content: center;
+transition: all 0.5s ease;
+position: absolute;
+cursor: pointer;
+`;
   
   const Container = styled.div`
     background-color: white;
@@ -50,7 +49,7 @@ import './Product_cart.css'
     z-index: 2;
   `;
   const InfoText=styled.div`
-  
+  color:white;
   opacity: 0;
   width: 200px;
   height: 100%;
@@ -112,13 +111,13 @@ import './Product_cart.css'
         <Image src={item.image} />
         <Info >
           <Icon onClick={handleClickCart}>
-            <ShoppingCartOutlined/>
+            <ShoppingCartOutlined style={{fill:"white"}}/>
           </Icon>
           <div className="Search">
-            <Link to={{pathname:`/SingleProduct/${item._id}`}} className="Search"><SearchOutlined /></Link>
+            <Link to={{pathname:`/SingleProduct/${item._id}`}} className="Search"><SearchOutlined style={{fill:"white"}}/></Link>
           </div>
           <Icon onClick={handleClickWishList}>
-            <FavoriteBorderOutlined />
+            <FavoriteBorderOutlined style={{fill:"white"}}/>
           </Icon>
           <InfoText><div>{item.title}</div><div style={{padding:"10px",fontSize:"40px",}}>{item.price}$</div></InfoText>
         </Info>

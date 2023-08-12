@@ -2,9 +2,10 @@ import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 import imagesnew from './images/Newsletter.jpg'
 import {  useTheme } from "@mui/material/styles";
+import { mobile } from "../../responsive";
 
 const Container = styled.div`
-  height: 50vh;
+  height: 80vh;
   background: url(${imagesnew}) no-repeat   ;
   background-size: cover;
   background-position: 50% 100%;
@@ -19,7 +20,7 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 70px;
   font-family: 'Roboto Condensed';
-  
+  ${mobile({fontSize:"50px" })}
 `;
 
 const Desc = styled.div`
@@ -27,7 +28,8 @@ const Desc = styled.div`
   font-weight: 300;
   margin-bottom: 20px;
   font-family: 'Roboto Condensed';
-  
+  text-align: center;
+  ${mobile({fontSize:"20px" })}
 
 `;
 

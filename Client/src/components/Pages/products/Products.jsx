@@ -37,9 +37,9 @@ const Products = () => {
         
         const res = await axios.get(cata=="All_Products" 
           ?
-          "http://localhost:3002/api/products"
+          "https://animeverse-one.vercel.app/api/products"
           :
-          `http://localhost:3002/api/products?category=${cata}`
+          `https://animeverse-one.vercel.app/api/products?category=${cata}`
           );
         
         setProducts(res.data);

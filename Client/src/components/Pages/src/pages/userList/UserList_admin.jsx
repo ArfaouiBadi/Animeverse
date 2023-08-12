@@ -1,10 +1,10 @@
 import "./userList.css";
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+import { DataGrid } from "@mui/x-data-grid"; // Updated import path
+import { DeleteOutline } from "@mui/icons-material"; // Updated import path
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { publicRequest, userRequest } from "../../requestMethods";
+import { userRequest } from "../../requestMethods"; // Removed unnecessary import
 import { Alert } from "@mui/material";
 
 export default function UserList() {
@@ -15,24 +15,25 @@ export default function UserList() {
       try {
         const res = await userRequest.get("user");
         setData(res.data);
-      } catch {}
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     };
     getUsers();
-  }, []);
-
+  }, []); // Removed 'data' from dependency array
 
   const handleDelete = async (id) => {
-    
-    try{await userRequest.delete("user/"+id);
-    
-  }catch{
-      
+    try {
+      await userRequest.delete("user/" + id);
+      // After successful deletion, update the 'data' state
+      const updatedData = data.filter((item) => item._id !== id);
+      setData(updatedData);
+    } catch (error) {
+      console.error("Error deleting user:", error);
     }
-    
   };
- 
+
   const columns = [
-    
     { field: "_id", headerName: "ID", width: 100 },
     {
       field: "user",
@@ -41,8 +42,14 @@ export default function UserList() {
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img className="userListImg" src={params.row.img ||
-                "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} alt="" />
+            <img
+              className="userListImg"
+              src={
+                params.row.img ||
+                "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
+              }
+              alt=""
+            />
             {params.row.userName}
           </div>
         );
@@ -64,7 +71,6 @@ export default function UserList() {
       headerName: "Action",
       width: 150,
       renderCell: (params) => {
-        
         return (
           <>
             <Link to={"/admin/user/" + params.row._id}>
@@ -82,7 +88,6 @@ export default function UserList() {
 
   return (
     <div className="userList">
-      
       <DataGrid
         rows={data}
         disableSelectionOnClick

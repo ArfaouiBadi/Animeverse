@@ -1,9 +1,9 @@
 .container{
     display: flex;
-    margin-top: 10px;
+    
     font-family: 'Josefin Sans';
     background-color: white;
-    
+    height: 100vh;
 }
 .link{
     text-decoration: none;

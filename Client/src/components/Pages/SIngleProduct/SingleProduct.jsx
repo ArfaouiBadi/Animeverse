@@ -93,7 +93,7 @@ const Desc = styled.p`
   margin: 20px 0px;
   font-size: 20px;
   max-width: 100vw; /* Limit the width to 100% of the InfoContainer's width */
-  font-weight: 300;
+  font-weight: 500;
   
 `;
 
@@ -136,7 +136,7 @@ const Filter = styled.div`
 
 const FilterTitle = styled.span`
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 500;
   color:white;
   
 `;
@@ -183,7 +183,7 @@ const Button = styled.button`
   border: 1px solid white;
   background-color: transparent;
   cursor: pointer;
-  font-weight: 200;
+  font-weight: 500;
   &:hover {
     background-color: #8080801a;
   }

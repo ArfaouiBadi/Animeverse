@@ -88,17 +88,22 @@
   justify-content: center;
   margin: auto;
 }
-@media screen and (maw-width: 768px) {
+@media screen and (max-width: 768px) {
     .contact .container {
         flex-direction: column;
     }
     .contact iframe {
-        height: 50vh;
+        display: none;
     }
     .contact .row {
         width: 100%;
+        
     }
     .contact{
         flex-direction: column;
+        
+    }
+    .left{
+        display: none;
     }
 }

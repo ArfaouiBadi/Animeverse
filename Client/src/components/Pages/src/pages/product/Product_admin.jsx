@@ -21,7 +21,7 @@ export default function Product() {
       } catch {}
     };
     getProduct();
-  }, []);
+  }, [product]);
   
   const MONTHS = useMemo(
     () => [

@@ -19,8 +19,10 @@ import StoreContext from "../../../hooks/storeContext";
 
 const Container = styled.div`
   height: 65px;
-  width: 100%;
+  width: 100vw;
   background-color: #121D31;
+  background-repeat: no-repeat;
+  background-size:cover;
   background: url(${cata1});
   ${mobile({ height: "50px" ,width:"100vw"})}
 
@@ -102,7 +104,7 @@ const Left_icons = styled(Link)`
   margin-left: 25px;
   font-weight: 700;
   margin-right:10px ;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "12px", scale:'calc(0.6)',marginLeft: "0px",})}
   transition: 0.3s ease all;
   
 `;
