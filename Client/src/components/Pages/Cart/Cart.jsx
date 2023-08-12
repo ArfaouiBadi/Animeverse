@@ -1,7 +1,7 @@
 import { Add, Remove } from "@mui/icons-material";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
-import './cart.css'
+import './Cart.css'
 import { useDispatch, useSelector } from "react-redux";
 import { resetCart,removeFromCart } from "../../Redux/cartReducer";
 import { Link, useNavigate } from "react-router-dom";
