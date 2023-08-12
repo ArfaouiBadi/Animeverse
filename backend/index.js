@@ -8,14 +8,19 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors({
-  origin: [""], // Removed the trailing slash here
-  methods: ["POST", "GET"],
+  origin: ["https://animeverse-front.vercel.app"], // Removed the trailing slash here
+  methods: ["POST", "GET","DELETE","PATCH","PUT"],
   credentials: true,
 }));
 
 
 app.use(express.json());
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://animeverse-front.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 const stripe = require("stripe")(process.env.STRIPE);
 
