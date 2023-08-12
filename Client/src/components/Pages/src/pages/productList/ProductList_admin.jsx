@@ -72,6 +72,7 @@ export default function ProductList() {
     <div className="productList">
       <DataGrid
         rows={products}
+        style={{color:"black"}}
         disableSelectionOnClick
         columns={columns}
         getRowId={(row) => row._id}
