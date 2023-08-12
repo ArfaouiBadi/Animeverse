@@ -167,9 +167,12 @@ const SummaryItem = styled.div`
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
-const SummaryItemText = styled.span``;
+const SummaryItemText = styled.span`
+  color:${theme.palette.primary.main};
+  `;
 
-const SummaryItemPrice = styled.span``;
+const SummaryItemPrice = styled.span`
+color:${theme.palette.primary.main};`;
 
 const Button = styled.button`
   width: 100%;
@@ -277,16 +280,16 @@ const Cart = () => {
           
           </Info>
           <Summary>
-            <SummaryTitle style={{color:theme.palette.primary.main}}>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem style={{color:theme.palette.primary.main}}>
+            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryItem >
               <SummaryItemText>Subtotal</SummaryItemText>
               <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem style={{color:theme.palette.primary.main}}>
+            <SummaryItem>
               <SummaryItemText >Estimated Shipping</SummaryItemText>
               <SummaryItemPrice>$ 5.90</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem style={{color:theme.palette.primary.main}}>
+            <SummaryItem >
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
             </SummaryItem>
