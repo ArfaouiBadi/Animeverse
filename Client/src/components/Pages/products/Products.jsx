@@ -37,9 +37,9 @@ const Products = () => {
         
         const res = await axios.get(cata=="All_Products" 
           ?
-          "https://animeverse-one.vercel.app/api/products"
+          "https://animeverse-backend.onrender.com/api/products"
           :
-          `https://animeverse-one.vercel.app/api/products?category=${cata}`
+          `https://animeverse-backend.onrender.com/api/products?category=${cata}`
           );
         
         setProducts(res.data);
