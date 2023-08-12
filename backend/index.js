@@ -7,11 +7,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.use(cors({
-  origin: ["https://animeverse-front.vercel.app"], // Removed the trailing slash here
-  methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
-  credentials: true,
-}));
+app.use(cors());
 
 app.use(express.json());
 app.use((req, res, next) => {
