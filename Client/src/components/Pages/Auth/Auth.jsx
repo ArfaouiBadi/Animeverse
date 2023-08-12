@@ -67,7 +67,7 @@ const Register = () => {
 
   //REGISTER
   const handleRegister = async () => {
-    await axios.post('https://animeverse-one.vercel.app/user/register', {
+    await axios.post('https://animeverse-backend.vercel.app/user/register', {
       firstName,
       lastName,
       phone,
@@ -127,7 +127,7 @@ const Login = () => {
   
   const handleLogin = async () => {
     try {
-      const response = await axios.post('https://animeverse-one.vercel.app/user/login', {password, email});
+      const response = await axios.post('https://animeverse-backend.vercel.app/user/login', {password, email});
       
       
       if (response.data.message) {
