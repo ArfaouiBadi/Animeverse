@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://animeverse-one.vercel.app";
+axios.defaults.withCredentials=true;
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 const currentUser = user && JSON.parse(user).currentUser;
 const TOKEN = currentUser?.accessToken;

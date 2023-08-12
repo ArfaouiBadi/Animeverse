@@ -14,7 +14,7 @@ const Auth = () => {
   const [isRegisterVisible, setRegisterVisible] = useState(false);
   const [isLoginVisible, setLoginVisible] = useState(true);
   const [isActive, setIsActive] = useState(false);
-
+  axios.defaults.withCredentials=true;
   const handleClickRegister = (e) => {
     setIsActive(true);
     setRegisterVisible(true);
