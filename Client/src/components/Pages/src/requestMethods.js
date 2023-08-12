@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://animeverse-one.vercel.app/";
+const BASE_URL = "https://animeverse-backend.onrender.com";
 
 
 export const publicRequest = axios.create({

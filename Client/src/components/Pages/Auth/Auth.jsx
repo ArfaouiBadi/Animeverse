@@ -67,7 +67,7 @@ const Register = () => {
 
   //REGISTER
   const handleRegister = async () => {
-    await axios.post('https://animeverse-backend.vercel.app/user/register', {
+    await axios.post('https://animeverse-backend.onrender.com/user/register', {
       firstName,
       lastName,
       phone,
