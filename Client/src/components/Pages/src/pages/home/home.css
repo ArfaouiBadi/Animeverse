@@ -2,7 +2,7 @@
 .home{
     flex: 4;
     background-color: white;
-   
+   height: 100%;
 }
 
 .homeWidgets{
