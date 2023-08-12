@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.withCredentials=true;
+
 const BASE_URL = "https://animeverse-one.vercel.app/";
 
 

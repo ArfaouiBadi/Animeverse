@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const BASE_URL = "https://animeverse-backend.vercel.app";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
