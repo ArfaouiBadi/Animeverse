@@ -15,7 +15,7 @@ const createCommande = async (req, res) => {
 // Get all commandes
 const getAllCommandes = async (req, res) => {
   try {
-    const commandes = await Commande.find();
+    const commandes = await Commande.find().limit(5);
     res.status(200).json(commandes);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch commandes" });

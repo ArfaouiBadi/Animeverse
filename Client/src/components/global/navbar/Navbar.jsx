@@ -3,12 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AccountMenu from '../../global/AccountMenu/AccountMenu';
 import './navbar.css'
-import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Badge } from "@mui/material";
+import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import cata1 from '../../../assets/cata1.png'
 import styled from "styled-components";
 import { mobile } from "../../responsive";
-
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import {Button, IconButton ,useTheme} from '@mui/material';
@@ -181,13 +180,13 @@ const Navbar = () => {
         )}
          
           <Left_icons to={"/wishList"} >
-          <Badge badgeContent={wishList.quantity} color="secondary" overlap="rectangular">
+          <Badge badgeContent={wishList.quantity} color="error" overlap="rectangular">
           <FavoriteBorderOutlinedIcon style={{fill:'white'}}/>
           </Badge>
           </Left_icons>
           
           <Left_icons to={"/cart"}>
-            <Badge badgeContent={cart.quantity} color="secondary" overlap="rectangular">
+            <Badge badgeContent={cart.quantity} color="error" overlap="rectangular">
               <ShoppingCartOutlined style={{fill:'white'}}/>
             </Badge>
           </Left_icons>

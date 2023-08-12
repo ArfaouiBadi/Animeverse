@@ -8,7 +8,7 @@ import {
    
     Room,
 
-  } from "@material-ui/icons";
+  } from "@mui/icons-material";
   const ContactItem = styled.div`
   margin-bottom: 20px;
   display: flex;

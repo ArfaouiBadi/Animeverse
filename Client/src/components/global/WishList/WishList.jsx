@@ -3,7 +3,7 @@ import { mobile } from "../../responsive";
 import './WishList.css'
 import { useDispatch, useSelector } from "react-redux";
 import { resetWishList,removeFromWishList } from "../../Redux/wishListReducer";
-import { Add, Remove } from "@material-ui/icons";
+import { Add, Remove } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import {  useTheme } from "@mui/material/styles";
 import Footer from "../Footer/Footer";

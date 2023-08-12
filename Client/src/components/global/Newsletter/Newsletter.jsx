@@ -1,4 +1,4 @@
-import { Send } from "@material-ui/icons";
+import { Send } from "@mui/icons-material";
 import styled from "styled-components";
 import imagesnew from './images/Newsletter.jpg'
 import {  useTheme } from "@mui/material/styles";

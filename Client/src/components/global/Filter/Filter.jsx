@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { useContext, useEffect, useState } from "react";
-import { Grid } from "@material-ui/core";
+import Grid from '@mui/material/Grid';
 import { mobile } from "../../responsive";
 import StoreContext from "../../../hooks/storeContext";
 import {  useTheme } from "@mui/material/styles";

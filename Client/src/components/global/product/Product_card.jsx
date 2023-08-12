@@ -2,7 +2,7 @@ import {
     FavoriteBorderOutlined,
     SearchOutlined,
     ShoppingCartOutlined,
-  } from "@material-ui/icons";
+  } from "@mui/icons-material";
 import styled from "styled-components";
 import { addToCart } from "../../Redux/cartReducer";
 import { addToWishList } from "../../Redux/wishListReducer";

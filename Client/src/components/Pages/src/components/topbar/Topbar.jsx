@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import StoreContext from "../../../../../hooks/storeContext";
 import { Button } from "@mui/material";

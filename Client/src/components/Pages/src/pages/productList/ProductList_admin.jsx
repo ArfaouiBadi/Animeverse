@@ -1,10 +1,8 @@
 import "./productList.css";
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+import { DataGrid } from '@mui/x-data-grid';
+import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteProduct } from "../../redux/apiCalls";
 import { publicRequest, userRequest } from "../../requestMethods";
 
 export default function ProductList() {

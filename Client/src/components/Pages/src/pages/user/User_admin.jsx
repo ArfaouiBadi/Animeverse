@@ -5,7 +5,7 @@ import {
   PermIdentity,
   PhoneAndroid,
   Publish,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import "./user.css";
 import { useEffect, useState } from "react";
@@ -177,7 +177,6 @@ export default function User() {
                   src="https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
                   alt=""
                 />
-                
                 
               </div>
               <button className="userUpdateButton" onClick={handleUserUpdate}>Update</button>
