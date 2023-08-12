@@ -168,11 +168,10 @@ const SummaryItem = styled.div`
 `;
 
 const SummaryItemText = styled.span`
-  color:${theme.palette.primary.main};
   `;
 
 const SummaryItemPrice = styled.span`
-color:${theme.palette.primary.main};`;
+`;
 
 const Button = styled.button`
   width: 100%;
@@ -282,20 +281,20 @@ const Cart = () => {
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem >
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
+              <SummaryItemText style={{color:theme.palette.primary.main}}>Subtotal</SummaryItemText>
+              <SummaryItemPrice style={{color:theme.palette.primary.main}}>{cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText >Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemText style={{color:theme.palette.primary.main}}>Estimated Shipping</SummaryItemText>
+              <SummaryItemPrice style={{color:theme.palette.primary.main}}>$ 5.90</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem >
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemText style={{color:theme.palette.primary.main}}>Shipping Discount</SummaryItemText>
+              <SummaryItemPrice style={{color:theme.palette.primary.main}}>$ -5.90</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
+              <SummaryItemText style={{color:theme.palette.primary.main}}>Total</SummaryItemText>
+              <SummaryItemPrice style={{color:theme.palette.primary.main}}>{cart.total}</SummaryItemPrice>
               </SummaryItem>
               <Button onClick={check} style={{color:theme.palette.background.main,backgroundColor:theme.palette.primary.main}}> CHECKOUT NOW</Button>
             
