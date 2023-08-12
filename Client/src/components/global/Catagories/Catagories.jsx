@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import './catagories.css'
+import './Catagories.css'
 import { mobile } from "../../responsive";
 import { Link } from "react-router-dom";
 import Filter from "../Filter/Filter";
