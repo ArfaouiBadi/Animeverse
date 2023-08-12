@@ -200,7 +200,7 @@ const SingleProduct = () => {
     useEffect(()=>{
       const getProduct=async ()=>{
         try{
-          const res=await publicRequest.get("/products/"+id)
+          const res=await publicRequest.get("/api/products/"+id)
           
           setProduct(res.data)
           
