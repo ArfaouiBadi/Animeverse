@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors({
   origin: [""], // Removed the trailing slash here
-  methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
+  methods: ["POST", "GET"],
   credentials: true,
 }));
 
