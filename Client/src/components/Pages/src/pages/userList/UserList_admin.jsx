@@ -1,12 +1,9 @@
 import "./userList.css";
 import { DataGrid } from "@mui/x-data-grid"; // Updated import path
 import { DeleteOutline } from "@mui/icons-material"; // Updated import path
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethods"; // Removed unnecessary import
-import { Alert } from "@mui/material";
-
 export default function UserList() {
   const [data, setData] = useState([]);
 

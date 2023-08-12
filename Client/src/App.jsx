@@ -2,7 +2,6 @@ import { useState,useEffect } from 'react'
 import { BrowserRouter as Router ,Route,Routes,Navigate ,useLocation} from 'react-router-dom'
 
 import './App.css'
-
 import Auth from './components/Pages/Auth/Auth'
 import Navbar from './components/global/navbar/Navbar'
 import WishList from './components/global/WishList/WishList'
@@ -12,7 +11,7 @@ import SingleProduct from './components/Pages/SIngleProduct/SingleProduct'
 import Products from './components/Pages/products/Products'
 import Home from './components/Pages/Home/Home'
 import Home_admin from './components/Pages/src/pages/home/Home_admin'
-import UserList_admin from './components/Pages/src/pages/UserList/UserList_admin'
+import UserList_admin from './components/Pages/src/pages/userList/UserList_admin'
 import User_admin from './components/Pages/src/pages/user/User_admin'
 import Sidebar from "./components/Pages/src/components/sidebar/Sidebar";
 import Topbar from "./components/Pages/src/components/topbar/Topbar";
@@ -66,11 +65,11 @@ function App() {
         <Routes>
           
           <Route path="/admin" element={<Home_admin/>} />
-          <Route path="/admin/users" element={<UserList_admin />} />
+          <Route path="/admin/users" element={<UserList_admin/>} />
           <Route path="/admin/user/:userId" element={<User_admin />} />
-          <Route path="/admin/newUser" element={<NewUser_admin />} />
-          <Route path="/admin/products" element={<ProductList_admin />} />
-          <Route path="/admin/product/:productId" element={<Product_admin />} />
+          <Route path="/admin/newUser" element={<NewUser_admin/>} />
+          <Route path="/admin/products" element={<ProductList_admin/>} />
+          <Route path="/admin/product/:productId" element={<Product_admin/>} />
           <Route path="/admin/newproduct" element={<NewProduct_admin/>} />
         </Routes>
       </div>
