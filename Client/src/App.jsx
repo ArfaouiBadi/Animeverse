@@ -30,7 +30,7 @@ function App() {
   const [Sort, setSort] = useState("");
   const [adminDashboard, setadminDashboard] = useState(false);
   
-  const user=useSelector((state) => state.user.currentUser);
+  const user=useSelector((state) => state.user?.currentUser);
   const { theme, toggleColorMode } = useMode();
   const admin = useSelector((state) => state.user.currentUser?.isAdmin);
   return (
