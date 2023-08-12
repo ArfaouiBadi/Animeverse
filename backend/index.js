@@ -6,19 +6,27 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-app.use(cors(
-  {
-    origin:["https://animeverse-front.vercel.app/"],
-    methods:["POST","GET","DELETE","PATCH","PUT"],
-    credentials: true,
-  }
-));
+
+app.use(cors({
+  origin: ["https://animeverse-front.vercel.app"], // Removed the trailing slash here
+  methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
+  credentials: true,
+}));
+
+// Add this middleware to set the Access-Control-Allow-Origin header
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://animeverse-front.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
 const stripe = require("stripe")(process.env.STRIPE);
 
 app.post("/check", async (req, res) => {
@@ -48,16 +56,18 @@ app.post("/check", async (req, res) => {
     res.status(500).json({ err: err.message });
   }
 });
-//routes
+
+// Routes
 app.use("/user", userRoutes);
 app.use("/api/products", produitsRoutes);
 app.use("/api/orders", ordersRoutes);
 
-//connect to mogoose
+// Connect to MongoDB
 mongoose.connect(process.env.URL).then(() => {
-  console.log("`🟢 Connected To DataBase`");
-  // listen for request
-  app.listen(3002, () => {
-    console.log("`🟢 server started on port 3002`");
+  console.log("🟢 Connected To DataBase");
+  // Listen for requests
+  const PORT = process.env.PORT || 3002;
+  app.listen(PORT, () => {
+    console.log(`🟢 Server started on port ${PORT}`);
   });
 });
