@@ -127,7 +127,7 @@ const Login = () => {
   
   const handleLogin = async () => {
     try {
-      const response = await axios.post('https://animeverse-backend.vercel.app/user/login', {password, email});
+      const response = await axios.post('https://animeverse-backend.onrender.com/user/login', {password, email});
       
       
       if (response.data.message) {
