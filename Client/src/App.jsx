@@ -15,10 +15,10 @@ import UserList_admin from './components/Pages/src/pages/userList/UserList_admin
 import User_admin from './components/Pages/src/pages/user/User_admin'
 import Sidebar from "./components/Pages/src/components/sidebar/Sidebar";
 import Topbar from "./components/Pages/src/components/topbar/Topbar";
-import NewUser_admin from './components/Pages/src/pages/NewUser/NewUser_admin'
-import NewProduct_admin from './components/Pages/src/pages/NewProduct/NewProduct_admin'
-import ProductList_admin from './components/Pages/src/pages/ProductList/ProductList_admin'
-import Product_admin from './components/Pages/src/pages/Product/Product_admin'
+import NewUser_admin from './components/Pages/src/pages/newUser/NewUser_admin'
+import NewProduct_admin from './components/Pages/src/pages/newProduct/NewProduct_admin'
+import ProductList_admin from './components/Pages/src/pages/productList/ProductList_admin'
+import Product_admin from './components/Pages/src/pages/product/Product_admin'
 import StoreContext from './hooks/storeContext'
 import { useSelector } from "react-redux";
 import { ThemeProvider, CssBaseline } from '@mui/material';
