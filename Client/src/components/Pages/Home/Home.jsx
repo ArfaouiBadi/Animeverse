@@ -9,6 +9,7 @@ import About from '../../global/About_Us/About'
 
 import Slider from '../../global/Slider/Slider'
 import Catagories from '../../global/Catagories/Catagories'
+import styled from 'styled-components'
 
 const Home = () => {
   const {user}=useContext(StoreContext)

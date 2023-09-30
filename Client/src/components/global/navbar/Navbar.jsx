@@ -16,13 +16,13 @@ import   { useContext, useEffect } from "react";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import StoreContext from "../../../hooks/storeContext";
 
-const Container = styled.div`
+const Container = styled.div `
   height: 65px;
-  width: 100vw;
+  width: 100%;
   background-color: #121D31;
   background-repeat: no-repeat;
   background-size:cover;
-  background: url(${cata1});
+  
   ${mobile({ height: "50px" ,width:"100vw"})}
 
 `;
@@ -120,14 +120,14 @@ const Navbar = () => {
     setadminDashboard(!adminDashboard)
   };
   return (
-    <Container>
+    <Container style={{backgroundColor: theme.palette.background.main}}>
       
       <Wrapper>
         <Left>
           
           <div>
       {theme.palette.mode === "light" ? (
-        <IconButton
+        <IconButton 
           onClick={() => {
             localStorage.setItem(
               "mode",
@@ -135,9 +135,10 @@ const Navbar = () => {
             );
             colorMode.toggleColorMode();
           }}
+          
           color="inherit"
         >
-          <LightModeOutlined  sx={{fill:"#fff"}}/>
+          <LightModeOutlined  style={{color:theme.palette.primary.main}}/>
         </IconButton>
       ) : (
         <IconButton
@@ -160,34 +161,34 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-        <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none",color:'white'}}>Animeverse.</Link></Logo>
+        <Logo><Link to="/"style={{fontWeight: 700,fontFamily:'Lobster',textDecoration: "none",color:theme.palette.primary.main}}>Animeverse.</Link></Logo>
         </Center>
         <Right>
          
         {user && (
-         <AccountMenu/>
+         <AccountMenu style={{color:theme.palette.primary.main}}/>
         )}
         {!user && (
          <Left_icons to={"/login"}>
-         <AccountCircleOutlinedIcon/>
+         <AccountCircleOutlinedIcon style={{color:theme.palette.primary.main}}/>
          </Left_icons>
         )}
         
         {admin && (
          <Link to={"/admin"} style={{marginLeft:"10px",}}>
-         <Button onClick={handleToggleClick} ><AdminPanelSettingsIcon  style={{fill:"white"}}/></Button>
+         <Button onClick={handleToggleClick} ><AdminPanelSettingsIcon style={{color:theme.palette.primary.main}} /></Button>
          </Link>
         )}
          
           <Left_icons to={"/wishList"} >
           <Badge badgeContent={wishList.quantity} color="error" overlap="rectangular">
-          <FavoriteBorderOutlinedIcon style={{fill:'white'}}/>
+          <FavoriteBorderOutlinedIcon style={{color:theme.palette.primary.main}}/>
           </Badge>
           </Left_icons>
           
           <Left_icons to={"/cart"}>
             <Badge badgeContent={cart.quantity} color="error" overlap="rectangular">
-              <ShoppingCartOutlined style={{fill:'white'}}/>
+              <ShoppingCartOutlined style={{color:theme.palette.primary.main}}/>
             </Badge>
           </Left_icons>
         </Right>

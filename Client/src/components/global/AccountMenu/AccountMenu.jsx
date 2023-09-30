@@ -88,7 +88,7 @@ export default function AccountMenu() {
         <MenuItem  onClick={() => { handleClose(); handleLogout(); }}   sx={{
             color: theme.palette.primary.main}}>
           <ListItemIcon >
-            <Logout  sx={{fill:theme.palette.primary.main}}fontSize="small"  />
+            <Logout  fontSize="small"  />
           </ListItemIcon>
           Logout
         </MenuItem>

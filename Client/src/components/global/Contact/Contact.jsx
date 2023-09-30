@@ -10,6 +10,7 @@ import {
 
   } from "@mui/icons-material";
   const ContactItem = styled.div`
+  
   margin-bottom: 20px;
   display: flex;
   align-items: center;
